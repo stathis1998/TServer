@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TChatClient", "TChatClient.vcxproj", "{88AEC53E-813C-474B-B34F-D69214480CAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88AEC53E-813C-474B-B34F-D69214480CAB}.Debug|x86.ActiveCfg = Debug|Win32
+		{88AEC53E-813C-474B-B34F-D69214480CAB}.Debug|x86.Build.0 = Debug|Win32
+		{88AEC53E-813C-474B-B34F-D69214480CAB}.Release|x86.ActiveCfg = Release|Win32
+		{88AEC53E-813C-474B-B34F-D69214480CAB}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B24A63CC-0EE0-4FEB-8742-F54A4486CF29}
+	EndGlobalSection
+EndGlobal

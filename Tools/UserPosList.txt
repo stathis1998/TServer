@@ -1,0 +1,2 @@
+NAME	Channel	MapID	PosX		PosY		PosZ
+mrdkos	1	0	2800.000000	50.000000	5000.000000

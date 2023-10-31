@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CSHandler.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CSSender.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CSSenderAll.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Packet.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PingTestDlg.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopNameDlg.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChannelDlg.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TCharDlg.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChatClient.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChatClientDoc.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChatClientView.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChatEdit.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChatInven.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChatItem.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChatPriceDlg.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChatShopDlg.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TChatSocket.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TGroupDlg.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TLoginDlg.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TTextLinkData.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SHA1.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CryptographyExt.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PingTestDlg.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopNameDlg.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChannelDlg.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TCharDlg.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatClient.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatClientDoc.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatClientView.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatEdit.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatInven.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatItem.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatPriceDlg.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatShopDlg.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatSocket.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TChatType.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TGroupDlg.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TLoginDlg.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TTextLinkData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SHA1.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CryptographyExt.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\TChatClient.ico">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="res\TChatClientDoc.ico">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TChatClient.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\TChatClient.rc2">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="res\TChatClient.manifest" />
+  </ItemGroup>
+</Project>
