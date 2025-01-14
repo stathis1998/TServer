@@ -929,12 +929,13 @@ void CTMonster::AddItem(BYTE bCountry, WORD wAddMagicProb, INT nAddItemDrop) {
 		m_dwMoney += m_dwMoney * _AtlModule.m_wEventValue[EVENT_MONEYDROP] / 100;
 
 	// Moose - money multiplier
-	DWORD dwMultiplier = 50;
+	DWORD dwMultiplier = 69 * 2;
 	m_dwMoney *= dwMultiplier;
 
-	// 1% chance
+	// 1 in 100 chance of dropping a gold bar
 	if (rand() % 100 == 0) {
-		m_dwMoney *= 2;
+		m_dwMoney += 500000;
+		std::cout << "Dropping half a gold bar\n";
 	}
 
 	BYTE bItemID = 0;
@@ -1257,7 +1258,7 @@ DWORD CTMonster::GetExp(DWORD dwDamage) {
 	dwExp += dwExp * _AtlModule.m_wEventValue[EVENT_EXPADD] / 100;
 
 	// Moose - exp multiplier
-	DWORD dwMultiplier = 12 * 3 /* times 3 for 70->80 */;
+	DWORD dwMultiplier = 12 * 2;
 
 	return dwExp * dwMultiplier;
 }

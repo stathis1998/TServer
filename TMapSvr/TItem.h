@@ -14,8 +14,8 @@ public:
 	BYTE m_bLevel;
 	BYTE m_bGem;
 	WORD m_wMoggItemID;
-	BYTE m_bInven;	//사용자간 아이템 거래에서만 값 설정하여 사용중.
-	DWORD m_dwOwnerID;	//퀘스트 아이템 주인설정
+	BYTE m_bInven;
+	DWORD m_dwOwnerID;
 
 	WORD m_wItemID;
 	BYTE m_bCount;

@@ -1769,9 +1769,9 @@ DWORD CTMapSvrModule::OnCS_MOVEITEM_REQ(LPPACKETBUF pBUF) {
 
 
 
-		#ifdef DEF_UDPLOG		
+#ifdef DEF_UDPLOG		
 			m_pUdpSocket->LogItemUpgrade(LOGMAP_ITEMDEL, pPlayer, pTItemSRC);
-		#endif	//	DEF_UDPLOG
+#endif	//	DEF_UDPLOG
 
 			pTInvenSRC->m_mapTITEM.erase(pTItemSRC->m_bItemID);
 			pPlayer->CheckQuest(
@@ -2134,9 +2134,9 @@ DWORD CTMapSvrModule::OnCS_SKILLBUY_REQ(LPPACKETBUF pBUF) {
 				pSkill->m_pTSKILL->m_wID,
 				pSkill->m_bLevel);
 
-		#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 			m_pUdpSocket->LogSkillAct(LOGMAP_SKILLLEVELUP, pPlayer, pSkill, -llUseMoney);
-		#else
+#else
 			SendDM_LOGSKILL_REQ(
 				pPlayer->m_dwID,
 				pPlayer->m_dwGold,
@@ -2144,7 +2144,7 @@ DWORD CTMapSvrModule::OnCS_SKILLBUY_REQ(LPPACKETBUF pBUF) {
 				pPlayer->m_dwCooper,
 				wSkillID,
 				pSkill->m_bLevel);
-		#endif
+#endif
 
 			return EC_NOERROR;
 		}
@@ -2432,13 +2432,13 @@ DWORD CTMapSvrModule::OnCS_SKILLUSE_REQ(LPPACKETBUF pBUF) {
 		}
 
 		pPlayer->m_dwMedals -= pPREMIUMSKILL->m_wMedals;
-	#ifdef BOW_COMPILE_MODE
+#ifdef BOW_COMPILE_MODE
 		DEFINE_QUERY(&m_db, CSPSaveMedals);
 		query->m_dwCharID = pPlayer->m_dwID;
 		query->m_dwMedals = pPlayer->m_dwMedals;
 		query->Call();
 		UNDEFINE_QUERY();
-	#endif
+#endif
 		pPlayer->SendCS_UPDATEMEDALS_REQ(pPlayer->m_dwMedals);
 	}
 
@@ -3396,9 +3396,9 @@ DWORD CTMapSvrModule::OnCS_QUESTENDTIMER_REQ(LPPACKETBUF pBUF) {
 					(*finder).second->m_pQUEST->m_vTerm[i]->m_dwTermID,
 					(*finder).second->m_pQUEST->m_vTerm[i]->m_bTermType,
 					0, QTS_FAILED);
-			#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 				m_pUdpSocket->LogQuest(LOGMAP_QUESTFAILED, pPlayer, dwQuestID);
-			#endif
+#endif
 			}
 
 	return EC_NOERROR;
@@ -5117,9 +5117,9 @@ DWORD CTMapSvrModule::OnCS_CHAT_REQ(LPPACKETBUF pBUF) {
 		}
 
 		vPLAYERS.clear();
-	#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 		m_pUdpSocket->LogChat(LOGMAP_CHATNEAR, pPlayer, NULL, strTalk);
-	#endif
+#endif
 	}
 	return EC_NOERROR;
 
@@ -5151,9 +5151,9 @@ DWORD CTMapSvrModule::OnCS_CHAT_REQ(LPPACKETBUF pBUF) {
 				pPlayer->m_dwID,
 				strSender,
 				strTalk);
-		#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 			m_pUdpSocket->LogChat(LOGMAP_CHATWISPER, pPlayer, pTarget->m_strNAME, strTalk);
-		#endif
+#endif
 
 			pPlayer->SendCS_CHAT_ACK(
 				bGroup,
@@ -5753,6 +5753,8 @@ DWORD CTMapSvrModule::OnCS_TELEPORT_REQ(LPPACKETBUF pBUF) {
 
 	WORD wSpawnID = 0;
 
+	// Moose - Teleport
+
 	if (wPortalID) {
 		MAPTPORTAL::iterator finder = m_mapTPortal.find(wPortalID);
 
@@ -5786,9 +5788,9 @@ DWORD CTMapSvrModule::OnCS_TELEPORT_REQ(LPPACKETBUF pBUF) {
 		}
 
 
-	#ifdef DEF_UDPLOG	
+#ifdef DEF_UDPLOG	
 		m_pUdpSocket->LogTeleport(LOGMAP_TELEPORT, pPlayer, pNpc, -int(dwPrice), wPortalID);
-	#endif
+#endif
 		DWORD nCurrency[3] =
 		{
 			0, 0, 0
@@ -5809,7 +5811,7 @@ DWORD CTMapSvrModule::OnCS_TELEPORT_REQ(LPPACKETBUF pBUF) {
 
 	return EC_NOERROR;
 }
-
+//Moose
 DWORD CTMapSvrModule::OnCS_NPCITEMLIST_REQ(LPPACKETBUF pBUF) {
 	CTPlayer* pPlayer = (CTPlayer*) pBUF->m_pSESSION;
 	if (!pPlayer->m_pMAP || !pPlayer->m_bMain)
@@ -7117,7 +7119,9 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 	{
 		BYTE bRand = BYTE(rand() % 100);
 		BYTE bProb = CalcProb(pPlayer, pNpc, PROB_UPGRADE, m_itemgrade[pItem->m_bLevel].m_bProb);
+
 		SSLogEvent(6, "bRand: %d, bProb: %d", bRand, bProb);
+
 		if (bRand < bProb) {
 			BYTE bGrade = bItemGrade == 3 ? BYTE(rand() % 3) + 1 : 1;
 			// Moose - fixed the +24
@@ -7132,13 +7136,13 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 			SetItemAttr(pItem, pItem->m_bLevel);
 			pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_SUCCESS, bTargetInven, bTargetItemID, pItem->m_bLevel, pItem->m_bGem, pItem->m_bGradeEffect, 0, pItem->m_wMoggItemID);
 
-		#ifdef	DEF_UDPLOG
+#ifdef	DEF_UDPLOG
 			m_pUdpSocket->LogItemUpgrade(LOGMAP_ITEMUPGRADESUCCESS, pPlayer, pItem, bGrade);
-		#endif
+#endif
 		} else {
-		#ifdef	DEF_UDPLOG			
+#ifdef	DEF_UDPLOG			
 			m_pUdpSocket->LogItemUpgrade(LOGMAP_ITEMUPGRADEFAILDEL, pPlayer, pItem);
-		#endif	//	DEF_UDPLOG
+#endif	//	DEF_UDPLOG
 			BYTE bLevelGuard = 0;
 			BYTE bDownProb = 0;
 			BYTE bDownGrade = 0;
@@ -7270,15 +7274,15 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 			SetItemAttr(pItem, pItem->m_bLevel);
 			pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_SUCCESS, bTargetInven, bTargetItemID, pItem->m_bLevel, pItem->m_bGem, pItem->m_bGradeEffect, 0, pItem->m_wMoggItemID);
 
-		#ifdef	DEF_UDPLOG
+#ifdef	DEF_UDPLOG
 			m_pUdpSocket->LogItemUpgrade(LOGMAP_ITEMDOWNGRADESUCCESS, pPlayer, pItem, pItem->m_bLevel);
-		#endif
+#endif
 		} else {
 			pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_FAIL, 0, 0, 0, 0, 0, 0, 0);
 
-		#ifdef DEF_UDPLOG			
+#ifdef DEF_UDPLOG			
 			m_pUdpSocket->LogItemUpgrade(LOGMAP_ITEMDOWNGRADEFAIL, pPlayer, pItem);
-		#endif
+#endif
 		}
 	}
 	break;
@@ -7481,19 +7485,19 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 		BYTE bRand = BYTE(rand() % 100);
 
 		if (bRand < bProb) {
-		#ifdef DEF_UDPLOG	
+#ifdef DEF_UDPLOG	
 			DWORD dwLogResult = LOGMAP_ITEMMAKEZERO;
-		#endif
+#endif
 			if (MakeSpecialItem(pPlayer, pItem, bItemKind, wMagicBuff, IMT_SCROLL)) {
-			#ifdef DEF_UDPLOG	
+#ifdef DEF_UDPLOG	
 				dwLogResult = LOGMAP_ITEMMAKESUCCESS;
-			#endif
+#endif
 				bResult = ITEMUPGRADE_SUCCESS;
 			}
 
-		#ifdef DEF_UDPLOG			
+#ifdef DEF_UDPLOG			
 			m_pUdpSocket->LogItemUpgrade(dwLogResult, pPlayer, pItem);
-		#endif
+#endif
 		}
 
 		if (!bResult)
@@ -7501,9 +7505,9 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 		else {
 			if (bItemKind == IK_RAREGRADE) // 레어일 경우 아이탬 제거
 			{
-			#ifdef	DEF_UDPLOG
+#ifdef	DEF_UDPLOG
 				m_pUdpSocket->LogItemUpgrade(LOGMAP_ITEMMAKEFAILDEL, pPlayer, pItem);
-			#endif
+#endif
 
 				delete pItem;
 				pInven->m_mapTITEM.erase(bTargetItemID);
@@ -8402,9 +8406,9 @@ DWORD CTMapSvrModule::OnCS_POSTGETITEM_REQ(LPPACKETBUF pBUF) {
 			for (DWORD k = 0; k < pPost->m_vItem.size(); k++) {
 				vItemID.push_back(pPost->m_vItem[k]->m_wItemID);
 				vCount.push_back(pPost->m_vItem[k]->m_bCount);
-			#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 				m_pUdpSocket->LogItemTrade(LOGMAP_ITEMPOSTGET, pPlayer, pPost->m_vItem[k], pPost->m_strSender);
-			#endif	//	DEF_UDPLOG		
+#endif	//	DEF_UDPLOG		
 			}
 
 			pPlayer->PushTItem(&pPost->m_vItem);
@@ -8440,9 +8444,9 @@ DWORD CTMapSvrModule::OnCS_POSTGETITEM_REQ(LPPACKETBUF pBUF) {
 	__int64 llMoney = CalcMoney(pPost->m_dwGold, pPost->m_dwSilver, pPost->m_dwCooper);
 	if (llMoney) {
 		pPlayer->EarnMoney(llMoney);
-	#ifdef	DEF_UDPLOG
+#ifdef	DEF_UDPLOG
 		m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYPOSTGET, pPlayer, pPost->m_strSender, llMoney);
-	#endif	
+#endif	
 		pPost->m_dwGold = 0;
 		pPost->m_dwSilver = 0;
 		pPost->m_dwCooper = 0;
@@ -9073,9 +9077,9 @@ DWORD CTMapSvrModule::OnCS_ITEMUSE_REQ(LPPACKETBUF pBUF) {
 			pPlayer->SendCS_OPENMONEY_ACK(dwMoney);
 			bUsed = TRUE;
 
-		#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 			m_pUdpSocket->LogItemByNPC(LOGMAP_CASHRANDMONEY, pPlayer, NULL, NULL, dwMoney);
-		#endif
+#endif
 		}
 		break;
 		case IK_CASH:
@@ -9139,10 +9143,10 @@ DWORD CTMapSvrModule::OnCS_ITEMUSE_REQ(LPPACKETBUF pBUF) {
 		}
 
 		if (bUsed) {
-		#ifdef BOW_COMPILE_MODE
+#ifdef BOW_COMPILE_MODE
 			if (itBP != m_mapBOWBPITEM.end())
 				pPlayer->DecreaseBonusPoints((*itBP).second->m_wPrice);
-		#endif
+#endif
 			if (dwDelay) {
 				if (it != pPlayer->m_mapItemCoolTime.end())
 					(*it).second = m_dwTick + dwDelay;
@@ -9188,12 +9192,12 @@ DWORD CTMapSvrModule::OnCS_ITEMUSE_REQ(LPPACKETBUF pBUF) {
 			}
 
 			if (pItem->m_pTITEM->m_bConsumable) {
-			#ifdef BOW_COMPILE_MODE
+#ifdef BOW_COMPILE_MODE
 				if (itBP == m_mapBOWBPITEM.end())
 					UseItem(pPlayer, pInven, pItem, 1);
-			#else
+#else
 				UseItem(pPlayer, pInven, pItem, 1);
-			#endif
+#endif
 			}
 
 			pPlayer->SendCS_ITEMUSE_ACK(
@@ -10409,22 +10413,22 @@ DWORD CTMapSvrModule::OnCS_DEALITEM_REQ(LPPACKETBUF pBUF) {
 			SendDM_DELETEDEALITEM_REQ(pPlayer);
 
 			for (DWORD i = 0; i < pPlayer->m_dealItem.m_vRecvItem.size(); i++) {
-			#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 				m_pUdpSocket->LogItemTrade(LOGMAP_ITEMTRADERECV, pPlayer, pPlayer->m_dealItem.m_vRecvItem[i], pPlayer->m_dealItem.m_strTarget);
-			#endif	//	DEF_UDPLOG				
+#endif	//	DEF_UDPLOG				
 			}
 
-		#ifdef DEF_UDPLOG		
+#ifdef DEF_UDPLOG		
 			if (pPlayer->EarnMoney(pPlayer->m_dealItem.m_llRecvMoney))
 				m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYTRADERECV, pPlayer, pPlayer->m_dealItem.m_strTarget, pPlayer->m_dealItem.m_llRecvMoney);
 
 			if (pPlayer->UseMoney(pPlayer->m_dealItem.m_llSendMoney, TRUE))
 				m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYTRADESEND, pPlayer, pPlayer->m_dealItem.m_strTarget, -pPlayer->m_dealItem.m_llSendMoney);
-		#else 
+#else 
 			pPlayer->EarnMoney(pPlayer->m_dealItem.m_llRecvMoney);
 
 			pPlayer->UseMoney(pPlayer->m_dealItem.m_llSendMoney, TRUE);
-		#endif
+#endif
 			pPlayer->EraseInvenDealItem();
 			pPlayer->PushTItem(&(pPlayer->m_dealItem.m_vRecvItem));
 			pPlayer->SendCS_DEALITEMEND_ACK(DEALITEM_SUCCESS, pPlayer->m_dealItem.m_strTarget);
@@ -10432,23 +10436,23 @@ DWORD CTMapSvrModule::OnCS_DEALITEM_REQ(LPPACKETBUF pBUF) {
 			pPlayer->ClearDealItem();
 
 			for (DWORD i = 0; i < pTarget->m_dealItem.m_vRecvItem.size(); i++) {
-			#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 				m_pUdpSocket->LogItemTrade(LOGMAP_ITEMTRADERECV, pTarget, pTarget->m_dealItem.m_vRecvItem[i], pTarget->m_dealItem.m_strTarget);
-			#endif	//	DEF_UDPLOG					
+#endif	//	DEF_UDPLOG					
 			}
 
 
-		#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 			if (pTarget->EarnMoney(pTarget->m_dealItem.m_llRecvMoney))
 				m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYTRADERECV, pTarget, pTarget->m_dealItem.m_strTarget, pTarget->m_dealItem.m_llRecvMoney);
 
 			if (pTarget->UseMoney(pTarget->m_dealItem.m_llSendMoney, TRUE))
 				m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYTRADESEND, pTarget, pTarget->m_dealItem.m_strTarget, -pTarget->m_dealItem.m_llSendMoney);
-		#else 
+#else 
 			pTarget->EarnMoney(pTarget->m_dealItem.m_llRecvMoney);
 
 			pTarget->UseMoney(pTarget->m_dealItem.m_llSendMoney, TRUE);
-		#endif
+#endif
 			pTarget->EraseInvenDealItem();
 			pTarget->PushTItem(&(pTarget->m_dealItem.m_vRecvItem));
 			pTarget->SendCS_DEALITEMEND_ACK(DEALITEM_SUCCESS, pPlayer->m_strNAME);
@@ -10899,9 +10903,9 @@ DWORD CTMapSvrModule::OnCS_PETMAKE_REQ(LPPACKETBUF pBUF) {
 	LPTPET pPET = pPlayer->PetMake(wPetID, strName, ldwTime);
 	if (pPET) {
 		pPlayer->SendCS_PETMAKE_ACK(PET_SUCCESS, pPET->m_wPetID, pPET->m_strName, pPET->m_ldwTime);
-	#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 		m_pUdpSocket->LogPet(LOGMAP_PETMAKE, pPlayer, wPetID, strName, pPET->m_ldwTime);
-	#endif
+#endif
 	}
 	return EC_NOERROR;
 }
@@ -10937,9 +10941,9 @@ DWORD CTMapSvrModule::OnCS_PETDEL_REQ(LPPACKETBUF pBUF) {
 
 	if (!pPlayer->ProtectTutorial()) {
 		SendDM_PETDEL_REQ(pPlayer->m_dwUserID, wPetID);
-	#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 		m_pUdpSocket->LogPet(LOGMAP_PETDEL, pPlayer, wPetID);
-	#endif
+#endif
 	}
 
 	return EC_NOERROR;
@@ -10976,13 +10980,13 @@ DWORD CTMapSvrModule::OnCS_PETRECALL_REQ(LPPACKETBUF pBUF) {
 	else {
 		CTime dEnd((*jirker).second->m_dEndTime);
 		if ((*jirker).second->m_dEndTime < CTime::GetCurrentTime().GetTime() && dEnd != CTime(0) && !(*jirker).second->m_bType) {
-		#ifndef BOW_COMPILE_MODE
+#ifndef BOW_COMPILE_MODE
 			DEFINE_QUERY(&m_db, CSPDelSaddle)
 				query->m_dwUserID = pPlayer->m_dwUserID;
 			query->Call();
 			UNDEFINE_QUERY();
 
-		#endif
+#endif
 			pPlayer->m_mapSADDLE.erase(pPlayer->m_dwUserID);
 			pPlayer->SendCS_SENDSADDLE_REQ(0, 0, 0);
 		} else
@@ -11214,13 +11218,13 @@ DWORD CTMapSvrModule::OnCS_PETRIDING_REQ(LPPACKETBUF pBUF) {
 	else {
 		CTime dEnd((*jirker).second->m_dEndTime);
 		if ((*jirker).second->m_dEndTime < CTime::GetCurrentTime().GetTime() && dEnd != CTime(0) && !(*jirker).second->m_bType) {
-		#ifndef BOW_COMPILE_MODE
+#ifndef BOW_COMPILE_MODE
 			DEFINE_QUERY(&m_db, CSPDelSaddle)
 				query->m_dwUserID = pPlayer->m_dwUserID;
 			query->Call();
 			UNDEFINE_QUERY();
 
-		#endif
+#endif
 			pPlayer->m_mapSADDLE.erase(pPlayer->m_dwUserID);
 
 			pPlayer->SendCS_SENDSADDLE_REQ(0, 0, 0);
@@ -12704,13 +12708,13 @@ DWORD CTMapSvrModule::OnCS_GAMBLEOPEN_REQ(LPPACKETBUF pBUF) {
 		}
 
 
-	#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 		BYTE bSeal = pNew->m_bGLevel;
-	#endif
+#endif
 
 		pNew->m_bGLevel = 0;
 
-	#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 
 		switch (bResult) {
 		case	GAMBLE_SUCCESS:
@@ -12765,7 +12769,7 @@ DWORD CTMapSvrModule::OnCS_GAMBLEOPEN_REQ(LPPACKETBUF pBUF) {
 		}
 		break;
 		}
-	#endif	//	DEF_UDPLOG
+#endif	//	DEF_UDPLOG
 
 
 		wNewItem = pNew->m_pTITEM->m_wItemID;
@@ -13069,9 +13073,9 @@ DWORD CTMapSvrModule::OnCS_DURATIONREP_REQ(LPPACKETBUF pBUF) {
 		dwDiscountCost = dwCost - DWORD(dwCost * bDiscountRate / 100);
 
 
-	#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 		vLogCost.push_back(dwCost);
-	#endif
+#endif
 
 	}
 	break;
@@ -13093,9 +13097,9 @@ DWORD CTMapSvrModule::OnCS_DURATIONREP_REQ(LPPACKETBUF pBUF) {
 				DWORD dwCostItem = pItem->GetRepairCost();
 				dwCost += dwCostItem;
 
-			#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 				vLogCost.push_back(dwCostItem);
-			#endif
+#endif
 
 			}
 		}
@@ -13120,9 +13124,9 @@ DWORD CTMapSvrModule::OnCS_DURATIONREP_REQ(LPPACKETBUF pBUF) {
 					DWORD dwCostItem = pItem->GetRepairCost();
 					dwCost += dwCostItem;
 
-				#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 					vLogCost.push_back(dwCost);
-				#endif
+#endif
 				}
 			}
 		}
@@ -13176,9 +13180,9 @@ DWORD CTMapSvrModule::OnCS_DURATIONREP_REQ(LPPACKETBUF pBUF) {
 	for (DWORD i = 0; i < vItem.size(); i++) {
 		vItem[i]->m_dwDuraCur = vItem[i]->m_dwDuraMax;
 
-	#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 		m_pUdpSocket->LogItemByNPC(LOGMAP_ITEMREPAIRSUCCESS, pPlayer, NULL, vItem[i], -(int) vLogCost[i]);
-	#endif
+#endif
 	}
 
 	pPlayer->SendCS_DURATIONREP_ACK(ITEMREPAIR_SUCCESS, vItem);
@@ -13403,9 +13407,9 @@ DWORD CTMapSvrModule::OnCS_REFINE_REQ(LPPACKETBUF pBUF) {
 			}
 		}
 
-	#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 		m_pUdpSocket->LogItemByNPC(LOGMAP_ITEMREFINEDEL, pPlayer, NULL, vItem[i]);
-	#endif
+#endif
 
 		pPlayer->SendCS_DELITEM_ACK(pAddInven[i]->m_bInvenID, vItem[i]->m_bItemID);
 		pAddInven[i]->m_mapTITEM.erase(vItem[i]->m_bItemID);
@@ -13422,9 +13426,9 @@ DWORD CTMapSvrModule::OnCS_REFINE_REQ(LPPACKETBUF pBUF) {
 			vMagic.pop_back();
 		}
 
-	#ifdef DEF_UDPLOG
+#ifdef DEF_UDPLOG
 		m_pUdpSocket->LogItemByNPC(LOGMAP_ITEMREFINEFAIL, pPlayer, NULL, NULL, -(int) dwDiscountCost);
-	#endif
+#endif
 		return EC_NOERROR;
 	}
 
@@ -16536,7 +16540,7 @@ DWORD CTMapSvrModule::OnCS_SOULLOTTERY_REQ(LPPACKETBUF pBUF) {
 
 	DWORD dwMultiplier = rand() % 100 + 1;
 	DWORD dwMoneyRange = dwBasisMoney * dwMultiplier;
-	DWORD dwMoney = rand() % dwMoneyRange + dwBasisMoney;
+	DWORD dwMoney = (rand() % dwMoneyRange + dwBasisMoney) * 69 * 2; // Soul multiplied by 69 * 2 - Moose
 
 	pPlayer->SendCS_SOULLOTTERY_ACK(dwNumber1, dwNumber2, dwNumber3, dwNumber4, dwMoney);
 
@@ -16893,7 +16897,7 @@ DWORD CTMapSvrModule::OnCS_CREATESADDLE_REQ(LPPACKETBUF pBUF) {
 		pSADDLE->m_dEndTime = dEndTime;
 		pSADDLE->m_bType = pItem->m_pTITEM->m_wUseTime == 0 ? TRUE : FALSE;
 
-	#ifndef BOW_COMPILE_MODE
+#ifndef BOW_COMPILE_MODE
 		DEFINE_QUERY(&m_db, CSPSetSaddle);
 		query->m_dwUserID = pPlayer->m_dwUserID;
 		query->m_dwItemID = pSADDLE->m_wItemID;
@@ -16903,7 +16907,7 @@ DWORD CTMapSvrModule::OnCS_CREATESADDLE_REQ(LPPACKETBUF pBUF) {
 		query->Call();
 		UNDEFINE_QUERY();
 
-	#endif
+#endif
 		pPlayer->m_mapSADDLE.insert(MAPTSADDLE::value_type(pPlayer->m_dwUserID, pSADDLE));
 		pPlayer->SendCS_SENDSADDLE_REQ(pSADDLE->m_wItemID, pSADDLE->m_dEndTime, pSADDLE->m_bType, TRUE);
 	} else {
@@ -16962,7 +16966,7 @@ DWORD CTMapSvrModule::OnCS_CREATESADDLE_REQ(LPPACKETBUF pBUF) {
 			pPlayer->SendCS_SENDSADDLE_REQ(m_dwNewSaddle, m_dNewExpire, m_bType, TRUE);
 		}
 
-	#ifndef BOW_COMPILE_MODE
+#ifndef BOW_COMPILE_MODE
 		DEFINE_QUERY(&m_db, CSPSetSaddle);
 		query->m_dwUserID = pPlayer->m_dwUserID;
 		query->m_dwItemID = m_dwNewSaddle;
@@ -16971,7 +16975,7 @@ DWORD CTMapSvrModule::OnCS_CREATESADDLE_REQ(LPPACKETBUF pBUF) {
 
 		query->Call();
 		UNDEFINE_QUERY();
-	#endif
+#endif
 	}
 
 	CTRecallMon* pPET = pPlayer->FindRecallPet();
@@ -17030,12 +17034,12 @@ DWORD CTMapSvrModule::OnCS_DELETESADDLE_REQ(LPPACKETBUF pBUF) {
 		pPlayer->PushTItem(&vITEM);
 		pPlayer->SendCS_MOVEITEM_ACK(MI_SUCCESS);
 
-	#ifndef BOW_COMPILE_MODE
+#ifndef BOW_COMPILE_MODE
 		DEFINE_QUERY(&m_db, CSPDelSaddle);
 		query->m_dwUserID = pPlayer->m_dwUserID;
 		query->Call();
 		UNDEFINE_QUERY();
-	#endif
+#endif
 
 		pPlayer->m_mapSADDLE.erase(pPlayer->m_dwUserID);
 		pPlayer->SendCS_SENDSADDLE_REQ(0, 0, 0, TRUE);

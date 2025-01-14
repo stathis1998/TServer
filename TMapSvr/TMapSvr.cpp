@@ -3612,7 +3612,7 @@ DWORD CTMapSvrModule::LoadData() {
 
 			query->Close();
 		}
-
+	// Moose
 	UNDEFINE_QUERY()
 		DEFINE_QUERY(&m_db, CTBLPortalChart)
 		if (query->Open()) {
@@ -8853,6 +8853,9 @@ BYTE CTMapSvrModule::CalcProb(CTPlayer* pPlayer, CTNpc* pNpc, BYTE bType, BYTE b
 	default:
 		break;
 	}
+
+	// Moose exp event 30%
+	//wAddProb += bBaseProb * 30 / 100;
 
 	return min(wAddProb, 100);
 }

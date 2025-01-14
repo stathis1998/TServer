@@ -232,12 +232,12 @@ void CTPlayer::SendCS_CHARINFO_ACK(DWORD dwTick,
 		<< arPoint[2]
 		<< arPoint[3]
 		<< m_dwRankPoint
-	#ifndef BOW_COMPILE_MODE
+#ifndef BOW_COMPILE_MODE
 		<< BYTE(FALSE)
-	#else
+#else
 		<< BYTE(TRUE)
 		<< m_bDeaths
-	#endif
+#endif
 
 
 
