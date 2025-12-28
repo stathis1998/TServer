@@ -1,6 +1,6 @@
  TControlSvr
 
- Timestamp is 6752141a (Thu Dec  5 22:59:06 2024)
+ Timestamp is 694852c9 (Sun Dec 21 22:04:25 2025)
 
  Preferred load address is 00400000
 
@@ -80,31 +80,31 @@
  0001:00000240       ??0exception@std@@QAE@QBD@Z 00401240 f i TServerSystem:TServerSystem.obj
  0001:00000290       ??0exception@std@@QAE@ABV01@@Z 00401290 f i TServerSystem:TServerSystem.obj
  0001:000002c0       ?what@exception@std@@UBEPBDXZ 004012c0 f i TServerSystem:TServerSystem.obj
- 0001:000002d0       ??_Gexception@std@@UAEPAXI@Z 004012d0 f i TServerSystem:TServerSystem.obj
  0001:000002d0       ??_Eexception@std@@UAEPAXI@Z 004012d0 f i * CIL library *:* CIL module *
- 0001:000002d0       ??_Gruntime_error@std@@UAEPAXI@Z 004012d0 f i TServerSystem:TServerSystem.obj
+ 0001:000002d0       ??_Gexception@std@@UAEPAXI@Z 004012d0 f i TServerSystem:TServerSystem.obj
  0001:000002d0       ??_Eruntime_error@std@@UAEPAXI@Z 004012d0 f i * CIL library *:* CIL module *
+ 0001:000002d0       ??_Gruntime_error@std@@UAEPAXI@Z 004012d0 f i TServerSystem:TServerSystem.obj
  0001:00000300       ??0runtime_error@std@@QAE@PBD@Z 00401300 f i TServerSystem:TServerSystem.obj
- 0001:00000360       ??1invalid_argument@std@@UAE@XZ 00401360 f i libcpmt:xthrow.obj
- 0001:00000360       ??1bad_exception@std@@UAE@XZ 00401360 f i libvcruntime:frame.obj
- 0001:00000360       ??1runtime_error@std@@UAE@XZ 00401360 f i TServerSystem:TServerSystem.obj
- 0001:00000360       ??1failure@ios_base@std@@UAE@XZ 00401360 f i TServerSystem:TServerSystem.obj
  0001:00000360       ??1length_error@std@@UAE@XZ 00401360 f i libcpmt:xthrow.obj
+ 0001:00000360       ??1failure@ios_base@std@@UAE@XZ 00401360 f i TServerSystem:TServerSystem.obj
  0001:00000360       ??1bad_alloc@std@@UAE@XZ   00401360 f i libcpmt:xthrow.obj
- 0001:00000360       ??1bad_array_new_length@std@@UAE@XZ 00401360 f i LIBCMT:throw_bad_alloc.obj
+ 0001:00000360       ??1invalid_argument@std@@UAE@XZ 00401360 f i libcpmt:xthrow.obj
+ 0001:00000360       ??1runtime_error@std@@UAE@XZ 00401360 f i TServerSystem:TServerSystem.obj
+ 0001:00000360       ??1bad_exception@std@@UAE@XZ 00401360 f i libvcruntime:frame.obj
  0001:00000360       ??1out_of_range@std@@UAE@XZ 00401360 f i libcpmt:xthrow.obj
+ 0001:00000360       ??1bad_array_new_length@std@@UAE@XZ 00401360 f i LIBCMT:throw_bad_alloc.obj
  0001:00000380       ??0_Locinfo@std@@QAE@PBD@Z 00401380 f i TServerSystem:TServerSystem.obj
  0001:00000440       ??1_Locinfo@std@@QAE@XZ    00401440 f i TServerSystem:TServerSystem.obj
  0001:00000510       ??0runtime_error@std@@QAE@ABV01@@Z 00401510 f i TServerSystem:TServerSystem.obj
- 0001:00000550       ??_E_Facet_base@std@@UAEPAXI@Z 00401550 f i * CIL library *:* CIL module *
  0001:00000550       ??_G_Facet_base@std@@UAEPAXI@Z 00401550 f i TServerSystem:TServerSystem.obj
+ 0001:00000550       ??_E_Facet_base@std@@UAEPAXI@Z 00401550 f i * CIL library *:* CIL module *
  0001:00000580       ?_Incref@facet@locale@std@@UAEXXZ 00401580 f i TServerSystem:TServerSystem.obj
  0001:00000590       ?_Decref@facet@locale@std@@UAEPAV_Facet_base@3@XZ 00401590 f i TServerSystem:TServerSystem.obj
  0001:000005b0       ??1facet@locale@std@@MAE@XZ 004015b0 f i TServerSystem:TServerSystem.obj
  0001:000005c0       ??1locale@std@@QAE@XZ      004015c0 f i TServerSystem:TServerSystem.obj
+ 0001:00000610       ?do_max_length@codecvt_base@std@@MBEHXZ 00401610 f i TServerSystem:TServerSystem.obj
  0001:00000610       ?GetNumParam@CTBLIPAddr@@UAEHXZ 00401610 f i DBAccess.obj
  0001:00000610       ?do_encoding@codecvt_base@std@@MBEHXZ 00401610 f i TServerSystem:TServerSystem.obj
- 0001:00000610       ?do_max_length@codecvt_base@std@@MBEHXZ 00401610 f i TServerSystem:TServerSystem.obj
  0001:00000620       ?do_tolower@?$ctype@D@std@@MBEDD@Z 00401620 f i TServerSystem:TServerSystem.obj
  0001:00000640       ?do_tolower@?$ctype@D@std@@MBEPBDPADPBD@Z 00401640 f i TServerSystem:TServerSystem.obj
  0001:00000690       ?do_toupper@?$ctype@D@std@@MBEDD@Z 00401690 f i TServerSystem:TServerSystem.obj
@@ -113,19 +113,19 @@
  0001:00000710       ?do_widen@?$ctype@D@std@@MBEPBDPBD0PAD@Z 00401710 f i TServerSystem:TServerSystem.obj
  0001:00000740       ?do_narrow@?$ctype@D@std@@MBEDDD@Z 00401740 f i TServerSystem:TServerSystem.obj
  0001:00000750       ?do_narrow@?$ctype@D@std@@MBEPBDPBD0DPAD@Z 00401750 f i TServerSystem:TServerSystem.obj
- 0001:00000780       ??_E?$ctype@D@std@@MAEPAXI@Z 00401780 f i * CIL library *:* CIL module *
  0001:00000780       ??_G?$ctype@D@std@@MAEPAXI@Z 00401780 f i TServerSystem:TServerSystem.obj
+ 0001:00000780       ??_E?$ctype@D@std@@MAEPAXI@Z 00401780 f i * CIL library *:* CIL module *
  0001:000007e0       ?default_error_condition@error_category@std@@UBE?AVerror_condition@2@H@Z 004017e0 f i TServerSystem:TServerSystem.obj
  0001:00000800       ?equivalent@error_category@std@@UBE_NHABVerror_condition@2@@Z 00401800 f i TServerSystem:TServerSystem.obj
  0001:00000860       ?equivalent@error_category@std@@UBE_NABVerror_code@2@H@Z 00401860 f i TServerSystem:TServerSystem.obj
  0001:00000890       ?make_error_code@std@@YA?AVerror_code@1@W4io_errc@1@@Z 00401890 f i TServerSystem:TServerSystem.obj
  0001:000008d0       ??0_System_error@std@@IAE@Verror_code@1@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z 004018d0 f i TServerSystem:TServerSystem.obj
- 0001:00000af0       ??_Esystem_error@std@@UAEPAXI@Z 00401af0 f i * CIL library *:* CIL module *
- 0001:00000af0       ??_Gsystem_error@std@@UAEPAXI@Z 00401af0 f i TServerSystem:TServerSystem.obj
  0001:00000af0       ??_Gfailure@ios_base@std@@UAEPAXI@Z 00401af0 f i TServerSystem:TServerSystem.obj
- 0001:00000af0       ??_E_System_error@std@@UAEPAXI@Z 00401af0 f i * CIL library *:* CIL module *
+ 0001:00000af0       ??_Esystem_error@std@@UAEPAXI@Z 00401af0 f i * CIL library *:* CIL module *
  0001:00000af0       ??_Efailure@ios_base@std@@UAEPAXI@Z 00401af0 f i * CIL library *:* CIL module *
  0001:00000af0       ??_G_System_error@std@@UAEPAXI@Z 00401af0 f i TServerSystem:TServerSystem.obj
+ 0001:00000af0       ??_Gsystem_error@std@@UAEPAXI@Z 00401af0 f i TServerSystem:TServerSystem.obj
+ 0001:00000af0       ??_E_System_error@std@@UAEPAXI@Z 00401af0 f i * CIL library *:* CIL module *
  0001:00000b20       ?name@_Iostream_error_category@std@@UBEPBDXZ 00401b20 f i TServerSystem:TServerSystem.obj
  0001:00000b30       ?message@_Iostream_error_category@std@@UBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@H@Z 00401b30 f i TServerSystem:TServerSystem.obj
  0001:00000bb0       ??_G_Iostream_error_category@std@@UAEPAXI@Z 00401bb0 f i TServerSystem:TServerSystem.obj
@@ -135,8 +135,8 @@
  0001:00000d20       ??0failure@ios_base@std@@QAE@ABV012@@Z 00401d20 f i TServerSystem:TServerSystem.obj
  0001:00000d70       ??0system_error@std@@QAE@ABV01@@Z 00401d70 f i TServerSystem:TServerSystem.obj
  0001:00000dc0       ??0_System_error@std@@QAE@ABV01@@Z 00401dc0 f i TServerSystem:TServerSystem.obj
- 0001:00000e10       ??_Gios_base@std@@UAEPAXI@Z 00401e10 f i TServerSystem:TServerSystem.obj
  0001:00000e10       ??_Eios_base@std@@UAEPAXI@Z 00401e10 f i * CIL library *:* CIL module *
+ 0001:00000e10       ??_Gios_base@std@@UAEPAXI@Z 00401e10 f i TServerSystem:TServerSystem.obj
  0001:00000e70       ?to_string@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z 00401e70 f i TServerSystem:TServerSystem.obj
  0001:00000f20       ??$_Fputc@D@std@@YA_NDPAU_iobuf@@@Z 00401f20 f i TServerSystem:TServerSystem.obj
  0001:00000f40       ??0TServerSystem@@QAE@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z 00401f40 f   TServerSystem:TServerSystem.obj
@@ -182,16 +182,16 @@
  0001:00003580       ?imbue@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEXABVlocale@2@@Z 00404580 f i TServerSystem:TServerSystem.obj
  0001:00003580       ?OnERROR@CTControlSvrModule@@MAEXK@Z 00404580 f i TControlSvr.obj
  0001:00003590       ___scrt_exe_initialize_mta 00404590 f i LIBCMT:utility_desktop.obj
- 0001:00003590       ?BindColumns@CSqlQuery@@UAEFXZ 00404590 f i TNetLib:SqlQuery.obj
- 0001:00003590       ?GetNumParam@CSqlBase@@UAEHXZ 00404590 f i TNetLib:SqlBase.obj
- 0001:00003590       ?sync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ 00404590 f i TServerSystem:TServerSystem.obj
- 0001:00003590       __matherr                  00404590 f i LIBCMT:matherr.obj
- 0001:00003590       __get_startup_thread_locale_mode 00404590 f i LIBCMT:thread_locale.obj
- 0001:00003590       ?GetNumCol@CSqlBase@@UAEHXZ 00404590 f i TNetLib:SqlBase.obj
- 0001:00003590       __get_startup_commit_mode  00404590 f i LIBCMT:commit_mode.obj
- 0001:00003590       __get_startup_new_mode     00404590 f i LIBCMT:new_mode.obj
- 0001:00003590       ___scrt_initialize_winrt   00404590 f i LIBCMT:utility_desktop.obj
  0001:00003590       ___scrt_stub_for_initialize_mta 00404590 f i LIBCMT:utility_desktop.obj
+ 0001:00003590       ?sync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ 00404590 f i TServerSystem:TServerSystem.obj
+ 0001:00003590       ?GetNumParam@CSqlBase@@UAEHXZ 00404590 f i TNetLib:SqlBase.obj
+ 0001:00003590       __get_startup_new_mode     00404590 f i LIBCMT:new_mode.obj
+ 0001:00003590       ?BindColumns@CSqlQuery@@UAEFXZ 00404590 f i TNetLib:SqlQuery.obj
+ 0001:00003590       ___scrt_initialize_winrt   00404590 f i LIBCMT:utility_desktop.obj
+ 0001:00003590       __get_startup_thread_locale_mode 00404590 f i LIBCMT:thread_locale.obj
+ 0001:00003590       __get_startup_commit_mode  00404590 f i LIBCMT:commit_mode.obj
+ 0001:00003590       ?GetNumCol@CSqlBase@@UAEHXZ 00404590 f i TNetLib:SqlBase.obj
+ 0001:00003590       __matherr                  00404590 f i LIBCMT:matherr.obj
  0001:000035a0       ?setbuf@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEPAV12@PAD_J@Z 004045a0 f i TServerSystem:TServerSystem.obj
  0001:000035b0       ?seekpos@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAE?AV?$fpos@U_Mbstatet@@@2@V32@H@Z 004045b0 f i TServerSystem:TServerSystem.obj
  0001:000035e0       ?seekoff@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAE?AV?$fpos@U_Mbstatet@@@2@_JHH@Z 004045e0 f i TServerSystem:TServerSystem.obj
@@ -202,15 +202,15 @@
  0001:00003810       ?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAE_JXZ 00404810 f i TServerSystem:TServerSystem.obj
  0001:00003820       ?pbackfail@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHH@Z 00404820 f i TServerSystem:TServerSystem.obj
  0001:00003820       ?overflow@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHH@Z 00404820 f i TServerSystem:TServerSystem.obj
- 0001:00003830       __initialize_denormal_control 00404830 f i LIBCMT:denormal_control.obj
  0001:00003830       ?_Lock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAEXXZ 00404830 f i TServerSystem:TServerSystem.obj
+ 0001:00003830       __initialize_denormal_control 00404830 f i LIBCMT:denormal_control.obj
  0001:00003830       ?_Unlock@?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAEXXZ 00404830 f i TServerSystem:TServerSystem.obj
  0001:00003830       __initialize_invalid_parameter_handler 00404830 f i LIBCMT:invalid_parameter_handler.obj
  0001:00003830       @_guard_check_icall_nop@4  00404830 f i LIBCMT:guard_support.obj
  0001:00003840       ??1?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAE@XZ 00404840 f i TServerSystem:TServerSystem.obj
  0001:000038b0       ??1?$basic_ios@DU?$char_traits@D@std@@@std@@UAE@XZ 004048b0 f i TServerSystem:TServerSystem.obj
- 0001:00003900       ??_E?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00404900 f i * CIL library *:* CIL module *
  0001:00003900       ??_G?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00404900 f i TServerSystem:TServerSystem.obj
+ 0001:00003900       ??_E?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00404900 f i * CIL library *:* CIL module *
  0001:00003930       ??_G?$basic_ostream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00404930 f i TServerSystem:TServerSystem.obj
  0001:00003930       ??_E?$basic_ostream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00404930 f i * CIL library *:* CIL module *
  0001:000039b0       ??_E?$basic_streambuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 004049b0 f i * CIL library *:* CIL module *
@@ -220,18 +220,18 @@
  0001:00003aa0       ??_D?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEXXZ 00404aa0 f i TServerSystem:TServerSystem.obj
  0001:00003b10       ?do_length@?$codecvt@DDU_Mbstatet@@@std@@MBEHAAU_Mbstatet@@PBD1I@Z 00404b10 f i TServerSystem:TServerSystem.obj
  0001:00003b30       ?do_unshift@?$codecvt@DDU_Mbstatet@@@std@@MBEHAAU_Mbstatet@@PAD1AAPAD@Z 00404b30 f i TServerSystem:TServerSystem.obj
- 0001:00003b50       ?do_in@?$codecvt@DDU_Mbstatet@@@std@@MBEHAAU_Mbstatet@@PBD1AAPBDPAD3AAPAD@Z 00404b50 f i TServerSystem:TServerSystem.obj
  0001:00003b50       ?do_out@?$codecvt@DDU_Mbstatet@@@std@@MBEHAAU_Mbstatet@@PBD1AAPBDPAD3AAPAD@Z 00404b50 f i TServerSystem:TServerSystem.obj
+ 0001:00003b50       ?do_in@?$codecvt@DDU_Mbstatet@@@std@@MBEHAAU_Mbstatet@@PBD1AAPBDPAD3AAPAD@Z 00404b50 f i TServerSystem:TServerSystem.obj
+ 0001:00003b70       ___acrt_uninitialize_command_line 00404b70 f i libucrt:argv_data.obj
  0001:00003b70       __should_initialize_environment 00404b70 f i LIBCMT:env_mode.obj
  0001:00003b70       ?do_always_noconv@?$codecvt@DDU_Mbstatet@@@std@@MBE_NXZ 00404b70 f i TServerSystem:TServerSystem.obj
- 0001:00003b70       ___acrt_uninitialize_command_line 00404b70 f i libucrt:argv_data.obj
  0001:00003b80       ??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 00404b80 f i TServerSystem:TServerSystem.obj
  0001:00003bf0       ??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@AAV12@@Z 00404bf0 f i TServerSystem:TServerSystem.obj
- 0001:00003c80       ?_Xrange@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@CAXXZ 00404c80 f i TServerSystem:TServerSystem.obj
- 0001:00003c80       ?_Xrange@?$vector@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@CAXXZ 00404c80 f i TServerSystem:TServerSystem.obj
- 0001:00003c80       ?_Xrange@?$vector@UtagPATCHFILE@@V?$allocator@UtagPATCHFILE@@@std@@@std@@CAXXZ 00404c80 f i Sender.obj
  0001:00003c80       ?_Xrange@?$vector@UtagTCASHITEMSALE@@V?$allocator@UtagTCASHITEMSALE@@@std@@@std@@CAXXZ 00404c80 f i TServer.obj
+ 0001:00003c80       ?_Xrange@?$vector@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@CAXXZ 00404c80 f i TServerSystem:TServerSystem.obj
+ 0001:00003c80       ?_Xrange@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@CAXXZ 00404c80 f i TServerSystem:TServerSystem.obj
  0001:00003c80       ?_Xrange@?$vector@UtagTCASHITEM@@V?$allocator@UtagTCASHITEM@@@std@@@std@@CAXXZ 00404c80 f i Sender.obj
+ 0001:00003c80       ?_Xrange@?$vector@UtagPATCHFILE@@V?$allocator@UtagPATCHFILE@@@std@@@std@@CAXXZ 00404c80 f i Sender.obj
  0001:00003c90       ?_Tidy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@AAEXXZ 00404c90 f i TServerSystem:TServerSystem.obj
  0001:00003d10       ?push_back@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXD@Z 00404d10 f i TServerSystem:TServerSystem.obj
  0001:00003d60       ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ID@Z 00404d60 f i TServerSystem:TServerSystem.obj
@@ -248,38 +248,38 @@
  0001:000044f0       ?_Pnavail@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IBE_JXZ 004054f0 f i TServerSystem:TServerSystem.obj
  0001:00004510       ?_Gnavail@?$basic_streambuf@DU?$char_traits@D@std@@@std@@IBE_JXZ 00405510 f i TServerSystem:TServerSystem.obj
  0001:00004530       ?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QAEXH_N@Z 00405530 f i TServerSystem:TServerSystem.obj
- 0001:00004560       ??_E?$codecvt@DDU_Mbstatet@@@std@@MAEPAXI@Z 00405560 f i * CIL library *:* CIL module *
- 0001:00004560       ??_G?$codecvt@DDU_Mbstatet@@@std@@MAEPAXI@Z 00405560 f i TServerSystem:TServerSystem.obj
  0001:00004560       ??_E?$num_get@DV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@@std@@MAEPAXI@Z 00405560 f i TControlSvr.obj
  0001:00004560       ??_G?$num_get@DV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@@std@@MAEPAXI@Z 00405560 f i TControlSvr.obj
+ 0001:00004560       ??_E?$codecvt@DDU_Mbstatet@@@std@@MAEPAXI@Z 00405560 f i * CIL library *:* CIL module *
+ 0001:00004560       ??_G?$codecvt@DDU_Mbstatet@@@std@@MAEPAXI@Z 00405560 f i TServerSystem:TServerSystem.obj
  0001:00004590       ?do_truename@?$numpunct@D@std@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ 00405590 f i TServerSystem:TServerSystem.obj
  0001:000045d0       ?do_falsename@?$numpunct@D@std@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ 004055d0 f i TServerSystem:TServerSystem.obj
  0001:00004610       ?do_grouping@?$numpunct@D@std@@MBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@XZ 00405610 f i TServerSystem:TServerSystem.obj
  0001:00004650       ?do_thousands_sep@?$numpunct@D@std@@MBEDXZ 00405650 f i TServerSystem:TServerSystem.obj
  0001:00004660       ?do_decimal_point@?$numpunct@D@std@@MBEDXZ 00405660 f i TServerSystem:TServerSystem.obj
- 0001:00004670       ??1_Sentry_base@?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@XZ 00405670 f i TControlSvr.obj
  0001:00004670       ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAE@XZ 00405670 f i TServerSystem:TServerSystem.obj
+ 0001:00004670       ??1_Sentry_base@?$basic_istream@DU?$char_traits@D@std@@@std@@QAE@XZ 00405670 f i TControlSvr.obj
  0001:000046c0       ?_Destroy@?$vector@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@AAEXPAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@0@Z 004056c0 f i TServerSystem:TServerSystem.obj
  0001:000046f0       ?deallocate@?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@std@@QAEXQAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@2@I@Z 004056f0 f i TServerSystem:TServerSystem.obj
  0001:00004730       ?_Xlength@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@CAXXZ 00405730 f i TServerSystem:TServerSystem.obj
- 0001:00004730       ?_Xlength@?$vector@EV?$allocator@E@std@@@std@@CAXXZ 00405730 f i Handler.obj
- 0001:00004730       ?_Xlength@?$vector@UtagLOTTERY@@V?$allocator@UtagLOTTERY@@@std@@@std@@CAXXZ 00405730 f i Handler.obj
  0001:00004730       ?_Xlength@?$vector@IV?$allocator@I@std@@@std@@CAXXZ 00405730 f i TControlSvr.obj
- 0001:00004730       ?_Xlength@?$vector@UtagMONREGEN@@V?$allocator@UtagMONREGEN@@@std@@@std@@CAXXZ 00405730 f i Handler.obj
- 0001:00004730       ?_Xlength@?$vector@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@CAXXZ 00405730 f i TServerSystem:TServerSystem.obj
- 0001:00004730       ?_Xlength@?$vector@UtagPATCHFILE@@V?$allocator@UtagPATCHFILE@@@std@@@std@@CAXXZ 00405730 f i Handler.obj
- 0001:00004730       ?_Xlength@?$vector@GV?$allocator@G@std@@@std@@CAXXZ 00405730 f i Handler.obj
- 0001:00004730       ?_Xlength@?$vector@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@V?$allocator@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@std@@@std@@CAXXZ 00405730 f i TControlSvr.obj
- 0001:00004730       ?_Xlength@?$vector@UtagTCASHITEM@@V?$allocator@UtagTCASHITEM@@@std@@@std@@CAXXZ 00405730 f i Handler.obj
  0001:00004730       ?_Xlength@?$vector@UtagTCASHITEMSALE@@V?$allocator@UtagTCASHITEMSALE@@@std@@@std@@CAXXZ 00405730 f i Handler.obj
+ 0001:00004730       ?_Xlength@?$vector@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@V?$allocator@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@std@@@std@@CAXXZ 00405730 f i TControlSvr.obj
+ 0001:00004730       ?_Xlength@?$vector@UtagMONREGEN@@V?$allocator@UtagMONREGEN@@@std@@@std@@CAXXZ 00405730 f i Handler.obj
+ 0001:00004730       ?_Xlength@?$vector@EV?$allocator@E@std@@@std@@CAXXZ 00405730 f i Handler.obj
+ 0001:00004730       ?_Xlength@?$vector@GV?$allocator@G@std@@@std@@CAXXZ 00405730 f i Handler.obj
+ 0001:00004730       ?_Xlength@?$vector@UtagPATCHFILE@@V?$allocator@UtagPATCHFILE@@@std@@@std@@CAXXZ 00405730 f i Handler.obj
+ 0001:00004730       ?_Xlength@?$vector@UtagLOTTERY@@V?$allocator@UtagLOTTERY@@@std@@@std@@CAXXZ 00405730 f i Handler.obj
+ 0001:00004730       ?_Xlength@?$vector@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@CAXXZ 00405730 f i TServerSystem:TServerSystem.obj
+ 0001:00004730       ?_Xlength@?$vector@UtagTCASHITEM@@V?$allocator@UtagTCASHITEM@@@std@@@std@@CAXXZ 00405730 f i Handler.obj
  0001:00004740       ?_Destroy@?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@AAEXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@0@Z 00405740 f i TServerSystem:TServerSystem.obj
  0001:00004760       ?deallocate@?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEXQAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@I@Z 00405760 f i TServerSystem:TServerSystem.obj
  0001:000047a0       ?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEAAV12@XZ 004057a0 f i TServerSystem:TServerSystem.obj
  0001:00004870       ?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QAEXXZ 00405870 f i TServerSystem:TServerSystem.obj
  0001:00004900       ??0?$basic_streambuf@DU?$char_traits@D@std@@@std@@IAE@XZ 00405900 f i TServerSystem:TServerSystem.obj
  0001:000049c0       ?init@?$basic_ios@DU?$char_traits@D@std@@@std@@IAEXPAV?$basic_streambuf@DU?$char_traits@D@std@@@2@_N@Z 004059c0 f i TServerSystem:TServerSystem.obj
- 0001:00004ac0       ??_E?$numpunct@D@std@@MAEPAXI@Z 00405ac0 f i * CIL library *:* CIL module *
  0001:00004ac0       ??_G?$numpunct@D@std@@MAEPAXI@Z 00405ac0 f i TServerSystem:TServerSystem.obj
+ 0001:00004ac0       ??_E?$numpunct@D@std@@MAEPAXI@Z 00405ac0 f i * CIL library *:* CIL module *
  0001:00004b10       ?_Tidy@?$numpunct@D@std@@AAEXXZ 00405b10 f i TServerSystem:TServerSystem.obj
  0001:00004b30       ?widen@?$basic_ios@DU?$char_traits@D@std@@@std@@QBEDD@Z 00405b30 f i TServerSystem:TServerSystem.obj
  0001:00004bd0       ??$use_facet@V?$ctype@D@std@@@std@@YAABV?$ctype@D@0@ABVlocale@0@@Z 00405bd0 f i TServerSystem:TServerSystem.obj
@@ -311,28 +311,28 @@
  0001:000067b0       ?_Extract@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@PAX@2@V?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@std@@@std@@@2@@Z 004077b0 f i TServerSystem:TServerSystem.obj
  0001:00006a70       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@UKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@4@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@PAX@2@XZ 00407a70 f i TServerSystem:TServerSystem.obj
  0001:00006a90       ?_Erase@?$_Tree@V?$_Tmap_traits@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@UKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@4@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@PAX@2@@Z 00407a90 f i TServerSystem:TServerSystem.obj
- 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@PAX@2@@Z 00407af0 f i TServerSystem:TServerSystem.obj
  0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTGROUP@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@2@@Z 00407af0 f i TControlSvr.obj
- 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@PAX@2@@Z 00407af0 f i TNetLib:SqlDatabase.obj
- 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKUtagEVENTINFO@@@std@@PAX@2@@Z 00407af0 f i Handler.obj
- 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@2@@Z 00407af0 f i TControlSvr.obj
- 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@2@@Z 00407af0 f i TControlSvr.obj
- 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@@Z 00407af0 f i Handler.obj
  0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@2@@Z 00407af0 f i Handler.obj
- 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@@Z 00407af0 f i TControlSvr.obj
  0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@PAX@2@@Z 00407af0 f i TControlSvr.obj
  0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@PAX@2@@Z 00407af0 f i TServerSystem:TServerSystem.obj
- 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@2@@Z 00407b50 f i TControlSvr.obj
- 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@@Z 00407b50 f i TControlSvr.obj
- 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@PAX@2@@Z 00407b50 f i TControlSvr.obj
- 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@2@@Z 00407b50 f i TControlSvr.obj
- 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@2@@Z 00407b50 f i Handler.obj
- 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@PAX@2@@Z 00407b50 f i TServerSystem:TServerSystem.obj
- 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@@Z 00407b50 f i Handler.obj
- 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@PAX@2@@Z 00407b50 f i TServerSystem:TServerSystem.obj
+ 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@2@@Z 00407af0 f i TControlSvr.obj
+ 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@@Z 00407af0 f i Handler.obj
+ 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@PAX@2@@Z 00407af0 f i TServerSystem:TServerSystem.obj
+ 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@2@@Z 00407af0 f i TControlSvr.obj
+ 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@@Z 00407af0 f i TControlSvr.obj
+ 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKUtagEVENTINFO@@@std@@PAX@2@@Z 00407af0 f i Handler.obj
+ 0001:00006af0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@PAX@2@@Z 00407af0 f i TNetLib:SqlDatabase.obj
  0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKUtagEVENTINFO@@@std@@PAX@2@@Z 00407b50 f i Handler.obj
- 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@PAX@2@@Z 00407b50 f i TNetLib:SqlDatabase.obj
+ 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@2@@Z 00407b50 f i TControlSvr.obj
+ 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@PAX@2@@Z 00407b50 f i TServerSystem:TServerSystem.obj
+ 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@PAX@2@@Z 00407b50 f i TServerSystem:TServerSystem.obj
+ 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@2@@Z 00407b50 f i Handler.obj
+ 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@PAX@2@@Z 00407b50 f i TControlSvr.obj
  0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTGROUP@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@2@@Z 00407b50 f i TControlSvr.obj
+ 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@@Z 00407b50 f i Handler.obj
+ 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@2@@Z 00407b50 f i TControlSvr.obj
+ 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@@Z 00407b50 f i TControlSvr.obj
+ 0001:00006b50       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@PAX@2@@Z 00407b50 f i TNetLib:SqlDatabase.obj
  0001:00006bb0       ??$_Immortalize_impl@V_Iostream_error_category@std@@@std@@YGHPAX0PAPAX@Z 00407bb0 f i TServerSystem:TServerSystem.obj
  0001:00006bd0       ??$_Insert_string@DU?$char_traits@D@std@@I@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@QBDI@Z 00407bd0 f i TServerSystem:TServerSystem.obj
  0001:00006e50       ??$_Uninitialized_move@PAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@PAV12@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@YAPAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@0@QAV10@0PAV10@AAV?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@0@@Z 00407e50 f i TServerSystem:TServerSystem.obj
@@ -346,8 +346,8 @@
  0001:000071d0       ??1?$_Uninitialized_backout_al@PAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ 004081d0 f i TServerSystem:TServerSystem.obj
  0001:000071e0       ?FindEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@ABE_NAAPADAAPBD111@Z 004081e0 f i TServerSystem:TServerSystem.obj
  0001:00007490       ?AddEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@AAE?AW4SI_Error@@PBD000_N1@Z 00408490 f i TServerSystem:TServerSystem.obj
- 0001:00007740       ?find@?$_Tree@V?$_Tmap_traits@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@UKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@4@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@std@@@std@@@2@ABUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@@Z 00408740 f i TServerSystem:TServerSystem.obj
  0001:00007740       ?find@?$_Tree@V?$_Tmap_traits@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@$00@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@2@ABUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@@Z 00408740 f i TServerSystem:TServerSystem.obj
+ 0001:00007740       ?find@?$_Tree@V?$_Tmap_traits@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@UKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@4@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@V?$multimap@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@@std@@@std@@@std@@@std@@@2@ABUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@@Z 00408740 f i TServerSystem:TServerSystem.obj
  0001:000077d0       ?IsSpace@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@ABE_ND@Z 004087d0 f i TServerSystem:TServerSystem.obj
  0001:000077f0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@$00@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@PAX@2@XZ 004087f0 f i TServerSystem:TServerSystem.obj
  0001:00007810       ?CopyString@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@AAE?AW4SI_Error@@AAPBD@Z 00408810 f i TServerSystem:TServerSystem.obj
@@ -368,56 +368,56 @@
  0001:000082c0       ??$_Copy_nodes@U_Copy_tag@?$_Tree@V?$_Tmap_traits@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@$00@std@@@std@@@?$_Tree@V?$_Tmap_traits@UEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBDUKeyOrder@12@V?$allocator@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@@std@@$00@std@@@std@@IAEPAU?$_Tree_node@U?$pair@$$CBUEntry@?$CSimpleIniTempl@DU?$SI_NoCase@D@@V?$SI_ConvertA@D@@@@PBD@std@@PAX@1@PAU21@0U_Copy_tag@01@@Z 004092c0 f i TServerSystem:TServerSystem.obj
  0001:00008374       ??_E?$basic_ostream@DU?$char_traits@D@std@@@std@@$4PPPPPPPM@A@AEPAXI@Z 00409374 f i TServerSystem:TServerSystem.obj
  0001:00008380       ??0CSPUserProtectedAdd@@QAE@PAVCSqlDatabase@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 00409380 f i DBAccess.obj
- 0001:00008430       ??_ECSPBetaToVer@@UAEPAXI@Z 00409430 f i DBAccess.obj
  0001:00008430       ??_ECSPDeletePreVersion@@UAEPAXI@Z 00409430 f i DBAccess.obj
- 0001:00008430       ??_GCSPDeletePreVersion@@UAEPAXI@Z 00409430 f i DBAccess.obj
  0001:00008430       ??_GCSPBetaToVer@@UAEPAXI@Z 00409430 f i DBAccess.obj
- 0001:00008460       ??_ECSPEventUpdate@@UAEPAXI@Z 00409460 f i DBAccess.obj
+ 0001:00008430       ??_GCSPDeletePreVersion@@UAEPAXI@Z 00409430 f i DBAccess.obj
+ 0001:00008430       ??_ECSPBetaToVer@@UAEPAXI@Z 00409430 f i DBAccess.obj
  0001:00008460       ??_GCSPEventUpdate@@UAEPAXI@Z 00409460 f i DBAccess.obj
+ 0001:00008460       ??_ECSPEventUpdate@@UAEPAXI@Z 00409460 f i DBAccess.obj
+ 0001:00008490       ??_GCSPLoadService@@UAEPAXI@Z 00409490 f i DBAccess.obj
+ 0001:00008490       ??_ECTBLCashShopItem@@UAEPAXI@Z 00409490 f i DBAccess.obj
+ 0001:00008490       ??_GCTBLCashShopItem@@UAEPAXI@Z 00409490 f i DBAccess.obj
  0001:00008490       ??_ECTBLMachine@@UAEPAXI@Z 00409490 f i DBAccess.obj
  0001:00008490       ??_ECSPLoadService@@UAEPAXI@Z 00409490 f i DBAccess.obj
- 0001:00008490       ??_GCSPLoadService@@UAEPAXI@Z 00409490 f i DBAccess.obj
- 0001:00008490       ??_GCTBLCashShopItem@@UAEPAXI@Z 00409490 f i DBAccess.obj
  0001:00008490       ??_GCTBLMachine@@UAEPAXI@Z 00409490 f i DBAccess.obj
- 0001:00008490       ??_ECTBLCashShopItem@@UAEPAXI@Z 00409490 f i DBAccess.obj
- 0001:000084c0       ??_GCSPOPLogin@@UAEPAXI@Z  004094c0 f i DBAccess.obj
  0001:000084c0       ??_ECSPOPLogin@@UAEPAXI@Z  004094c0 f i DBAccess.obj
- 0001:000084f0       ??_ECSPSvrStatusSMS@@UAEPAXI@Z 004094f0 f i DBAccess.obj
+ 0001:000084c0       ??_GCSPOPLogin@@UAEPAXI@Z  004094c0 f i DBAccess.obj
  0001:000084f0       ??_GCSPSvrStatusSMS@@UAEPAXI@Z 004094f0 f i DBAccess.obj
+ 0001:000084f0       ??_ECSPSvrStatusSMS@@UAEPAXI@Z 004094f0 f i DBAccess.obj
  0001:00008520       ??_GCSPUserProtectedAdd@@UAEPAXI@Z 00409520 f i DBAccess.obj
  0001:00008520       ??_GCSPUpdatePatch@@UAEPAXI@Z 00409520 f i DBAccess.obj
- 0001:00008520       ??_ECSPUserProtectedAdd@@UAEPAXI@Z 00409520 f i DBAccess.obj
  0001:00008520       ??_ECSPUpdatePatch@@UAEPAXI@Z 00409520 f i DBAccess.obj
- 0001:00008550       ??_GCTBLPreVersion@@UAEPAXI@Z 00409550 f i DBAccess.obj
- 0001:00008550       ??_GCSPUpdatePrePatch@@UAEPAXI@Z 00409550 f i DBAccess.obj
+ 0001:00008520       ??_ECSPUserProtectedAdd@@UAEPAXI@Z 00409520 f i DBAccess.obj
  0001:00008550       ??_ECSPUpdatePrePatch@@UAEPAXI@Z 00409550 f i DBAccess.obj
  0001:00008550       ??_ECTBLPreVersion@@UAEPAXI@Z 00409550 f i DBAccess.obj
+ 0001:00008550       ??_GCSPUpdatePrePatch@@UAEPAXI@Z 00409550 f i DBAccess.obj
+ 0001:00008550       ??_GCTBLPreVersion@@UAEPAXI@Z 00409550 f i DBAccess.obj
  0001:00008580       ??_GCTBLEvent@@UAEPAXI@Z   00409580 f i DBAccess.obj
  0001:00008580       ??_ECTBLEvent@@UAEPAXI@Z   00409580 f i DBAccess.obj
+ 0001:000085b0       ??_GCTBLNetwork@@UAEPAXI@Z 004095b0 f i DBAccess.obj
  0001:000085b0       ??_GCTBLGroup@@UAEPAXI@Z   004095b0 f i DBAccess.obj
  0001:000085b0       ??_ECTBLNetwork@@UAEPAXI@Z 004095b0 f i DBAccess.obj
+ 0001:000085b0       ??_ECTBLGroup@@UAEPAXI@Z   004095b0 f i DBAccess.obj
  0001:000085b0       ??_ECTBLSvrType@@UAEPAXI@Z 004095b0 f i DBAccess.obj
  0001:000085b0       ??_GCTBLSvrType@@UAEPAXI@Z 004095b0 f i DBAccess.obj
- 0001:000085b0       ??_ECTBLGroup@@UAEPAXI@Z   004095b0 f i DBAccess.obj
- 0001:000085b0       ??_GCTBLNetwork@@UAEPAXI@Z 004095b0 f i DBAccess.obj
+ 0001:000085e0       ??_GCTBLIPAddr@@UAEPAXI@Z  004095e0 f i DBAccess.obj
+ 0001:000085e0       ??_GCTBLManager@@UAEPAXI@Z 004095e0 f i DBAccess.obj
  0001:000085e0       ??_ECTBLManager@@UAEPAXI@Z 004095e0 f i DBAccess.obj
  0001:000085e0       ??_ECTBLIPAddr@@UAEPAXI@Z  004095e0 f i DBAccess.obj
- 0001:000085e0       ??_GCTBLManager@@UAEPAXI@Z 004095e0 f i DBAccess.obj
- 0001:000085e0       ??_GCTBLIPAddr@@UAEPAXI@Z  004095e0 f i DBAccess.obj
- 0001:00008610       ??_GCTBLServer@@UAEPAXI@Z  00409610 f i DBAccess.obj
  0001:00008610       ??_ECTBLServer@@UAEPAXI@Z  00409610 f i DBAccess.obj
+ 0001:00008610       ??_GCTBLServer@@UAEPAXI@Z  00409610 f i DBAccess.obj
  0001:00008640       ?BindColumns@CTBLCashShopItem@@UAEFXZ 00409640 f i DBAccess.obj
  0001:00008680       ?BindColumns@CTBLEvent@@UAEFXZ 00409680 f i DBAccess.obj
- 0001:000088e0       ?BindColumns@CTBLSvrType@@UAEFXZ 004098e0 f i DBAccess.obj
  0001:000088e0       ?BindColumns@CTBLGroup@@UAEFXZ 004098e0 f i DBAccess.obj
  0001:000088e0       ?BindColumns@CTBLNetwork@@UAEFXZ 004098e0 f i DBAccess.obj
+ 0001:000088e0       ?BindColumns@CTBLSvrType@@UAEFXZ 004098e0 f i DBAccess.obj
  0001:00008920       ?BindColumns@CTBLIPAddr@@UAEFXZ 00409920 f i DBAccess.obj
  0001:00008960       ?BindColumns@CTBLMachine@@UAEFXZ 00409960 f i DBAccess.obj
  0001:000089c0       ?BindColumns@CTBLManager@@UAEFXZ 004099c0 f i DBAccess.obj
  0001:00008a20       ?BindColumns@CTBLPreVersion@@UAEFXZ 00409a20 f i DBAccess.obj
  0001:00008aa0       ?BindColumns@CTBLServer@@UAEFXZ 00409aa0 f i DBAccess.obj
- 0001:00008b60       ?BindParameters@CSPDeletePreVersion@@UAEFH@Z 00409b60 f i DBAccess.obj
  0001:00008b60       ?BindParameters@CSPBetaToVer@@UAEFH@Z 00409b60 f i DBAccess.obj
+ 0001:00008b60       ?BindParameters@CSPDeletePreVersion@@UAEFH@Z 00409b60 f i DBAccess.obj
  0001:00008bd0       ?BindParameters@CSPEventUpdate@@UAEFH@Z 00409bd0 f i DBAccess.obj
  0001:00008f80       ?BindParameters@CSPLoadService@@UAEFH@Z 00409f80 f i DBAccess.obj
  0001:00009040       ?BindParameters@CSPOPLogin@@UAEFH@Z 0040a040 f i DBAccess.obj
@@ -426,21 +426,21 @@
  0001:00009260       ?BindParameters@CSPUpdatePrePatch@@UAEFH@Z 0040a260 f i DBAccess.obj
  0001:00009330       ?BindParameters@CSPUserProtectedAdd@@UAEFH@Z 0040a330 f i DBAccess.obj
  0001:00009460       ?BindParameters@CTBLIPAddr@@UAEFH@Z 0040a460 f i DBAccess.obj
- 0001:000094a0       ?GetNumCol@CTBLIPAddr@@UAEHXZ 0040a4a0 f i DBAccess.obj
- 0001:000094a0       ?GetNumParam@CSPDeletePreVersion@@UAEHXZ 0040a4a0 f i DBAccess.obj
  0001:000094a0       ?GetNumCol@CTBLGroup@@UAEHXZ 0040a4a0 f i DBAccess.obj
+ 0001:000094a0       ?GetNumCol@CTBLIPAddr@@UAEHXZ 0040a4a0 f i DBAccess.obj
  0001:000094a0       ?GetNumParam@CSPBetaToVer@@UAEHXZ 0040a4a0 f i DBAccess.obj
  0001:000094a0       ?GetNumCol@CTBLSvrType@@UAEHXZ 0040a4a0 f i DBAccess.obj
- 0001:000094a0       ?GetNumCol@CTBLNetwork@@UAEHXZ 0040a4a0 f i DBAccess.obj
  0001:000094a0       ?GetNumCol@CTBLCashShopItem@@UAEHXZ 0040a4a0 f i DBAccess.obj
+ 0001:000094a0       ?GetNumCol@CTBLNetwork@@UAEHXZ 0040a4a0 f i DBAccess.obj
+ 0001:000094a0       ?GetNumParam@CSPDeletePreVersion@@UAEHXZ 0040a4a0 f i DBAccess.obj
  0001:000094b0       ?GetNumCol@CTBLEvent@@UAEHXZ 0040a4b0 f i DBAccess.obj
- 0001:000094c0       ?GetNumParam@CSPSvrStatusSMS@@UAEHXZ 0040a4c0 f i DBAccess.obj
  0001:000094c0       ?GetNumCol@CTBLMachine@@UAEHXZ 0040a4c0 f i DBAccess.obj
- 0001:000094c0       ?GetNumParam@CSPOPLogin@@UAEHXZ 0040a4c0 f i DBAccess.obj
+ 0001:000094c0       ?GetNumParam@CSPSvrStatusSMS@@UAEHXZ 0040a4c0 f i DBAccess.obj
  0001:000094c0       ?GetNumCol@CTBLManager@@UAEHXZ 0040a4c0 f i DBAccess.obj
- 0001:000094d0       ?GetNumParam@CSPUpdatePrePatch@@UAEHXZ 0040a4d0 f i DBAccess.obj
- 0001:000094d0       ?GetNumCol@CTBLPreVersion@@UAEHXZ 0040a4d0 f i DBAccess.obj
+ 0001:000094c0       ?GetNumParam@CSPOPLogin@@UAEHXZ 0040a4c0 f i DBAccess.obj
  0001:000094d0       ?GetNumParam@CSPLoadService@@UAEHXZ 0040a4d0 f i DBAccess.obj
+ 0001:000094d0       ?GetNumCol@CTBLPreVersion@@UAEHXZ 0040a4d0 f i DBAccess.obj
+ 0001:000094d0       ?GetNumParam@CSPUpdatePrePatch@@UAEHXZ 0040a4d0 f i DBAccess.obj
  0001:000094e0       ?GetNumCol@CTBLServer@@UAEHXZ 0040a4e0 f i DBAccess.obj
  0001:000094e0       ?GetNumParam@CSPUserProtectedAdd@@UAEHXZ 0040a4e0 f i DBAccess.obj
  0001:000094f0       ?GetNumParam@CSPEventUpdate@@UAEHXZ 0040a4f0 f i DBAccess.obj
@@ -450,8 +450,8 @@
  0001:0000a130       ??0CDebugSocket@@QAE@XZ    0040b130 f   DebugSocket.obj
  0001:0000a150       ??1?$CSimpleStringT@D$0A@@ATL@@QAE@XZ 0040b150 f i Handler.obj
  0001:0000a150       ??1?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ 0040b150 f i DebugSocket.obj
- 0001:0000a170       ??_GCAtlStringMgr@ATL@@UAEPAXI@Z 0040b170 f i DebugSocket.obj
  0001:0000a170       ??_ECAtlStringMgr@ATL@@UAEPAXI@Z 0040b170 f i DebugSocket.obj
+ 0001:0000a170       ??_GCAtlStringMgr@ATL@@UAEPAXI@Z 0040b170 f i DebugSocket.obj
  0001:0000a190       ??_ECWin32Heap@ATL@@UAEPAXI@Z 0040b190 f i DebugSocket.obj
  0001:0000a190       ??_GCWin32Heap@ATL@@UAEPAXI@Z 0040b190 f i DebugSocket.obj
  0001:0000a1d0       ?Allocate@CAtlStringMgr@ATL@@UAEPAUCStringData@2@HH@Z 0040b1d0 f i DebugSocket.obj
@@ -472,34 +472,34 @@
  0001:0000a7f0       ?Reallocate@CAtlStringMgr@ATL@@UAEPAUCStringData@2@PAU32@HH@Z 0040b7f0 f i DebugSocket.obj
  0001:0000a850       ?Reallocate@CWin32Heap@ATL@@UAEPAXPAXI@Z 0040b850 f i DebugSocket.obj
  0001:0000a890       ?ThrowMemoryException@?$CSimpleStringT@D$0A@@ATL@@KAXXZ 0040b890 f i DebugSocket.obj
- 0001:0000a8a0       ??$_Buynode@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTSVRTYPE@@@1@@Z 0040b8a0 f i TControlSvr.obj
- 0001:0000a8a0       ??$_Buynode@U?$pair@$$CBEPAUtagTGROUP@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTGROUP@@@1@@Z 0040b8a0 f i TControlSvr.obj
  0001:0000a8a0       ??$_Buynode@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@1@$$QAU?$pair@$$CBEPAVCPlatformUsage@@@1@@Z 0040b8a0 f i TControlSvr.obj
  0001:0000a8a0       ??$_Buynode@U?$pair@$$CBKPAVCTManager@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@1@$$QAU?$pair@$$CBKPAVCTManager@@@1@@Z 0040b8a0 f i Handler.obj
+ 0001:0000a8a0       ??$_Buynode@U?$pair@$$CBEPAUtagTGROUP@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTGROUP@@@1@@Z 0040b8a0 f i TControlSvr.obj
+ 0001:0000a8a0       ??$_Buynode@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTSVRTYPE@@@1@@Z 0040b8a0 f i TControlSvr.obj
  0001:0000a8a0       ??$_Buynode@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAUtagTSVRTEMP@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@PAX@1@$$QAU?$pair@$$CBKPAUtagTSVRTEMP@@@1@@Z 0040b8a0 f i TControlSvr.obj
- 0001:0000a8a0       ??$_Buynode@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTMACHINE@@@1@@Z 0040b8a0 f i TControlSvr.obj
  0001:0000a8a0       ??$_Buynode@U?$pair@$$CBKPAUtagBANINFO@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@1@$$QAU?$pair@$$CBKPAUtagBANINFO@@@1@@Z 0040b8a0 f i Handler.obj
+ 0001:0000a8a0       ??$_Buynode@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTMACHINE@@@1@@Z 0040b8a0 f i TControlSvr.obj
  0001:0000a8c0       ??$_Buynode@U?$pair@$$CBKUtagEVENTINFO@@@std@@@?$_Tree_comp_alloc@V?$_Tmap_traits@KUtagEVENTINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUtagEVENTINFO@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKUtagEVENTINFO@@@std@@PAX@1@$$QAU?$pair@$$CBKUtagEVENTINFO@@@1@@Z 0040b8c0 f i Handler.obj
  0001:0000a950       ??$_Destroy_range@V?$allocator@UtagPATCHFILE@@@std@@@std@@YAXPAUtagPATCHFILE@@0AAV?$allocator@UtagPATCHFILE@@@0@@Z 0040b950 f i Handler.obj
  0001:0000a9a0       ??$_Emplace_reallocate@ABE@?$vector@EV?$allocator@E@std@@@std@@QAEPAEQAEABE@Z 0040b9a0 f i Handler.obj
- 0001:0000aad0       ??$_Emplace_reallocate@G@?$vector@GV?$allocator@G@std@@@std@@QAEPAGQAG$$QAG@Z 0040bad0 f i Handler.obj
  0001:0000aad0       ??$_Emplace_reallocate@ABG@?$vector@GV?$allocator@G@std@@@std@@QAEPAGQAGABG@Z 0040bad0 f i Handler.obj
+ 0001:0000aad0       ??$_Emplace_reallocate@G@?$vector@GV?$allocator@G@std@@@std@@QAEPAGQAG$$QAG@Z 0040bad0 f i Handler.obj
  0001:0000aba0       ??$_Emplace_reallocate@ABUtagLOTTERY@@@?$vector@UtagLOTTERY@@V?$allocator@UtagLOTTERY@@@std@@@std@@QAEPAUtagLOTTERY@@QAU2@ABU2@@Z 0040bba0 f i Handler.obj
  0001:0000ad00       ??$_Emplace_reallocate@ABUtagMONREGEN@@@?$vector@UtagMONREGEN@@V?$allocator@UtagMONREGEN@@@std@@@std@@QAEPAUtagMONREGEN@@QAU2@ABU2@@Z 0040bd00 f i Handler.obj
  0001:0000ae70       ??$_Emplace_reallocate@ABUtagPATCHFILE@@@?$vector@UtagPATCHFILE@@V?$allocator@UtagPATCHFILE@@@std@@@std@@QAEPAUtagPATCHFILE@@QAU2@ABU2@@Z 0040be70 f i Handler.obj
  0001:0000b110       ??$_Emplace_reallocate@ABUtagTCASHITEM@@@?$vector@UtagTCASHITEM@@V?$allocator@UtagTCASHITEM@@@std@@@std@@QAEPAUtagTCASHITEM@@QAU2@ABU2@@Z 0040c110 f i Handler.obj
  0001:0000b360       ??$_Emplace_reallocate@ABUtagTCASHITEMSALE@@@?$vector@UtagTCASHITEMSALE@@V?$allocator@UtagTCASHITEMSALE@@@std@@@std@@QAEPAUtagTCASHITEMSALE@@QAU2@ABU2@@Z 0040c360 f i Handler.obj
- 0001:0000b470       ??$_Insert_at@U?$pair@$$CBKPAVCTManager@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@1@$$QAU?$pair@$$CBKPAVCTManager@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i Handler.obj
- 0001:0000b470       ??$_Insert_at@U?$pair@$$CBEPAUtagTMACHINE@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTMACHINE@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i TControlSvr.obj
  0001:0000b470       ??$_Insert_at@U?$pair@$$CBEPAUtagTGROUP@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTGROUP@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTGROUP@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i TControlSvr.obj
+ 0001:0000b470       ??$_Insert_at@U?$pair@$$CBKPAVCTManager@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@1@$$QAU?$pair@$$CBKPAVCTManager@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i Handler.obj
  0001:0000b470       ??$_Insert_at@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KPAUtagTSVRTEMP@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@PAX@1@$$QAU?$pair@$$CBKPAUtagTSVRTEMP@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i TControlSvr.obj
- 0001:0000b470       ??$_Insert_at@U?$pair@$$CBKPAUtagBANINFO@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@1@$$QAU?$pair@$$CBKPAUtagBANINFO@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i Handler.obj
+ 0001:0000b470       ??$_Insert_at@U?$pair@$$CBEPAUtagTMACHINE@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTMACHINE@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i TControlSvr.obj
  0001:0000b470       ??$_Insert_at@U?$pair@$$CBEPAVCPlatformUsage@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@1@$$QAU?$pair@$$CBEPAVCPlatformUsage@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i TControlSvr.obj
  0001:0000b470       ??$_Insert_at@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@1@$$QAU?$pair@$$CBEPAUtagTSVRTYPE@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i TControlSvr.obj
+ 0001:0000b470       ??$_Insert_at@U?$pair@$$CBKPAUtagBANINFO@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@1@$$QAU?$pair@$$CBKPAUtagBANINFO@@@1@U_Not_a_node_tag@1@@Z 0040c470 f i Handler.obj
  0001:0000b5d0       ??$_Insert_at@U?$pair@$$CBKUtagEVENTINFO@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KUtagEVENTINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUtagEVENTINFO@@@std@@@3@$0A@@std@@@std@@IAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@@1@_NPAU?$_Tree_node@U?$pair@$$CBKUtagEVENTINFO@@@std@@PAX@1@$$QAU?$pair@$$CBKUtagEVENTINFO@@@1@U_Not_a_node_tag@1@@Z 0040c5d0 f i Handler.obj
+ 0001:0000b730       ??$_Insert_nohint@U?$pair@$$CBKPAVCTManager@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBKPAVCTManager@@@1@U_Not_a_node_tag@1@@Z 0040c730 f i Handler.obj
  0001:0000b730       ??$_Insert_nohint@U?$pair@$$CBKPAUtagBANINFO@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBKPAUtagBANINFO@@@1@U_Not_a_node_tag@1@@Z 0040c730 f i Handler.obj
  0001:0000b730       ??$_Insert_nohint@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KPAUtagTSVRTEMP@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBKPAUtagTSVRTEMP@@@1@U_Not_a_node_tag@1@@Z 0040c730 f i TControlSvr.obj
- 0001:0000b730       ??$_Insert_nohint@U?$pair@$$CBKPAVCTManager@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBKPAVCTManager@@@1@U_Not_a_node_tag@1@@Z 0040c730 f i Handler.obj
  0001:0000b890       ??$_Insert_nohint@U?$pair@$$CBKUtagEVENTINFO@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@KUtagEVENTINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUtagEVENTINFO@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBKUtagEVENTINFO@@@1@U_Not_a_node_tag@1@@Z 0040c890 f i Handler.obj
  0001:0000b9f0       ??$erase@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@std@@X@?$_Tree@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@1@V21@@Z 0040c9f0 f i Handler.obj
  0001:0000ba30       ??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@XZ 0040ca30 f i Handler.obj
@@ -527,15 +527,15 @@
  0001:0000c680       ??1tagPATCHFILE@@QAE@XZ    0040d680 f i Handler.obj
  0001:0000c6f0       ??1tagTCASHITEM@@QAE@XZ    0040d6f0 f i Handler.obj
  0001:0000c740       ??4?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAEAAV01@ABV01@@Z 0040d740 f i Handler.obj
- 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TControlSvr.obj
- 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TNetLib:SqlDatabase.obj
- 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i Handler.obj
+ 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TControlSvr.obj
  0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i Handler.obj
- 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TControlSvr.obj
  0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TControlSvr.obj
  0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTGROUP@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TControlSvr.obj
  0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TControlSvr.obj
- 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TControlSvr.obj
+ 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TNetLib:SqlDatabase.obj
+ 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TControlSvr.obj
+ 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i TControlSvr.obj
+ 0001:0000c7b0       ??E?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@std@@QAEAAV01@XZ 0040d7b0 f i Handler.obj
  0001:0000c810       ??E?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@std@@@std@@@std@@QAE?AV01@H@Z 0040d810 f i Handler.obj
  0001:0000c870       ??HATL@@YA?AV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@0@ABV10@0@Z 0040d870 f i Handler.obj
  0001:0000c990       ??_ECCSLock@@UAEPAXI@Z     0040d990 f i Handler.obj
@@ -618,28 +618,28 @@
  0001:00012c80       ?SetString@?$CSimpleStringT@D$0A@@ATL@@QAEXPBDH@Z 00413c80 f i Handler.obj
  0001:00012da0       ?WrapPacketOut@tagEVENTINFO@@QAEXPAVCPacket@@@Z 00413da0 f i Handler.obj
  0001:00013040       ?_AtlGetStringResourceImage@ATL@@YAPBUATLSTRINGRESOURCEIMAGE@1@PAUHINSTANCE__@@PAUHRSRC__@@I@Z 00414040 f i Handler.obj
- 0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@2@XZ 004140a0 f i Handler.obj
- 0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@XZ 004140a0 f i TControlSvr.obj
  0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAUtagTSVRTEMP@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@PAX@2@XZ 004140a0 f i TControlSvr.obj
- 0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@XZ 004140a0 f i Handler.obj
  0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@2@XZ 004140a0 f i TControlSvr.obj
- 0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@2@XZ 004140a0 f i TControlSvr.obj
+ 0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@2@XZ 004140a0 f i Handler.obj
+ 0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@XZ 004140a0 f i Handler.obj
+ 0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@XZ 004140a0 f i TControlSvr.obj
  0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@2@XZ 004140a0 f i TControlSvr.obj
+ 0001:000130a0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@2@XZ 004140a0 f i TControlSvr.obj
  0001:000130c0       ?_Buynode0@?$_Tree_comp_alloc@V?$_Tmap_traits@KUtagEVENTINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUtagEVENTINFO@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKUtagEVENTINFO@@@std@@PAX@2@XZ 004140c0 f i Handler.obj
  0001:000130e0       ?_Change_array@?$vector@GV?$allocator@G@std@@@std@@AAEXQAGII@Z 004140e0 f i Handler.obj
  0001:00013140       ?_Destroy@?$vector@UtagPATCHFILE@@V?$allocator@UtagPATCHFILE@@@std@@@std@@AAEXPAUtagPATCHFILE@@0@Z 00414140 f i Handler.obj
  0001:00013160       ?_Destroy@?$vector@UtagTCASHITEM@@V?$allocator@UtagTCASHITEM@@@std@@@std@@AAEXPAUtagTCASHITEM@@0@Z 00414160 f i Handler.obj
- 0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@2@@Z 004141a0 f i TControlSvr.obj
- 0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@KPAUtagTSVRTEMP@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@PAX@2@@Z 004141a0 f i TControlSvr.obj
+ 0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@@Z 004141a0 f i TControlSvr.obj
  0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@2@@Z 004141a0 f i TControlSvr.obj
+ 0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@KPAUtagTSVRTEMP@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@PAX@2@@Z 004141a0 f i TControlSvr.obj
  0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@2@@Z 004141a0 f i TControlSvr.obj
+ 0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@2@@Z 004141a0 f i TControlSvr.obj
  0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@@Z 004141a0 f i Handler.obj
  0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@2@@Z 004141a0 f i TControlSvr.obj
- 0001:000131a0       ?_Erase@?$_Tree@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@IAEXPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@@Z 004141a0 f i TControlSvr.obj
  0001:000131e0       ?_Extract@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKUtagEVENTINFO@@@std@@PAX@2@V?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@@2@@Z 004141e0 f i Handler.obj
- 0001:000131e0       ?_Extract@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@V?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@2@@Z 004141e0 f i Handler.obj
- 0001:000131e0       ?_Extract@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@PAX@2@V?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@@2@@Z 004141e0 f i TNetLib:SqlDatabase.obj
  0001:000131e0       ?_Extract@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@2@V?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@@2@@Z 004141e0 f i TControlSvr.obj
+ 0001:000131e0       ?_Extract@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@PAX@2@V?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVCSqlQuery@@@std@@@std@@@std@@@2@@Z 004141e0 f i TNetLib:SqlDatabase.obj
+ 0001:000131e0       ?_Extract@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@V?$_Tree_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@2@@Z 004141e0 f i Handler.obj
  0001:00013450       ?_Freenode0@?$_Tree_comp_alloc@V?$_Tmap_traits@KUtagEVENTINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUtagEVENTINFO@@@std@@@3@$0A@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBKUtagEVENTINFO@@@std@@PAX@2@@Z 00414450 f i Handler.obj
  0001:00013470       ?_Tidy@?$vector@UtagLOTTERY@@V?$allocator@UtagLOTTERY@@@std@@@std@@AAEXXZ 00414470 f i Handler.obj
  0001:000134e0       ?_Tidy@?$vector@UtagMONREGEN@@V?$allocator@UtagMONREGEN@@@std@@@std@@AAEXXZ 004144e0 f i Handler.obj
@@ -649,18 +649,18 @@
  0001:000137c0       ?allocate@?$allocator@G@std@@QAEPAGI@Z 004147c0 f i Handler.obj
  0001:00013830       ?allocate@?$allocator@UtagLOTTERY@@@std@@QAEPAUtagLOTTERY@@I@Z 00414830 f i Handler.obj
  0001:000138a0       ?allocate@?$allocator@UtagMONREGEN@@@std@@QAEPAUtagMONREGEN@@I@Z 004148a0 f i Handler.obj
- 0001:00013910       ?allocate@?$allocator@UtagTCASHITEMSALE@@@std@@QAEPAUtagTCASHITEMSALE@@I@Z 00414910 f i Handler.obj
  0001:00013910       ?allocate@?$allocator@I@std@@QAEPAII@Z 00414910 f i TControlSvr.obj
+ 0001:00013910       ?allocate@?$allocator@UtagTCASHITEMSALE@@@std@@QAEPAUtagTCASHITEMSALE@@I@Z 00414910 f i Handler.obj
  0001:00013980       ?deallocate@?$allocator@UtagPATCHFILE@@@std@@QAEXQAUtagPATCHFILE@@I@Z 00414980 f i Handler.obj
  0001:000139c0       ?deallocate@?$allocator@UtagTCASHITEM@@@std@@QAEXQAUtagTCASHITEM@@I@Z 004149c0 f i Handler.obj
- 0001:00013a00       ?find@?$_Tree@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@@2@ABK@Z 00414a00 f i TControlSvr.obj
- 0001:00013a00       ?find@?$_Tree@V?$_Tmap_traits@KUtagEVENTINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUtagEVENTINFO@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@@2@ABK@Z 00414a00 f i Handler.obj
  0001:00013a00       ?find@?$_Tree@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAUtagBANINFO@@@std@@@std@@@std@@@2@ABK@Z 00414a00 f i Handler.obj
+ 0001:00013a00       ?find@?$_Tree@V?$_Tmap_traits@KUtagEVENTINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUtagEVENTINFO@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKUtagEVENTINFO@@@std@@@std@@@std@@@2@ABK@Z 00414a00 f i Handler.obj
+ 0001:00013a00       ?find@?$_Tree@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBKPAVCTManager@@@std@@@std@@@std@@@2@ABK@Z 00414a00 f i TControlSvr.obj
  0001:00013a50       ?push_back@?$vector@UtagPATCHFILE@@V?$allocator@UtagPATCHFILE@@@std@@@std@@QAEXABUtagPATCHFILE@@@Z 00414a50 f i Handler.obj
  0001:00013ba0       ??0CPlatformUsage@@QAE@E@Z 00414ba0 f   PlatformUsage.obj
  0001:00013c70       ??4?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAEAAV01@PBD@Z 00414c70 f i PlatformUsage.obj
- 0001:00013db0       ??_GCPlatformUsage@@UAEPAXI@Z 00414db0 f i PlatformUsage.obj
  0001:00013db0       ??_ECPlatformUsage@@UAEPAXI@Z 00414db0 f i PlatformUsage.obj
+ 0001:00013db0       ??_GCPlatformUsage@@UAEPAXI@Z 00414db0 f i PlatformUsage.obj
  0001:00013e20       ?Close@CPlatformUsage@@QAEXXZ 00414e20 f   PlatformUsage.obj
  0001:00013e60       ?CopyChars@?$CSimpleStringT@D$0A@@ATL@@SAXPADIPBDH@Z 00414e60 f i PlatformUsage.obj
  0001:00013ee0       ?SetNETREG@CPlatformUsage@@QAEXPBD@Z 00414ee0 f   PlatformUsage.obj
@@ -703,8 +703,8 @@
  0001:000158b0       ?_AtlRaiseException@ATL@@YAXKK@Z 004168b0 f i stdafx.obj
  0001:000158d0       ??0CTControlSession@@QAE@XZ 004168d0 f   TControlSession.obj
  0001:00015900       ??1CTControlSession@@UAE@XZ 00416900 f   TControlSession.obj
- 0001:00015910       ??_ECTControlSession@@UAEPAXI@Z 00416910 f i TControlSession.obj
  0001:00015910       ??_GCTControlSession@@UAEPAXI@Z 00416910 f i TControlSession.obj
+ 0001:00015910       ??_ECTControlSession@@UAEPAXI@Z 00416910 f i TControlSession.obj
  0001:00015940       ??$?5DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@0@$$QAV10@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z 00416940 f i TControlSvr.obj
  0001:00015b70       ??$?8DU?$char_traits@D@std@@@std@@YA_NABV?$istreambuf_iterator@DU?$char_traits@D@std@@@0@0@Z 00416b70 f i TControlSvr.obj
  0001:00015c10       ??$_Common_extract_with_num_get@J@?$basic_istream@DU?$char_traits@D@std@@@std@@AAEAAV01@AAJ@Z 00416c10 f i TControlSvr.obj
@@ -712,10 +712,10 @@
  0001:00015ec0       ??$_Emplace_reallocate@I@?$vector@IV?$allocator@I@std@@@std@@QAEPAIQAI$$QAI@Z 00416ec0 f i TControlSvr.obj
  0001:00015fa0       ??$_Emplace_reallocate@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@?$vector@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@V?$allocator@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@std@@@std@@QAEPAV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAV23@$$QAV23@@Z 00416fa0 f i TControlSvr.obj
  0001:000161c0       ??$_Getloctxt@DV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@@std@@YAHAAV?$istreambuf_iterator@DU?$char_traits@D@std@@@0@0IPBD@Z 004171c0 f i TControlSvr.obj
- 0001:00016550       ??$_Insert_nohint@U?$pair@$$CBEPAUtagTMACHINE@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBEPAUtagTMACHINE@@@1@U_Not_a_node_tag@1@@Z 00417550 f i TControlSvr.obj
  0001:00016550       ??$_Insert_nohint@U?$pair@$$CBEPAUtagTGROUP@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTGROUP@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBEPAUtagTGROUP@@@1@U_Not_a_node_tag@1@@Z 00417550 f i TControlSvr.obj
- 0001:00016550       ??$_Insert_nohint@U?$pair@$$CBEPAVCPlatformUsage@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBEPAVCPlatformUsage@@@1@U_Not_a_node_tag@1@@Z 00417550 f i TControlSvr.obj
+ 0001:00016550       ??$_Insert_nohint@U?$pair@$$CBEPAUtagTMACHINE@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBEPAUtagTMACHINE@@@1@U_Not_a_node_tag@1@@Z 00417550 f i TControlSvr.obj
  0001:00016550       ??$_Insert_nohint@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBEPAUtagTSVRTYPE@@@1@U_Not_a_node_tag@1@@Z 00417550 f i TControlSvr.obj
+ 0001:00016550       ??$_Insert_nohint@U?$pair@$$CBEPAVCPlatformUsage@@@std@@U_Not_a_node_tag@2@@?$_Tree@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@IAE?AU?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@std@@@std@@@std@@_N@1@_N$$QAU?$pair@$$CBEPAVCPlatformUsage@@@1@U_Not_a_node_tag@1@@Z 00417550 f i TControlSvr.obj
  0001:000166b0       ??$getline@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@YAAAV?$basic_istream@DU?$char_traits@D@std@@@0@$$QAV10@AAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@D@Z 004176b0 f i TControlSvr.obj
  0001:000168b0       ??0?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@QAE@PBDHPAUIAtlStringMgr@1@@Z 004178b0 f i TControlSvr.obj
  0001:00016930       ??0?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@H@Z 00417930 f i TControlSvr.obj
@@ -728,10 +728,10 @@
  0001:00017370       ??1?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAE@XZ 00418370 f i TControlSvr.obj
  0001:00017480       ??1?$deque@PAVCPacket@@V?$allocator@PAVCPacket@@@std@@@std@@QAE@XZ 00418480 f i TNetLib:Session.obj
  0001:00017480       ??1?$deque@PAUtagPACKETBUF@@V?$allocator@PAUtagPACKETBUF@@@std@@@std@@QAE@XZ 00418480 f i TControlSvr.obj
- 0001:00017530       ??1?$map@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@@std@@QAE@XZ 00418530 f i TControlSvr.obj
  0001:00017530       ??1?$map@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@@std@@QAE@XZ 00418530 f i TControlSvr.obj
  0001:00017530       ??1?$map@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@@std@@QAE@XZ 00418530 f i TControlSvr.obj
  0001:00017530       ??1?$map@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@@std@@QAE@XZ 00418530 f i TControlSvr.obj
+ 0001:00017530       ??1?$map@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@@std@@QAE@XZ 00418530 f i TControlSvr.obj
  0001:00017530       ??1?$map@KPAUtagTSVRTEMP@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@3@@std@@QAE@XZ 00418530 f i TControlSvr.obj
  0001:00017550       ??1?$map@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@@std@@QAE@XZ 00418550 f i TControlSvr.obj
  0001:00017560       ??1?$map@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@@std@@QAE@XZ 00418560 f i TControlSvr.obj
@@ -746,14 +746,14 @@
  0001:00017ac0       ??_D?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXXZ 00418ac0 f i TControlSvr.obj
  0001:00017b49       ??_E?$basic_istream@DU?$char_traits@D@std@@@std@@$4PPPPPPPM@A@AEPAXI@Z 00418b49 f i TControlSvr.obj
  0001:00017b51       ??_E?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@$4PPPPPPPM@A@AEPAXI@Z 00418b51 f i TControlSvr.obj
- 0001:00017b60       ??_G?$basic_istream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00418b60 f i TControlSvr.obj
  0001:00017b60       ??_E?$basic_istream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00418b60 f i TControlSvr.obj
- 0001:00017be0       ??_G?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00418be0 f i TControlSvr.obj
+ 0001:00017b60       ??_G?$basic_istream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00418b60 f i TControlSvr.obj
  0001:00017be0       ??_E?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00418be0 f i TControlSvr.obj
+ 0001:00017be0       ??_G?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00418be0 f i TControlSvr.obj
  0001:00017c10       ??_G?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00418c10 f i TControlSvr.obj
  0001:00017c10       ??_E?$basic_stringbuf@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@UAEPAXI@Z 00418c10 f i TControlSvr.obj
- 0001:00017c40       ??_GCTControlSvrModule@@UAEPAXI@Z 00418c40 f i TControlSvr.obj
  0001:00017c40       ??_ECTControlSvrModule@@UAEPAXI@Z 00418c40 f i TControlSvr.obj
+ 0001:00017c40       ??_GCTControlSvrModule@@UAEPAXI@Z 00418c40 f i TControlSvr.obj
  0001:00017c70       ??_GtagTSVRTEMP@@QAEPAXI@Z 00418c70 f i TControlSvr.obj
  0001:00017d30       ?Accept@CTControlSvrModule@@IAEEXZ 00418d30 f   TControlSvr.obj
  0001:00017f00       ?AddCommonRGSReplacements@?$CAtlModuleT@VCTControlSvrModule@@@ATL@@UAEJPAUIRegistrarBase@@@Z 00418f00 f i TControlSvr.obj
@@ -793,13 +793,13 @@
  0001:0001db40       ?WaitForConnect@CTControlSvrModule@@IAEEXZ 0041eb40 f   TControlSvr.obj
  0001:0001dbb0       ?WorkThread@CTControlSvrModule@@IAEKXZ 0041ebb0 f   TControlSvr.obj
  0001:0001dea0       ?_BatchThread@CTControlSvrModule@@CGKPAX@Z 0041eea0 f   TControlSvr.obj
- 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
- 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
- 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
- 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
- 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
  0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAVCTManager@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
+ 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTGROUP@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
  0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAUtagTSVRTEMP@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
+ 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
+ 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAUtagTMACHINE@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
+ 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBEPAVCPlatformUsage@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
+ 0001:0001dfd0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@KPAUtagBANINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagBANINFO@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKPAUtagBANINFO@@@std@@PAX@2@XZ 0041efd0 f i TControlSvr.obj
  0001:0001dff0       ?_Buyheadnode@?$_Tree_comp_alloc@V?$_Tmap_traits@KUtagEVENTINFO@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKUtagEVENTINFO@@@std@@@3@$0A@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBKUtagEVENTINFO@@@std@@PAX@2@XZ 0041eff0 f i TControlSvr.obj
  0001:0001e010       ?_Change_array@?$vector@IV?$allocator@I@std@@@std@@AAEXQAIII@Z 0041f010 f i TControlSvr.obj
  0001:0001e070       ?_ControlThread@CTControlSvrModule@@CGKPAX@Z 0041f070 f   TControlSvr.obj
@@ -815,14 +815,14 @@
  0001:00020440       ?_TimerThread@CTControlSvrModule@@CGKPAX@Z 00421440 f   TControlSvr.obj
  0001:00020530       ?_Umove@?$vector@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@V?$allocator@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@std@@@std@@AAEPAV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@PAV34@00@Z 00421530 f i TControlSvr.obj
  0001:000205b0       ?_WorkThread@CTControlSvrModule@@CGKPAX@Z 004215b0 f   TControlSvr.obj
- 0001:000205c0       ?_Xlen@?$deque@PAUtagPACKETBUF@@V?$allocator@PAUtagPACKETBUF@@@std@@@std@@IBEXXZ 004215c0 f i TControlSvr.obj
  0001:000205c0       ?_Xlen@?$deque@PAVCPacket@@V?$allocator@PAVCPacket@@@std@@@std@@IBEXXZ 004215c0 f i TNetLib:Session.obj
+ 0001:000205c0       ?_Xlen@?$deque@PAUtagPACKETBUF@@V?$allocator@PAUtagPACKETBUF@@@std@@@std@@IBEXXZ 004215c0 f i TControlSvr.obj
+ 0001:000205d0       ?clear@?$_Tree@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004215d0 f i TControlSvr.obj
+ 0001:000205d0       ?clear@?$_Tree@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004215d0 f i TControlSvr.obj
  0001:000205d0       ?clear@?$_Tree@V?$_Tmap_traits@EPAUtagTSVRTYPE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTSVRTYPE@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004215d0 f i TControlSvr.obj
  0001:000205d0       ?clear@?$_Tree@V?$_Tmap_traits@KPAUtagTSVRTEMP@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAUtagTSVRTEMP@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004215d0 f i TControlSvr.obj
- 0001:000205d0       ?clear@?$_Tree@V?$_Tmap_traits@EPAUtagTMACHINE@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTMACHINE@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004215d0 f i TControlSvr.obj
- 0001:000205d0       ?clear@?$_Tree@V?$_Tmap_traits@EPAUtagTGROUP@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAUtagTGROUP@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004215d0 f i TControlSvr.obj
- 0001:000205d0       ?clear@?$_Tree@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004215d0 f i TControlSvr.obj
  0001:000205d0       ?clear@?$_Tree@V?$_Tmap_traits@KPAVCTManager@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKPAVCTManager@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004215d0 f i TControlSvr.obj
+ 0001:000205d0       ?clear@?$_Tree@V?$_Tmap_traits@EPAVCPlatformUsage@@U?$less@E@std@@V?$allocator@U?$pair@$$CBEPAVCPlatformUsage@@@std@@@3@$0A@@std@@@std@@QAEXXZ 004215d0 f i TControlSvr.obj
  0001:00020660       ?deallocate@?$allocator@V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@std@@QAEXQAV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@I@Z 00421660 f i TControlSvr.obj
  0001:000206a0       ?do_get@?$num_get@DV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@@std@@MBE?AV?$istreambuf_iterator@DU?$char_traits@D@std@@@2@V32@0AAVios_base@2@AAHAAG@Z 004216a0 f i TControlSvr.obj
  0001:000207f0       ?do_get@?$num_get@DV?$istreambuf_iterator@DU?$char_traits@D@std@@@std@@@std@@MBE?AV?$istreambuf_iterator@DU?$char_traits@D@std@@@2@V32@0AAVios_base@2@AAHAAI@Z 004217f0 f i TControlSvr.obj
@@ -853,8 +853,8 @@
  0001:000223b0       ?SetOption@CTMiniDump@@SAXW4_MINIDUMP_TYPE@@@Z 004233b0 f   TMiniDump.obj
  0001:000223c0       ?TopLevelExceptionFilter@CTMiniDump@@SGJPAU_EXCEPTION_POINTERS@@@Z 004233c0 f   TMiniDump.obj
  0001:00022d00       ??0CTServer@@QAE@XZ        00423d00 f   TServer.obj
- 0001:00022d50       ??_ECTServer@@UAEPAXI@Z    00423d50 f i TServer.obj
  0001:00022d50       ??_GCTServer@@UAEPAXI@Z    00423d50 f i TServer.obj
+ 0001:00022d50       ??_ECTServer@@UAEPAXI@Z    00423d50 f i TServer.obj
  0001:00022d80       ?SendCT_ANNOUNCEMENT_ACK@CTServer@@QAEXV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@Z 00423d80 f   TServer.obj
  0001:00022e30       ?SendCT_CASHITEMSALE_REQ@CTServer@@QAEXKGPAV?$vector@UtagTCASHITEMSALE@@V?$allocator@UtagTCASHITEMSALE@@@std@@@std@@@Z 00423e30 f   TServer.obj
  0001:00022f30       ?SendCT_CASHSHOPSTOP_REQ@CTServer@@QAEXE@Z 00423f30 f   TServer.obj
@@ -887,8 +887,8 @@
  0001:000240be       _AcceptEx@32               004250be f   mswsock:MSWSOCK.dll
  0001:000240d0       ??0CSqlBase@@QAE@PAVCSqlDatabase@@PBD@Z 004250d0 f   TNetLib:SqlBase.obj
  0001:00024150       ??1CSqlBase@@UAE@XZ        00425150 f   TNetLib:SqlBase.obj
- 0001:00024180       ??_ECSqlBase@@UAEPAXI@Z    00425180 f i TNetLib:SqlBase.obj
  0001:00024180       ??_GCSqlBase@@UAEPAXI@Z    00425180 f i TNetLib:SqlBase.obj
+ 0001:00024180       ??_ECSqlBase@@UAEPAXI@Z    00425180 f i TNetLib:SqlBase.obj
  0001:000241d0       ?AllocStatement@CSqlBase@@UAEHXZ 004251d0 f   TNetLib:SqlBase.obj
  0001:00024240       ?BindCol@CSqlBase@@QAEFFPAE@Z 00425240 f   TNetLib:SqlBase.obj
  0001:00024270       ?BindCol@CSqlBase@@QAEFFPAG@Z 00425270 f   TNetLib:SqlBase.obj
@@ -919,8 +919,8 @@
  0001:000252c0       ??0CSqlDatabase@@QAE@XZ    004262c0 f   TNetLib:SqlDatabase.obj
  0001:00025310       ??1CSqlDatabase@@UAE@XZ    00426310 f   TNetLib:SqlDatabase.obj
  0001:00025390       ??R?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@0@Z 00426390 f i TNetLib:SqlDatabase.obj
- 0001:00025440       ??_GCSqlDatabase@@UAEPAXI@Z 00426440 f i TNetLib:SqlDatabase.obj
  0001:00025440       ??_ECSqlDatabase@@UAEPAXI@Z 00426440 f i TNetLib:SqlDatabase.obj
+ 0001:00025440       ??_GCSqlDatabase@@UAEPAXI@Z 00426440 f i TNetLib:SqlDatabase.obj
  0001:000254e0       ?AddQuery@CSqlDatabase@@QAEHPAVCSqlQuery@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004264e0 f   TNetLib:SqlDatabase.obj
  0001:000255f0       ?Close@CSqlDatabase@@QAEXXZ 004265f0 f   TNetLib:SqlDatabase.obj
  0001:000256e0       ?DelQuery@CSqlDatabase@@QAEPAVCSqlQuery@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 004266e0 f   TNetLib:SqlDatabase.obj
@@ -939,8 +939,8 @@
  0001:00025b70       ??1CPacket@@UAE@XZ         00426b70 f   TNetLib:Packet.obj
  0001:00025b90       ??5CPacket@@QAEAAV0@AAE@Z  00426b90 f   TNetLib:Packet.obj
  0001:00025be0       ??5CPacket@@QAEAAV0@AAG@Z  00426be0 f   TNetLib:Packet.obj
- 0001:00025c40       ??5CPacket@@QAEAAV0@AAK@Z  00426c40 f   TNetLib:Packet.obj
  0001:00025c40       ??5CPacket@@QAEAAV0@AAM@Z  00426c40 f   TNetLib:Packet.obj
+ 0001:00025c40       ??5CPacket@@QAEAAV0@AAK@Z  00426c40 f   TNetLib:Packet.obj
  0001:00025c90       ??5CPacket@@QAEAAV0@AAV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@@Z 00426c90 f   TNetLib:Packet.obj
  0001:00025e40       ??5CPacket@@QAEAAV0@AA_J@Z 00426e40 f   TNetLib:Packet.obj
  0001:00025ea0       ??6CPacket@@QAEAAV0@E@Z    00426ea0 f   TNetLib:Packet.obj
@@ -949,8 +949,8 @@
  0001:00025f90       ??6CPacket@@QAEAAV0@K@Z    00426f90 f   TNetLib:Packet.obj
  0001:00026000       ??6CPacket@@QAEAAV0@PBD@Z  00427000 f   TNetLib:Packet.obj
  0001:00026080       ??6CPacket@@QAEAAV0@_J@Z   00427080 f   TNetLib:Packet.obj
- 0001:00026100       ??_GCOverlappedEx@@UAEPAXI@Z 00427100 f i TNetLib:Packet.obj
  0001:00026100       ??_ECOverlappedEx@@UAEPAXI@Z 00427100 f i TNetLib:Packet.obj
+ 0001:00026100       ??_GCOverlappedEx@@UAEPAXI@Z 00427100 f i TNetLib:Packet.obj
  0001:00026130       ??_ECPacket@@UAEPAXI@Z     00427130 f i TNetLib:Packet.obj
  0001:00026130       ??_GCPacket@@UAEPAXI@Z     00427130 f i TNetLib:Packet.obj
  0001:00026170       ?Clear@CPacket@@QAEXXZ     00427170 f   TNetLib:Packet.obj
@@ -1008,22 +1008,22 @@
  0001:00027eba       ??0logic_error@std@@QAE@ABV01@@Z 00428eba f i libcpmt:xthrow.obj
  0001:00027ed5       ??0out_of_range@std@@QAE@ABV01@@Z 00428ed5 f i libcpmt:xthrow.obj
  0001:00027ef0       ??0out_of_range@std@@QAE@PBD@Z 00428ef0 f i libcpmt:xthrow.obj
- 0001:00027f0f       ??_Elogic_error@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
- 0001:00027f0f       ??_Ebad_alloc@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
- 0001:00027f0f       ??_Gbad_exception@std@@UAEPAXI@Z 00428f0f f i libvcruntime:frame.obj
- 0001:00027f0f       ??_Gbad_array_new_length@std@@UAEPAXI@Z 00428f0f f i LIBCMT:throw_bad_alloc.obj
- 0001:00027f0f       ??_Elength_error@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
- 0001:00027f0f       ??_Glogic_error@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
- 0001:00027f0f       ??_Gbad_alloc@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
- 0001:00027f0f       ??_Gout_of_range@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
- 0001:00027f0f       ??_Ginvalid_argument@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
- 0001:00027f0f       ??_Ebad_array_new_length@std@@UAEPAXI@Z 00428f0f f i LIBCMT:throw_bad_alloc.obj
- 0001:00027f0f       ??_Ebad_exception@std@@UAEPAXI@Z 00428f0f f i libvcruntime:frame.obj
  0001:00027f0f       ??_Eout_of_range@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
+ 0001:00027f0f       ??_Ebad_array_new_length@std@@UAEPAXI@Z 00428f0f f i LIBCMT:throw_bad_alloc.obj
+ 0001:00027f0f       ??_Ginvalid_argument@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
+ 0001:00027f0f       ??_Gbad_exception@std@@UAEPAXI@Z 00428f0f f i libvcruntime:frame.obj
+ 0001:00027f0f       ??_Ebad_alloc@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
+ 0001:00027f0f       ??_Glogic_error@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
  0001:00027f0f       ??_Glength_error@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
+ 0001:00027f0f       ??_Ebad_exception@std@@UAEPAXI@Z 00428f0f f i libvcruntime:frame.obj
  0001:00027f0f       ??_Einvalid_argument@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
- 0001:00027f3c       ?_Xbad_alloc@std@@YAXXZ    00428f3c f   libcpmt:xthrow.obj
+ 0001:00027f0f       ??_Gbad_array_new_length@std@@UAEPAXI@Z 00428f0f f i LIBCMT:throw_bad_alloc.obj
+ 0001:00027f0f       ??_Gbad_alloc@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
+ 0001:00027f0f       ??_Elogic_error@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
+ 0001:00027f0f       ??_Elength_error@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
+ 0001:00027f0f       ??_Gout_of_range@std@@UAEPAXI@Z 00428f0f f i libcpmt:xthrow.obj
  0001:00027f3c       ?__scrt_throw_std_bad_alloc@@YAXXZ 00428f3c f   LIBCMT:throw_bad_alloc.obj
+ 0001:00027f3c       ?_Xbad_alloc@std@@YAXXZ    00428f3c f   libcpmt:xthrow.obj
  0001:00027f59       ?_Xinvalid_argument@std@@YAXPBD@Z 00428f59 f   libcpmt:xthrow.obj
  0001:00027f79       ?_Xlength_error@std@@YAXPBD@Z 00428f79 f   libcpmt:xthrow.obj
  0001:00027f99       ?_Xout_of_range@std@@YAXPBD@Z 00428f99 f   libcpmt:xthrow.obj
@@ -1084,13 +1084,13 @@
  0001:000296c4       ??2@YAPAXI@Z               0042a6c4 f   LIBCMT:new_scalar.obj
  0001:000296f4       ??3@YAXPAXI@Z              0042a6f4 f   LIBCMT:delete_scalar_size.obj
  0001:00029702       @__security_check_cookie@4 0042a702 f   LIBCMT:secchk.obj
- 0001:00029713       ??_Gtype_info@@UAEPAXI@Z   0042a713 f i LIBCMT:std_type_info_static.obj
  0001:00029713       ??_Etype_info@@UAEPAXI@Z   0042a713 f i LIBCMT:std_type_info_static.obj
+ 0001:00029713       ??_Gtype_info@@UAEPAXI@Z   0042a713 f i LIBCMT:std_type_info_static.obj
  0001:00029736       ??3@YAXPAX@Z               0042a736 f   LIBCMT:delete_scalar.obj
- 0001:0002973b       ??$__crt_fast_encode_pointer@P6GHPAU_RTL_CONDITION_VARIABLE@@PAU_RTL_CRITICAL_SECTION@@K@Z@@YAP6GHPAU_RTL_CONDITION_VARIABLE@@PAU_RTL_CRITICAL_SECTION@@K@ZQ6GH01K@Z@Z 0042a73b f i LIBCMT:thread_safe_statics.obj
  0001:0002973b       ??$__crt_fast_encode_pointer@PAX@@YAPAXQAX@Z 0042a73b f i libvcruntime:winapi_downlevel.obj
  0001:0002973b       ??$__crt_fast_encode_pointer@P6GXPAU_RTL_CONDITION_VARIABLE@@@Z@@YAP6GXPAU_RTL_CONDITION_VARIABLE@@@ZQ6GX0@Z@Z 0042a73b f i LIBCMT:thread_safe_statics.obj
  0001:0002973b       ??$__crt_fast_encode_pointer@PAP6AXXZ@@YAPAP6AXXZQAP6AXXZ@Z 0042a73b f i LIBCMT:utility.obj
+ 0001:0002973b       ??$__crt_fast_encode_pointer@P6GHPAU_RTL_CONDITION_VARIABLE@@PAU_RTL_CRITICAL_SECTION@@K@Z@@YAP6GHPAU_RTL_CONDITION_VARIABLE@@PAU_RTL_CRITICAL_SECTION@@K@ZQ6GH01K@Z@Z 0042a73b f i LIBCMT:thread_safe_statics.obj
  0001:0002979c       ___scrt_acquire_startup_lock 0042a79c f   LIBCMT:utility.obj
  0001:000297ce       ___scrt_initialize_crt     0042a7ce f   LIBCMT:utility.obj
  0001:00029807       ___scrt_initialize_onexit_tables 0042a807 f   LIBCMT:utility.obj
@@ -1129,8 +1129,8 @@
  0001:0002a3f6       ___report_gsfailure        0042b3f6 f   LIBCMT:gs_report.obj
  0001:0002a4ef       ___report_rangecheckfailure 0042b4ef f   LIBCMT:gs_report.obj
  0001:0002a4fb       ___report_securityfailure  0042b4fb f   LIBCMT:gs_report.obj
- 0001:0002a5d0       __alloca_probe             0042b5d0 f   LIBCMT:chkstk.obj
  0001:0002a5d0       __chkstk                   0042b5d0 f   LIBCMT:chkstk.obj
+ 0001:0002a5d0       __alloca_probe             0042b5d0 f   LIBCMT:chkstk.obj
  0001:0002a5fd       __EH_epilog3               0042b5fd f   LIBCMT:ehprolg3.obj
  0001:0002a612       __EH_prolog3               0042b612 f   LIBCMT:ehprolg3.obj
  0001:0002a646       __EH_prolog3_catch         0042b646 f   LIBCMT:ehprolg3.obj
@@ -1238,8 +1238,8 @@
  0001:0002e77a       __abnormal_termination     0042f77a f   libvcruntime:exsup.obj
  0001:0002e7a0       __NLG_Notify1              0042f7a0 f   libvcruntime:exsup.obj
  0001:0002e7ac       __NLG_Notify               0042f7ac f   libvcruntime:exsup.obj
- 0001:0002e7c3       __NLG_Dispatch2            0042f7c3     libvcruntime:exsup.obj
  0001:0002e7c3       __NLG_Dispatch             0042f7c3     libvcruntime:exsup.obj
+ 0001:0002e7c3       __NLG_Dispatch2            0042f7c3     libvcruntime:exsup.obj
  0001:0002e7cb       __NLG_Call                 0042f7cb f   libvcruntime:exsup.obj
  0001:0002e7cd       __NLG_Return2              0042f7cd     libvcruntime:exsup.obj
  0001:0002e7ce       ??0__crt_cached_ptd_host@@QAE@QAU__crt_locale_pointers@@@Z 0042f7ce f i libucrt:invalid_parameter.obj
@@ -1273,16 +1273,16 @@
  0001:0002f546       ??$type_case_integer@$09@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_N_N@Z 00430546 f i libucrt:output.obj
  0001:0002f6d3       ??$type_case_integer@$0BA@@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_N_N@Z 004306d3 f i libucrt:output.obj
  0001:0002f6d3       ??$type_case_integer@$0BA@@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_N_N@Z 004306d3 f i libucrt:output.obj
- 0001:0002f860       ??$type_case_integer_parse_into_buffer@I$07@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEXI_N@Z 00430860 f i libucrt:output.obj
  0001:0002f860       ??$type_case_integer_parse_into_buffer@I$07@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEXI_N@Z 00430860 f i libucrt:output.obj
+ 0001:0002f860       ??$type_case_integer_parse_into_buffer@I$07@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEXI_N@Z 00430860 f i libucrt:output.obj
  0001:0002f8c3       ??$type_case_integer_parse_into_buffer@I$09@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEXI_N@Z 004308c3 f i libucrt:output.obj
  0001:0002f8c3       ??$type_case_integer_parse_into_buffer@I$09@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEXI_N@Z 004308c3 f i libucrt:output.obj
  0001:0002f94a       ??$type_case_integer_parse_into_buffer@I$0BA@@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEXI_N@Z 0043094a f i libucrt:output.obj
  0001:0002f94a       ??$type_case_integer_parse_into_buffer@I$0BA@@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEXI_N@Z 0043094a f i libucrt:output.obj
- 0001:0002f9c7       ??$type_case_integer_parse_into_buffer@_K$07@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEX_K_N@Z 004309c7 f i libucrt:output.obj
  0001:0002f9c7       ??$type_case_integer_parse_into_buffer@_K$07@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEX_K_N@Z 004309c7 f i libucrt:output.obj
- 0001:0002fa3f       ??$type_case_integer_parse_into_buffer@_K$09@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEX_K_N@Z 00430a3f f i libucrt:output.obj
+ 0001:0002f9c7       ??$type_case_integer_parse_into_buffer@_K$07@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEX_K_N@Z 004309c7 f i libucrt:output.obj
  0001:0002fa3f       ??$type_case_integer_parse_into_buffer@_K$09@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEX_K_N@Z 00430a3f f i libucrt:output.obj
+ 0001:0002fa3f       ??$type_case_integer_parse_into_buffer@_K$09@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEX_K_N@Z 00430a3f f i libucrt:output.obj
  0001:0002fae6       ??$type_case_integer_parse_into_buffer@_K$0BA@@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEX_K_N@Z 00430ae6 f i libucrt:output.obj
  0001:0002fae6       ??$type_case_integer_parse_into_buffer@_K$0BA@@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAEX_K_N@Z 00430ae6 f i libucrt:output.obj
  0001:0002fb70       ??0?$output_adapter_data@DV?$string_output_adapter@D@__crt_stdio_output@@@__crt_stdio_output@@IAE@ABV?$string_output_adapter@D@1@_KQBDAAV__crt_cached_ptd_host@@QAD@Z 00430b70 f i libucrt:output.obj
@@ -1303,18 +1303,18 @@
  0001:00030831       ?to_integer_size@__crt_stdio_output@@YAIW4length_modifier@1@@Z 00431831 f i libucrt:output.obj
  0001:00030885       ?type_case_Z@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431885 f i libucrt:output.obj
  0001:00030885       ?type_case_Z@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431885 f i libucrt:output.obj
- 0001:000308e8       ?type_case_a@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 004318e8 f i libucrt:output.obj
  0001:000308e8       ?type_case_a@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 004318e8 f i libucrt:output.obj
- 0001:00030a79       ?type_case_c_tchar@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_ND@Z 00431a79 f i libucrt:output.obj
+ 0001:000308e8       ?type_case_a@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 004318e8 f i libucrt:output.obj
  0001:00030a79       ?type_case_c_tchar@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_ND@Z 00431a79 f i libucrt:output.obj
- 0001:00030b0e       ?type_case_n@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431b0e f i libucrt:output.obj
+ 0001:00030a79       ?type_case_c_tchar@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_ND@Z 00431a79 f i libucrt:output.obj
  0001:00030b0e       ?type_case_n@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431b0e f i libucrt:output.obj
- 0001:00030b93       ?type_case_o@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431b93 f i libucrt:output.obj
+ 0001:00030b0e       ?type_case_n@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431b0e f i libucrt:output.obj
  0001:00030b93       ?type_case_o@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431b93 f i libucrt:output.obj
+ 0001:00030b93       ?type_case_o@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431b93 f i libucrt:output.obj
  0001:00030bb0       ?type_case_p@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431bb0 f i libucrt:output.obj
  0001:00030bb0       ?type_case_p@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431bb0 f i libucrt:output.obj
- 0001:00030bc6       ?type_case_s@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431bc6 f i libucrt:output.obj
  0001:00030bc6       ?type_case_s@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$format_validation_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431bc6 f i libucrt:output.obj
+ 0001:00030bc6       ?type_case_s@?$output_processor@DV?$string_output_adapter@D@__crt_stdio_output@@V?$standard_base@DV?$string_output_adapter@D@__crt_stdio_output@@@2@@__crt_stdio_output@@AAE_NXZ 00431bc6 f i libucrt:output.obj
  0001:00030c38       ?unget@?$c_string_character_source@D@__crt_strtox@@QAEXD@Z 00431c38 f i libucrt:output.obj
  0001:00030c61       ?unget@?$c_string_character_source@_W@__crt_strtox@@QAEX_W@Z 00431c61 f i libucrt:output.obj
  0001:00030c90       ?update_locale_slow@__crt_cached_ptd_host@@AAEXXZ 00431c90 f i libucrt:output.obj
@@ -1359,9 +1359,9 @@
  0001:0003254e       ??$parse_floating_point_write_result@M@__crt_strtox@@YA?AW4SLD_STATUS@@W4floating_point_parse_result@0@ABUfloating_point_string@0@QAM@Z 0043354e f i libucrt:atof.obj
  0001:000326ba       ??$parse_floating_point_write_result@N@__crt_strtox@@YA?AW4SLD_STATUS@@W4floating_point_parse_result@0@ABUfloating_point_string@0@QAN@Z 004336ba f i libucrt:atof.obj
  0001:000327de       ??0_LocaleUpdate@@QAE@QAU__crt_locale_pointers@@@Z 004337de f i libucrt:atof.obj
+ 0001:00032860       ??R<lambda_690cf26ff5d754c94c32cf642e9f01bc>@@QBE@XZ 00433860 f i libucrt:atof.obj
  0001:00032860       ??R<lambda_32aa245da1b5b882fa96db788295c8b2>@@QBE@XZ 00433860 f i libucrt:atof.obj
  0001:00032860       ??R<lambda_e51f7abad2595a5950d3223319845217>@@QBE@XZ 00433860 f i libucrt:atof.obj
- 0001:00032860       ??R<lambda_690cf26ff5d754c94c32cf642e9f01bc>@@QBE@XZ 00433860 f i libucrt:atof.obj
  0001:00032886       ?as_double@floating_point_value@__crt_strtox@@QBEAANXZ 00433886 f i libucrt:atof.obj
  0001:000328ab       ?as_float@floating_point_value@__crt_strtox@@QBEAAMXZ 004338ab f i libucrt:atof.obj
  0001:000328d0       ?assemble_floating_point_infinity@__crt_strtox@@YAX_NABVfloating_point_value@1@@Z 004338d0 f i libucrt:atof.obj
@@ -1485,10 +1485,10 @@
  0001:0003b629       __callnewh                 0043c629 f   libucrt:new_handler.obj
  0001:0003b655       __query_new_handler        0043c655 f   libucrt:new_handler.obj
  0001:0003b6ac       __seh_filter_exe           0043c6ac f   libucrt:exception_filter.obj
+ 0001:0003b83f       ??$__crt_fast_encode_pointer@P6AHPAU_exception@@@Z@@YAP6AHPAU_exception@@@ZQ6AH0@Z@Z 0043c83f f i libucrt:matherr.obj
  0001:0003b83f       ??$__crt_fast_encode_pointer@P6GXPAXK0@Z@@YAP6GXPAXK0@ZQ6GX0K0@Z@Z 0043c83f f i libucrt:exit.obj
  0001:0003b83f       ??$__crt_fast_encode_pointer@P6AHXZ@@YAP6AHXZQ6AHXZ@Z 0043c83f f i libucrt:onexit.obj
  0001:0003b83f       ??$__crt_fast_encode_pointer@P6GHPA_WKJ@Z@@YAP6GHPA_WKJ@ZQ6GH0KJ@Z@Z 0043c83f f i libucrt:winapi_thunks.obj
- 0001:0003b83f       ??$__crt_fast_encode_pointer@P6AHPAU_exception@@@Z@@YAP6AHPAU_exception@@@ZQ6AH0@Z@Z 0043c83f f i libucrt:matherr.obj
  0001:0003baeb       ___acrt_initialize_thread_local_exit_callback 0043caeb f   libucrt:exit.obj
  0001:0003bafa       __c_exit                   0043cafa f   libucrt:exit.obj
  0001:0003bb09       __cexit                    0043cb09 f   libucrt:exit.obj
@@ -3777,7 +3777,7 @@
  0003:00011fa0       ?g_strSecretKey@@3V?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@A 00479fa0     TNetLib:Session.obj
  0003:00011fa4       ___@@_PchSym_@00@UyzxpLfkLBCRBCRCACDUEhUEhglibPFOAPhlfixvLRLplkrvUoryUldmUgmvgoryUgmvgoryUivovzhvUhgwzucOlyq@4B2008FD98C1DD4 00479fa4     TNetLib:stdafx.obj
  0003:00011fa8       ?_AtlBaseModule@ATL@@3VCAtlBaseModule@1@A 00479fa8     atls:atlbase.obj
- 0003:00011fe0       ___@@_PchSym_@00@UztvmgUPdlipUCUhUrmgvinvwrzgvUexgllohUzgohOmzgrevkilqPBACIAJCBDBUlyqiUcIGUhgwzucOlyq@4B2008FD98C1DD4 00479fe0     atls:stdafx.obj
+ 0003:00011fe0       ___@@_PchSym_@00@UzUPdlipUBUhUrmgvinvwrzgvUexgllohUzgohOmzgrevkilqPBACIAJCBDBUlyqiUcIGUhgwzucOlyq@4B2008FD98C1DD4 00479fe0     atls:stdafx.obj
  0003:000120b0       ?_Id_cnt@id@locale@std@@0HA 0047a0b0     libcpmt:locale0.obj
  0003:000120b4       ?_Clocptr@_Locimp@locale@std@@0PAV123@A 0047a0b4     libcpmt:locale0.obj
  0003:000120b8       ?id@?$ctype@G@std@@2V0locale@2@A 0047a0b8     libcpmt:locale0.obj
@@ -4197,8 +4197,8 @@
  0001:0002e0f0       $$000000                   0042f0f0     libvcruntime:lowhelpr.obj
  0001:0002e1b0       $$000000                   0042f1b0     libvcruntime:exsup4.obj
  0001:0002e240       __unwind_handler4          0042f240 f   libvcruntime:exsup4.obj
- 0001:0002e382       ?try_get_first_available_module@@YAPAUHINSTANCE__@@QBW4module_id@?A0xa2817912@@0@Z 0042f382 f   libvcruntime:winapi_downlevel.obj
- 0001:0002e446       ?try_get_function@@YAPAXW4function_id@?A0xa2817912@@QBDQBW4module_id@2@2@Z 0042f446 f   libvcruntime:winapi_downlevel.obj
+ 0001:0002e382       ?try_get_first_available_module@@YAPAUHINSTANCE__@@QBW4module_id@?A0x688fd433@@0@Z 0042f382 f   libvcruntime:winapi_downlevel.obj
+ 0001:0002e446       ?try_get_function@@YAPAXW4function_id@?A0x688fd433@@QBDQBW4module_id@2@2@Z 0042f446 f   libvcruntime:winapi_downlevel.obj
  0001:0002e690       $$000000                   0042f690     libvcruntime:exsup.obj
  0001:0002e6b1       __unwind_handler           0042f6b1 f   libvcruntime:exsup.obj
  0001:0002ebeb       ??$common_vsnprintf_s@D@@YAH_KQADIIQBDAAV__crt_cached_ptd_host@@1@Z 0042fbeb f   libucrt:output.obj
@@ -5297,12 +5297,12 @@
  0002:00004a30       _CWMask                    00458a30     LIBCMT:ftol3.obj
  0002:00004a34       _GS_ExceptionPointers      00458a34     LIBCMT:gs_report.obj
  0002:00004a60       ?ExceptionTemplate@?1??_CxxThrowException@@9@8@4UEHExceptionRecord@@B 00458a60     libvcruntime:throw.obj
- 0002:00004aa0       ?module_names@?A0xa2817912@@3QBQB_WB 00458aa0     libvcruntime:winapi_downlevel.obj
- 0002:00004b58       ?candidate_modules@?1??try_get_FlsAlloc@@YAP6GKP6GXPAX@Z@ZXZ@4QBW4module_id@?A0xa2817912@@B 00458b58     libvcruntime:winapi_downlevel.obj
- 0002:00004b60       ?candidate_modules@?1??try_get_FlsFree@@YAP6GHK@ZXZ@4QBW4module_id@?A0xa2817912@@B 00458b60     libvcruntime:winapi_downlevel.obj
- 0002:00004b68       ?candidate_modules@?1??try_get_FlsGetValue@@YAP6GPAXK@ZXZ@4QBW4module_id@?A0xa2817912@@B 00458b68     libvcruntime:winapi_downlevel.obj
- 0002:00004b70       ?candidate_modules@?1??try_get_FlsSetValue@@YAP6GHKPAX@ZXZ@4QBW4module_id@?A0xa2817912@@B 00458b70     libvcruntime:winapi_downlevel.obj
- 0002:00004b78       ?candidate_modules@?1??try_get_InitializeCriticalSectionEx@@YAP6GHPAU_RTL_CRITICAL_SECTION@@KK@ZXZ@4QBW4module_id@?A0xa2817912@@B 00458b78     libvcruntime:winapi_downlevel.obj
+ 0002:00004aa0       ?module_names@?A0x688fd433@@3QBQB_WB 00458aa0     libvcruntime:winapi_downlevel.obj
+ 0002:00004b58       ?candidate_modules@?1??try_get_FlsAlloc@@YAP6GKP6GXPAX@Z@ZXZ@4QBW4module_id@?A0x688fd433@@B 00458b58     libvcruntime:winapi_downlevel.obj
+ 0002:00004b60       ?candidate_modules@?1??try_get_FlsFree@@YAP6GHK@ZXZ@4QBW4module_id@?A0x688fd433@@B 00458b60     libvcruntime:winapi_downlevel.obj
+ 0002:00004b68       ?candidate_modules@?1??try_get_FlsGetValue@@YAP6GPAXK@ZXZ@4QBW4module_id@?A0x688fd433@@B 00458b68     libvcruntime:winapi_downlevel.obj
+ 0002:00004b70       ?candidate_modules@?1??try_get_FlsSetValue@@YAP6GHKPAX@ZXZ@4QBW4module_id@?A0x688fd433@@B 00458b70     libvcruntime:winapi_downlevel.obj
+ 0002:00004b78       ?candidate_modules@?1??try_get_InitializeCriticalSectionEx@@YAP6GHPAU_RTL_CRITICAL_SECTION@@KK@ZXZ@4QBW4module_id@?A0x688fd433@@B 00458b78     libvcruntime:winapi_downlevel.obj
  0002:00004b80       ?tokenTable@@3QBQBDB       00458b80     libvcruntime:undname.obj
  0002:00004bc0       ?nameTable@@3QBQBDB        00458bc0     libvcruntime:undname.obj
  0002:00004d08       ?rttiTable@@3QBQBDB        00458d08     libvcruntime:undname.obj
