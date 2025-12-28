@@ -363,5 +363,16 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Build Artifacts
-**/*.exe
-**/*.lib
+*.exe
+*.lib
+*.dll
+*.pdb
+*.obj
+*.ilk
+*.exp
+/Bin/
+/bin/
+/x64/
+/x86/
+/Debug/
+/Release/
