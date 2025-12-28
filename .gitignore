@@ -378,9 +378,9 @@ FodyWeavers.xsd
 /Release/
 
 # Ignore Server Service Binaries
-Server/Services/TBoWSvr
-Server/Services/TBRSvr
-Server/Services/TControlSvr
-Server/Services/TLoginSvr
-Server/Services/TMapSvr
-Server/Services/TWorldSvr
+Services/TBoWSvr
+Services/TBRSvr
+Services/TControlSvr
+Services/TLoginSvr
+Services/TMapSvr
+Services/TWorldSvr
