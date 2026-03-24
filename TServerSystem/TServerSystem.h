@@ -19,6 +19,7 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <functional>
 #include <ctime> 
 #include <iostream>
 #include <Windows.h>
