@@ -1,4 +1,4 @@
-// TMapSvr.cpp : WinMainÀÇ ±¸ÇöÀÔ´Ï´Ù.
+// TMapSvr.cpp : WinMainï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
 #include "StdAfx.h"
 #include <SvrInc.h>
 #include "TMapSvrModule.h"
@@ -1817,8 +1817,8 @@ void CTMapSvrModule::SetEventCloseSession(CTMapSession* pSession, BYTE bSave) {
 }
 
 void CTMapSvrModule::ClosingSession(CTMapSession* pSession) {
-	// pSession¿¡ ´ëÇÑ ÆÐÅ¶Ã³¸®°¡ ¿Ï·áµÇ´Â ½ÃÁ¡À» ¾Ë¸²
-	// pSession¿¡ ´ëÇÑ ¿À¹ö·¦ ¿ÀÆÛ·¡ÀÌ¼ÇÀÌ ¿Ï·áµÈ °ÍÀ» È®ÀÎÈÄ È£Ãâ ÇÏ¿©¾ß ÇÔ.
+	// pSessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¶Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½
+	// pSessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½.
 	EnterCriticalSection(&m_csBATCH);
 
 
@@ -4759,16 +4759,16 @@ DWORD CTMapSvrModule::WorkThread() {
 
 						break;
 
-						// ***** IOCP »ç¿ë¹ý Áß ¾Ë¾Æ³»±â Èûµç Ã¹¹øÂ° ±¸¹® (¼­¹öÃø ¼¼¼Ç Á¾·á) *****
+						// ***** IOCP ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ë¾Æ³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) *****
 						//
-						// ¼­¹ö°¡ ¸ÕÀú closesocket()À» È£ÃâÇÏ¿© ¼¼¼ÇÀ» Á¾·áÇÑ °æ¿ìÀÌ¸ç
-						// WSARecv()°¡ È£ÃâµÈ »óÅÂ¿¡¼­¸¸ ÀÌ ÄÚµå·Î µé¾î¿À¸ç
-						// ¸ðµç ¿À¹ö·¦ ¿ÀÆÛ·¡ÀÌ¼ÇÀÌ Á¾·áµÈ »óÅÂÀÌ±â ¶§¹®¿¡
-						// ÀÌ ¼ÒÄÏ ÇÚµé°ú °ü·ÃµÈ µ¥ÀÌÅ¸´Â IOCPÅ¥¿¡ ³²¾ÆÀÖÁö ¾Ê´Ù.
-						// µû¶ó¼­ ÀÌ ½º·¹µå¿¡¼­´Â ÇØ´ç ¼¼¼Ç¿¡ °ü·ÃµÈ ÀÛ¾÷ ¸í·ÉÀ» ´õÀÌ»ó ¼öÇàÇÏÁö ¾Ê±â ¶§¹®¿¡
-						// ´Ù¸¥ ½º·¹µå°¡ Çã¶ôÇÑ´Ù¸é ÀÌ ±¸¹®¿¡¼­ ¼¼¼Ç Æ÷ÀÎÅÍ¸¦ »èÁ¦ÇØµµ ¹«¹æÇÏ´Ù.
-						// ¼¼¼ÇÀ» »èÁ¦ ÇÏ´Âµ¥ °¡Àå ÁÁÀº ÁöÁ¡ÀÌ¹Ç·Î ÀüÃ¼ ½Ã½ºÅÛ ¼³°è½Ã
-						// Á¤»óÀûÀÎ ¼¼¼Ç Á¾·á´Â ¼­¹öÃø¿¡¼­ ¸ÕÀú ¼¼¼ÇÀ» Á¾·á½ÃÅ°µµ·Ï ¼³°èÇÏ´Â °ÍÀÌ ¾ÈÀüÇÏ´Ù.
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ closesocket()ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+						// WSARecv()ï¿½ï¿½ È£ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ IOCPÅ¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½.
+						// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½å¿¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Û¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+						// ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½Ñ´Ù¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¹Ç·ï¿½ ï¿½ï¿½Ã¼ ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+						// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.
 						break;
 					case TOV_SSN_SEND:
 						OnSendComplete(pSession, 0);
@@ -5019,16 +5019,16 @@ void CTMapSvrModule::ProcessSession(CTMapSession* pSession, DWORD dwIoBytes) {
 	BOOL bContinue = TRUE;
 
 	if (!pSession->Read(dwIoBytes)) {
-		// ***** IOCP »ç¿ë¹ý Áß ¾Ë¾Æ³»±â Èûµç µÎ¹øÂ° ±¸¹® (Å¬¶óÀÌ¾ðÆ®Ãø ¼¼¼Ç Á¾·á) *****
+		// ***** IOCP ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ë¾Æ³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½ (Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) *****
 		//
-		// Å¬¶óÀÌ¾ðÆ®°¡ ¸ÕÀú closesocket()À» È£ÃâÇÏ¿© ¼¼¼ÇÀ» Á¾·áÇÑ °æ¿ìÀÌ¸ç
-		// WSARecv()°¡ È£ÃâµÈ »óÅÂ¿¡¼­¸¸ ÀÌ ÄÚµå·Î µé¾î¿À¸ç
-		// ¸ðµç ¿À¹ö·¦ ¿ÀÆÛ·¡ÀÌ¼ÇÀÌ Á¾·á µÇ¾ú´Ù°í º¼ ¼ö ¾ø´Ù.
-		// µû¶ó¼­ ÀÌÈÄ¿¡ ÀÌ ½º·¹µå¿¡¼­ ÀÌ ¼¼¼Ç°ú °ü·ÃµÈ ÀÛ¾÷¸í·ÉÀÌ ½ÇÇà µÉ ¼ö ÀÖÀ¸¹Ç·Î
-		// ¿©±â¼­ ¼¼¼Ç Æ÷ÀÎÅÍ¸¦ »èÁ¦ÇÏ¸é ¼­¹ö°¡ ´Ù¿îµÉ ¼ö ÀÖ´Ù.
-		// Receive¿Í °ü·ÃµÈ ¿À¹ö·¦ ¿ÀÆÛ·¹ÀÌ¼ÇÀº È®½ÇÈ÷ Á¾·á µÇ¾úÀ¸¹Ç·Î
-		// Send¿Í °ü·ÃµÈ ¿À¹ö·¦ ¿ÀÆÛ·¹ÀÌ¼ÇÀÌ Á¾·áµÇ¾ú´ÂÁö¸¦
-		// È®ÀÎÇÑ ÈÄ ´Ù¸¥ ½º·¹µåÀÇ ¼¼¼Ç »èÁ¦ ¼ö¶ô°úÁ¤À» °ÅÄ¡°í ¼¼¼ÇÀ» »èÁ¦ ÇØ¾ß ÇÑ´Ù.
+		// Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ closesocket()ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+		// WSARecv()ï¿½ï¿½ È£ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½å¿¡ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½
+		// ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
+		// Receiveï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ç·ï¿½
+		// Sendï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
 		if (pSession->m_bSessionType == SESSION_SERVER)
 			LogEvent("Process Read %d, %d\n", dwIoBytes, pSession->m_Recv.m_dwReadBytes);
 		OnInvalidSession(pSession);
@@ -5076,16 +5076,16 @@ void CTMapSvrModule::ProcessSession(CTMapSession* pSession, DWORD dwIoBytes) {
 	}
 
 	if (!pSession->WaitForMessage()) {
-		// ***** IOCP »ç¿ë¹ý Áß ¾Ë¾Æ³»±â Èûµç ³×¹øÂ° ±¸¹® (ºñ Á¤»óÀûÀÎ ¼¼¼Ç Á¾·á) *****
+		// ***** IOCP ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ë¾Æ³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) *****
 		//
-		// ³×Æ®Ÿp ¿À·ù·Î ÀÎÇØ ¼¼¼ÇÀÌ ºñ Á¤»óÀûÀÎ »óÅÂ¿¡¼­ WSARecv()ÇÔ¼ö È£ÃâÀÌ ½ÇÆÐÇÑ °æ¿ìÀÌ¸ç
-		// WSARecv()°¡ È£ÃâµÈ »óÅÂ¿¡¼­¸¸ ÀÌ ÄÚµå·Î µé¾î¿À¸ç
-		// ¸ðµç ¿À¹ö·¦ ¿ÀÆÛ·¡ÀÌ¼ÇÀÌ Á¾·á µÇ¾ú´Ù°í º¼ ¼ö ¾ø´Ù.
-		// µû¶ó¼­ ÀÌÈÄ¿¡ ÀÌ ½º·¹µå¿¡¼­ ÀÌ ¼¼¼Ç°ú °ü·ÃµÈ ÀÛ¾÷¸í·ÉÀÌ ½ÇÇà µÉ ¼ö ÀÖÀ¸¹Ç·Î
-		// ¿©±â¼­ ¼¼¼Ç Æ÷ÀÎÅÍ¸¦ »èÁ¦ÇÏ¸é ¼­¹ö°¡ ´Ù¿îµÉ ¼ö ÀÖ´Ù.
-		// Receive¿Í °ü·ÃµÈ ¿À¹ö·¦ ¿ÀÆÛ·¹ÀÌ¼ÇÀº È®½ÇÈ÷ Á¾·á µÇ¾úÀ¸¹Ç·Î
-		// Send¿Í °ü·ÃµÈ ¿À¹ö·¦ ¿ÀÆÛ·¹ÀÌ¼ÇÀÌ Á¾·áµÇ¾ú´ÂÁö¸¦
-		// È®ÀÎÇÑ ÈÄ ´Ù¸¥ ½º·¹µåÀÇ ¼¼¼Ç »èÁ¦ ¼ö¶ô°úÁ¤À» °ÅÄ¡°í ¼¼¼ÇÀ» »èÁ¦ ÇØ¾ß ÇÑ´Ù.
+		// ï¿½ï¿½Æ®ï¿½p ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ WSARecv()ï¿½Ô¼ï¿½ È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+		// WSARecv()ï¿½ï¿½ È£ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½å¿¡ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½
+		// ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
+		// Receiveï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ç·ï¿½
+		// Sendï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û·ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
 		if (pSession->m_bSessionType == SESSION_SERVER)
 			LogEvent("WaitForMessage %d, %d, %d, %d\n", pSession->m_sock, pSession->m_bValid, pSession->m_bCanRecv, WSAGetLastError());
 		OnInvalidSession(pSession);
@@ -5122,10 +5122,10 @@ DWORD CTMapSvrModule::OnReceive(LPPACKETBUF pBUF) {
 			if (pBUF->m_pSESSION->m_bSessionType == SESSION_SERVER) {
 				// Control Server Message
 				ON_RECEIVE(CT_SERVICEMONITOR_ACK)
-					ON_RECEIVE(CT_ANNOUNCEMENT_ACK) // Çö½Â·æ °øÁö»çÇ×
-					ON_RECEIVE(CT_USERKICKOUT_ACK) // Çö½Â·æ À¯Àú °­Á¦ÅðÀå
-					ON_RECEIVE(CT_USERMOVE_ACK) // Çö½Â·æ À¯Àú À§Ä¡ÀÌµ¿
-					ON_RECEIVE(CT_MONSPAWNFIND_ACK) // Çö½Â·æ ¸ó½ºÅÍ °ü¸®
+					ON_RECEIVE(CT_ANNOUNCEMENT_ACK) // ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					ON_RECEIVE(CT_USERKICKOUT_ACK) // ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					ON_RECEIVE(CT_USERMOVE_ACK) // ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ìµï¿½
+					ON_RECEIVE(CT_MONSPAWNFIND_ACK) // ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 					ON_RECEIVE(CT_MONACTION_ACK)
 					ON_RECEIVE(CT_SERVICEDATACLEAR_ACK)
 					ON_RECEIVE(CT_CTRLSVR_REQ)
@@ -5215,7 +5215,7 @@ DWORD CTMapSvrModule::OnReceive(LPPACKETBUF pBUF) {
 						ON_RECEIVE(DM_SAVECHARPOSITION_REQ)
 
 						//////////////////////////////////////////
-						//±æµå
+						//ï¿½ï¿½ï¿½
 						ON_RECEIVE(DM_GUILDCABINETPUTIN_REQ)
 						ON_RECEIVE(DM_GUILDCABINETTAKEOUT_REQ)
 						ON_RECEIVE(DM_GUILDCABINETROLLBACK_REQ)
@@ -5279,7 +5279,7 @@ DWORD CTMapSvrModule::OnReceive(LPPACKETBUF pBUF) {
 						ON_RECEIVE(DM_CMGIFTLOG_REQ)
 
 						//////////////////////////////////////////
-						//±æµå
+						//ï¿½ï¿½ï¿½
 						ON_RECEIVE(DM_GUILDCABINETPUTIN_ACK)
 						ON_RECEIVE(DM_GUILDCABINETTAKEOUT_ACK)
 						//////////////////////////////////////////
@@ -5319,7 +5319,7 @@ DWORD CTMapSvrModule::OnReceive(LPPACKETBUF pBUF) {
 							ON_RECEIVE(MW_RPSGAMECHANGE_REQ)
 
 							//////////////////////////////////////////////////////////////////////////
-							// ±æµå
+							// ï¿½ï¿½ï¿½
 							ON_RECEIVE(MW_GUILDESTABLISH_REQ)
 							ON_RECEIVE(MW_GUILDDISORGANIZATION_REQ)
 							ON_RECEIVE(MW_GUILDLEAVE_REQ)
@@ -5545,7 +5545,7 @@ DWORD CTMapSvrModule::OnReceive(LPPACKETBUF pBUF) {
 			ON_RECEIVE(CS_QUESTENDTIMER_REQ)
 			ON_RECEIVE(CS_QUESTLIST_POSSIBLE_REQ)
 			/////////////////////////////////////////////////////////
-			// ±æµå
+			// ï¿½ï¿½ï¿½
 			ON_RECEIVE(CS_GUILDESTABLISH_REQ)
 			ON_RECEIVE(CS_GUILDDISORGANIZATION_REQ)
 			ON_RECEIVE(CS_GUILDINVITE_REQ)
@@ -6665,7 +6665,7 @@ BYTE CTMapSvrModule::SetMagicOpt(CTPlayer* pPlayer, CTItem* pItem, BYTE bOptType
 		return 0;
 	}
 
-	// m_wValue ÃÖÁ¾¿É¼ÇºñÀ²
+	// m_wValue ï¿½ï¿½ï¿½ï¿½ï¿½É¼Çºï¿½ï¿½ï¿½
 	INT nBaseLevel = 0;
 	if (bMakeType == IMT_SCROLL)
 		nBaseLevel = INT(min(ITEMAGIC_BASELEVEL, pPlayer->m_bLevel)) - max(0, 34 - max(pItem->GetEquipLevel(), pItem->GetPowerLevel()));
@@ -7132,7 +7132,7 @@ CTRecallMon* CTMapSvrModule::CreateRecallMon(CTPlayer* pPlayer,
 	}
 
 	if (pPlayer->m_pMAP && pPlayer->m_bMain &&
-			!pMon->m_pMON->m_wID)//ºÐ½Å
+			!pMon->m_pMON->m_wID)//ï¿½Ð½ï¿½
 	{
 		VTMONSTER vMONS;
 		vMONS.clear();
@@ -7878,7 +7878,7 @@ void CTMapSvrModule::PartyChiefItemTake(CTPlayer* pChief, CTPlayer* pTarget, CTM
 	pTarget->SendCS_MONITEMLIST_ACK(MIL_SUCCESS, pMon->m_dwID, pMon->m_dwMoney, pInven, TRUE);
 }
 
-// ÀÌº¥Æ® º¯½Å¹°¾à
+// ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½
 CTSkillTemp* CTMapSvrModule::RandTransSkill(CTSkillTemp* pTemp) {
 	LPTSKILLDATA pData = NULL;
 	for (DWORD i = 0; i < pTemp->m_vData.size(); i++) {
@@ -9710,6 +9710,9 @@ void CTMapSvrModule::DelMonSpawn(CTMap* pMap, WORD wSpawnID, BYTE bErase) {
 }
 
 BYTE CTMapSvrModule::CheckMapLevel(CTPlayer* pPlayer) {
+	if (TEMP_IGNORE_PORTAL_LEVEL_ITEM_CHECK)
+		return FALSE;
+
 	if (!pPlayer->m_wMapID || !pPlayer->m_dwLastDestination)
 		return FALSE;
 
@@ -10224,7 +10227,7 @@ BYTE CTMapSvrModule::SetTutorialCharBase(CTPlayer* pPlayer) {
 			pSkill->m_pTSKILL = pTemp;
 			pSkill->m_bLevel = pTemp->m_bMaxLevel;
 
-			//½ºÅ³ ¹ö¸±¶§ m_vRemainSkill¿¡¼­ ÇØ´ç ½ºÅ³ ²À »¬°Í
+			//ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ m_vRemainSkillï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			pPlayer->m_mapTSKILL.insert(MAPTSKILL::value_type(pTemp->m_wID, pSkill));
 			pPlayer->RemainSkill(pSkill, 0);
 		}
@@ -11158,7 +11161,7 @@ void CTMapSvrModule::UpdateCSModule() {
 	if (!m_bEnableNP)
 		return;
 
-	if (m_dwTick - m_dwNPCSModuleTick > NPROTECT_CS_UPDATETICK)	//	CS¸ðµâ ¾÷µ¥ÀÌÆ® ½Ã°£
+	if (m_dwTick - m_dwNPCSModuleTick > NPROTECT_CS_UPDATETICK)	//	CSï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ã°ï¿½
 	{
 		GGAuthUpdateTimer();
 		m_dwNPCSModuleTick = m_dwTick;

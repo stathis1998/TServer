@@ -1,4 +1,4 @@
-// CSHandler.cpp : C/S Protocol Handler ÇÔ¼öÀÇ ±¸ÇöÀÔ´Ï´Ù.
+// CSHandler.cpp : C/S Protocol Handler ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
 
 #include "StdAfx.h"
 #include <SvrInc.h>
@@ -525,7 +525,7 @@ DWORD CTMapSvrModule::OnCS_MOVE_REQ(LPPACKETBUF pBUF) {
 	}
 
 	if (!pPlayer->m_bCanHost && bAction != TA_STAND) {
-		//Ã³À½ Á¢¼ÓÇØ¼­ ¼¿¿¡ È¥ÀÚ°¡ ¾Æ´Ò°æ¿ì´Â ¿òÁ÷ÀÌ¸é bCanHost Set
+		//Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ È¥ï¿½Ú°ï¿½ ï¿½Æ´Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ bCanHost Set
 		VTMONSTER vMONS;
 		vMONS.clear();
 
@@ -1502,7 +1502,7 @@ DWORD CTMapSvrModule::OnCS_DEFEND_REQ(LPPACKETBUF pBUF) {
 	CTSelfObj* pSelf = NULL;
 	CTObjBase* pDEFEND = FindTarget(pPlayer, bTargetType, dwTargetID);
 
-	// °áÅõ
+	// ï¿½ï¿½ï¿½ï¿½
 	if (pDEFEND && bTargetType == OT_PC) {
 		if (!((CTPlayer*) pDEFEND)->CanDuel(pAtkHost))
 			return EC_NOERROR;
@@ -1589,7 +1589,7 @@ DWORD CTMapSvrModule::OnCS_DEFEND_REQ(LPPACKETBUF pBUF) {
 				(bAttackType != pDEFEND->m_bType ||
 				 dwAttackID != pDEFEND->m_dwID) &&
 				pTemp->IsNegative() &&
-				pTemp->GetAttackType() == SAT_PHYSIC) {	// ¸¶¹ý°Å¿ï
+				pTemp->GetAttackType() == SAT_PHYSIC) {	// ï¿½ï¿½ï¿½ï¿½ï¿½Å¿ï¿½
 
 			wAttackPartyID = pDEFEND->GetPartyID();
 			bAttackCountry = pDEFEND->m_bCountry;
@@ -2204,7 +2204,7 @@ DWORD CTMapSvrModule::OnCS_SKILLBUY_REQ(LPPACKETBUF pBUF) {
 		pPlayer->m_wSkillPoint -= pTemp->GetNeedSkillPoint(1);
 		pPlayer->UseMoney(dwPrice, TRUE);
 
-		//½ºÅ³ ¹ö¸±¶§ m_vRemainSkill¿¡¼­ ÇØ´ç ½ºÅ³ ²À »¬°Í
+		//ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ m_vRemainSkillï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		pPlayer->m_mapTSKILL.insert(MAPTSKILL::value_type(wSkillID, pSkill));
 		pPlayer->RemainSkill(pSkill, 0);
 	}
@@ -2627,7 +2627,7 @@ DWORD CTMapSvrModule::OnCS_SKILLUSE_REQ(LPPACKETBUF pBUF) {
 				*/
 		pATTACK->SkillUse(pSkill, m_dwTick);
 
-		if (!pPlayer->UseSkillItem(pSkill, bTotalHit - 1))	//¼Ò¸ð ¾ÆÀÌÅÛÀ» ¾ø¾Ö´Ï±ñ »ç¿ë ¸¶Áö¸· Á¶°ÇÀ¸·Î...
+		if (!pPlayer->UseSkillItem(pSkill, bTotalHit - 1))	//ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´Ï±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...
 		{
 			pPlayer->SendCS_SKILLUSE_ACK(
 				SKILL_UNSUITWEAPON,
@@ -3006,7 +3006,7 @@ DWORD CTMapSvrModule::OnCS_LOOPSKILL_REQ(LPPACKETBUF pBUF) {
 	}
 
 	if (bAttackType == OT_PC &&
-			!pPlayer->UseSkillItem(pSkill, bTotalHit - 1))	//¼Ò¸ð ¾ÆÀÌÅÛÀ» ¾ø¾Ö´Ï±ñ »ç¿ë ¸¶Áö¸· Á¶°ÇÀ¸·Î...
+			!pPlayer->UseSkillItem(pSkill, bTotalHit - 1))	//ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´Ï±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...
 	{
 		pPlayer->SendCS_LOOPSKILL_ACK(
 			SKILL_UNSUITWEAPON,
@@ -3425,7 +3425,7 @@ DWORD CTMapSvrModule::OnCS_QUESTLIST_POSSIBLE_REQ(LPPACKETBUF pBUF) {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-// ±æµå
+// ï¿½ï¿½ï¿½
 DWORD CTMapSvrModule::OnCS_GUILDESTABLISH_REQ(LPPACKETBUF pBUF) {
 	CTPlayer* pPlayer = (CTPlayer*) pBUF->m_pSESSION;
 #ifdef BOW_COMPILE_MODE
@@ -5715,7 +5715,7 @@ DWORD CTMapSvrModule::OnCS_TELEPORT_REQ(LPPACKETBUF pBUF) {
 			if (pDest->m_bCondition[i] == PCT_TOURNAMENTLOUNGE)
 				bTournamentBat = TRUE;
 
-			if (pDest->m_bCondition[i] == PCT_HAVEITEM)
+			if (!TEMP_IGNORE_PORTAL_LEVEL_ITEM_CHECK && pDest->m_bCondition[i] == PCT_HAVEITEM)
 				wNeedItem = (WORD) pDest->m_dwConditionID[i];
 
 			if (wNeedItem) {
@@ -6555,7 +6555,7 @@ DWORD CTMapSvrModule::OnCS_FRIENDASK_REQ(LPPACKETBUF pBUF) {
 	if (pPlayer->m_strNAME == strTarget)
 		return EC_NOERROR;
 
-	// Â÷´Ü°Ë»ç
+	// ï¿½ï¿½ï¿½Ü°Ë»ï¿½
 	MAPTPROTECTED::iterator it;
 	for (it = pPlayer->m_mapTPROTECTED.begin(); it != pPlayer->m_mapTPROTECTED.end(); it++) {
 		if ((*it).second->m_strName == strTarget) {
@@ -7104,7 +7104,7 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 	BYTE bItemKind = pGradeItem->m_pTITEM->m_bKind;
 	BYTE bItemGrade = pGradeItem->m_pTITEM->m_bGrade;
 
-	// ÁÖ¹®¼­ Ã³¸®
+	// ï¿½Ö¹ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 
 	pGradeItem->m_bCount--;
 	if (!pGradeItem->m_bCount) {
@@ -7263,7 +7263,7 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 		}
 	}
 	break;
-	case IK_DOWNGRADE: // Á¤È­ÁÖ¹®¼­
+	case IK_DOWNGRADE: // ï¿½ï¿½È­ï¿½Ö¹ï¿½ï¿½ï¿½
 	{
 		if (pItem->m_bLevel) {
 			pItem->m_bLevel = pItem->m_bLevel - bItemGrade;
@@ -7470,7 +7470,7 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 	break;
 
 	case IK_MAGICGRADE:
-	case IK_RAREGRADE: // Á¦ÀÛÁÖ¹®¼­
+	case IK_RAREGRADE: // ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½
 	{
 		BYTE bResult = ITEMUPGRADE_MAGICFAIL;
 
@@ -7503,7 +7503,7 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 		if (!bResult)
 			pPlayer->SendCS_ITEMMAGICGRADE_ACK(bResult, bTargetInven, pItem);
 		else {
-			if (bItemKind == IK_RAREGRADE) // ·¹¾îÀÏ °æ¿ì ¾ÆÀÌÅÆ Á¦°Å
+			if (bItemKind == IK_RAREGRADE) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			{
 #ifdef	DEF_UDPLOG
 				m_pUdpSocket->LogItemUpgrade(LOGMAP_ITEMMAKEFAILDEL, pPlayer, pItem);
@@ -8875,7 +8875,7 @@ DWORD CTMapSvrModule::OnCS_ITEMUSE_REQ(LPPACKETBUF pBUF) {
 			CTSkillTemp* pTemp = FindTSkill(pItem->m_pTITEM->m_wUseValue);
 			CTRecallMon* pRecall = pPlayer->FindRecallPet();
 
-			// ÀÌº¥Æ® º¯½Å¹°¾à
+			// ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½
 			if (pTemp) {
 				if (!pPlayer->m_dwRiding || !pRecall) {
 					pPlayer->SendCS_ITEMUSE_ACK(IU_RIDING, wDelayGroupID, bKind, 0);
@@ -8978,7 +8978,7 @@ DWORD CTMapSvrModule::OnCS_ITEMUSE_REQ(LPPACKETBUF pBUF) {
 		{
 			CTSkillTemp* pTemp = FindTSkill(pItem->m_pTITEM->m_wUseValue);
 
-			// ÀÌº¥Æ® º¯½Å¹°¾à
+			// ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½
 			if (pTemp) {
 				if (pPlayer->HaveDisguiseBuff() && pTemp->IsTrans()) {
 					pPlayer->SendCS_ITEMUSE_ACK(IU_NOTFOUND, wDelayGroupID, bKind, 0);
@@ -9940,7 +9940,7 @@ DWORD CTMapSvrModule::OnCS_PROTECTEDERASE_REQ(LPPACKETBUF pBUF) {
 	pPlayer->m_mapTPROTECTED.erase((*it).first);
 	pPlayer->SendCS_PROTECTEDERASE_ACK(PROTECTED_SUCCESS, strProtected);
 
-	// Â÷´Ü¿¡ °ü·ÃµÈ on-lineÇ¥½Ã
+	// ï¿½ï¿½ï¿½Ü¿ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ on-lineÇ¥ï¿½ï¿½
 	SendMW_PROTECTEDCHECK_ACK(pPlayer->m_dwID, pPlayer->m_dwKEY, FRIEND_CONNECTION, strProtected);
 
 	LPPACKETBUF pBuf = new PACKETBUF();
@@ -10597,7 +10597,7 @@ DWORD CTMapSvrModule::OnCS_STOREOPEN_REQ(LPPACKETBUF pBUF) {
 	if (bResult == STORE_SUCCESS) {
 		pPlayer->m_bStore = TRUE;
 		pPlayer->m_strStoreName = strName;
-		// °­Á¦¹öÇÁ°É±â
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½
 		((CTObjBase*) pPlayer)->ForceMaintain(TSTORE_SKILL, pPlayer->m_dwID, OT_PC, pPlayer->m_dwID, pPlayer->m_bType, 0);
 		pPlayer->SendCS_STOREOPEN_ACK(STORE_SUCCESS, pPlayer->m_dwID, strName);
 		pPlayer->SendCS_STOREITEMLIST_ACK(pPlayer->m_dwID, pPlayer->m_strStoreName, pPlayer);
@@ -11778,14 +11778,14 @@ DWORD CTMapSvrModule::OnCS_SKILLINIT_REQ(LPPACKETBUF pBUF) {
 			return EC_NOERROR;
 		}
 
-		// ±âº»ÀûÀ¸·Î ÁÖ´Â ½ºÅ³
+		// ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Å³
 		if (pSkill->m_pTSKILL->m_bStartLevel == 0 &&
 				pSkill->m_bLevel == 1) {
 			pPlayer->SendCS_SKILLINIT_ACK(SKILL_NOTINIT);
 			return EC_NOERROR;
 		}
 
-		// ÃÖÇÏ´Ü ½ºÅ³ÀÌ ¾Æ´Ï¶ó¸é
+		// ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ï¿½
 		if (pPlayer->FindTChildSkill(wSkillID)) {
 			pPlayer->SendCS_SKILLINIT_ACK(SKILL_HAVECHILD);
 			return EC_NOERROR;
@@ -13459,7 +13459,7 @@ DWORD CTMapSvrModule::OnCS_REFINE_REQ(LPPACKETBUF pBUF) {
 			}
 		}
 
-		// ¸ÅÁ÷¿É¼Ç ÀüÀÌ È®·ü
+		// ï¿½ï¿½ï¿½ï¿½ï¿½É¼ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 		BYTE bMagicProb = rand() % 100;
 
 		if (!bCol && bMagicProb < wTransProb) {
@@ -13816,7 +13816,7 @@ DWORD CTMapSvrModule::OnCS_HEROSELECT_REQ(LPPACKETBUF pBUF) {
 		>> wBattleZoneID
 		>> strHeroName;
 
-	//ÀÌ¸§ °Ë»ç.
+	//ï¿½Ì¸ï¿½ ï¿½Ë»ï¿½.
 	if (strHeroName.IsEmpty() || strHeroName.GetLength() > MAX_NAME) {
 		pPlayer->SendCS_HEROSELECT_ACK(HSR_INVALIDCHAR);
 		return EC_NOERROR;
@@ -13832,7 +13832,7 @@ DWORD CTMapSvrModule::OnCS_HEROSELECT_REQ(LPPACKETBUF pBUF) {
 		return EC_NOERROR;
 	}
 
-	// ¿µ¿õ Áßº¹ ÁöÁ¤ °Ë»ç
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 	VTLOCAL vLocal;
 	vLocal.clear();
 	GetLocalList(LOCAL_NONE, &vLocal);
@@ -16458,7 +16458,7 @@ DWORD CTMapSvrModule::OnCS_NPROTECT_REQ(LPPACKETBUF pBUF) {
 	if (bServerID != m_bServerID)
 		return EC_NOERROR;
 
-	//	µ¥ÀÌÅÍ ±æÀÌ°Ë»ç
+	//	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì°Ë»ï¿½
 	if (nLenth != sizeof(GG_AUTH_DATA)) {
 		LogNProtect(pPlayer->m_dwID, nLenth, _T("Invalid Buffer Size"));
 		CloseSession(pPlayer);
@@ -19159,7 +19159,7 @@ DWORD CTMapSvrModule::OnCS_FINISHSKILL_ACK(LPPACKETBUF pBUF) {
 							dwAttackID != pDEFEND->m_dwID) &&
 							pTemp->IsNegative() &&
 							pTemp->GetAttackType() == SAT_PHYSIC) //Add !IsFake maybe
-						{	// ¸¶aý°Lzd
+						{	// ï¿½ï¿½aï¿½ï¿½Lzd
 
 							wAttackPartyID = pDEFEND->GetPartyID();
 							bAttackCountry = pDEFEND->m_bCountry;

@@ -79,7 +79,7 @@
 #define PCBANG_PET							102
 #define PREMIUM1_PET						101
 #define PREMIUM2_PET						103
-#define PCBANG_PETNAME						_T("PC¹æ")
+#define PCBANG_PETNAME						_T("PCï¿½ï¿½")
 
 #define PCBANG_DROPMAGICPROB				300
 
@@ -94,6 +94,7 @@
 #define DEFAULT_WARPOWER					(1800)
 
 #define	PORTALCONDITION_COUNT				3
+#define TEMP_IGNORE_PORTAL_LEVEL_ITEM_CHECK	0
 #define ITEMAGIC_BASELEVEL					(70)
 #define PVP_RECENTRECORDCOUNT				10
 #define PVP_SAVETIME						600
@@ -421,43 +422,43 @@ typedef enum DUEL_TYPE
 
 typedef enum CHAR_ABILITY
 {
-	ABILITY_STR = 0,	//Èû
-	ABILITY_DEX,		//¹ÎÃ¸
-	ABILITY_CON,		//Ã¼·Â
-	ABILITY_INT,		//Áö´É
-	ABILITY_WIS,		//ÁöÇý
-	ABILITY_MEN,		//Á¤½Å
-	ABILITY_MAXAP,		//ÃÖ´ë±Ù°Å¸®°ø°Ý·Â
-	ABILITY_MAXLAP,		//ÃÖ´ë¿ø°Å¸®°ø°Ý·Â
-	ABILITY_MINAP,		//ÃÖ¼Ò±Ù°Å¸®°ø°Ý·Â
-	ABILITY_MINLAP,		//ÃÖ¼Ò¿ø°Å¸®°ø°Ý·Â
-	ABILITY_MAXMAP,		//ÃÖ´ë¸¶¹ý°ø°Ý·Â
-	ABILITY_MINMAP,		//ÃÖ¼Ò¸¶¹ý°ø°Ý·Â
-	ABILITY_MAXHP,		//ÃÖ´ë»ý¸í·Â
-	ABILITY_MAXMP,		//ÃÖ´ëÁ¤½Å·Â
-	ABILITY_PDP,		//¹°¸®¹æ¾î·Â
-	ABILITY_MDP,		//¸¶¹ý¹æ¾î·Â
-	ABILITY_AL,			//°ø°Ýµî±Þ
-	ABILITY_DL,			//¹æ¾îµî±Þ
-	ABILITY_MAL,		//¸¶¹ý°ø°Ýµî±Þ
-	ABILITY_MDL,		//¸¶¹ý¹æ¾îµî±Þ
-	ABILITY_PCR,		//±Ù°Å¸®Ä¡¸íÈ®·ü
-	ABILITY_MCR,		//¸¶¹ýÄ¡¸íÈ®·ü
-	ABILITY_CMP,		//½ÃÀüÀ¯ÁöÈ®·ü
-	ABILITY_SDR,		//¹æÆÐ¹æ¾îÈ®·ü
-	ABILITY_SMDR,		//¸¶¹ý¹æÆÐ¹æ¾îÈ®·ü
-	ABILITY_SDP,		//¹æÆÐ¹æ¾î·Â
-	ABILITY_SMDP,		//¸¶¹ý¹æÆÐ¹æ¾î·Â
-	ABILITY_MCS,		//½ÃÀü¼Óµµ
-	ABILITY_HPR,		//»ý¸í·ÂÈ¸º¹·ü
-	ABILITY_MPR,		//Á¤½Å·ÂÈ¸º¹·ü
-	ABILITY_AVP,		//È¸ÇÇÈ®·ü
-	ABILITY_ATKSPEED_S,	//±Ù°Å¸®°ø°Ý¼Óµµ
-	ABILITY_ATKSPEED_L,	//¿ø°Å¸®°ø°Ý¼Óµµ
-	ABILITY_ATKSPEED_SR,//±Ù°Å¸®°ø°Ý¼ÓµµºñÀ²
-	ABILITY_ATKSPEED_LR,//¿ø°Å¸®°ø°Ý¼ÓµµºñÀ²
-	ABILITY_ATKSPEED_MR,//¸¶¹ý°ø°Ý¼ÓµµºñÀ²,
-	ABILITY_AFTERMATH	//ºÎÈ°ÈÄÀ¯Áõ
+	ABILITY_STR = 0,	//ï¿½ï¿½
+	ABILITY_DEX,		//ï¿½ï¿½Ã¸
+	ABILITY_CON,		//Ã¼ï¿½ï¿½
+	ABILITY_INT,		//ï¿½ï¿½ï¿½ï¿½
+	ABILITY_WIS,		//ï¿½ï¿½ï¿½ï¿½
+	ABILITY_MEN,		//ï¿½ï¿½ï¿½ï¿½
+	ABILITY_MAXAP,		//ï¿½Ö´ï¿½Ù°Å¸ï¿½ï¿½ï¿½ï¿½Ý·ï¿½
+	ABILITY_MAXLAP,		//ï¿½Ö´ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½Ý·ï¿½
+	ABILITY_MINAP,		//ï¿½Ö¼Ò±Ù°Å¸ï¿½ï¿½ï¿½ï¿½Ý·ï¿½
+	ABILITY_MINLAP,		//ï¿½Ö¼Ò¿ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½Ý·ï¿½
+	ABILITY_MAXMAP,		//ï¿½Ö´ë¸¶ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½
+	ABILITY_MINMAP,		//ï¿½Ö¼Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½
+	ABILITY_MAXHP,		//ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	ABILITY_MAXMP,		//ï¿½Ö´ï¿½ï¿½ï¿½ï¿½Å·ï¿½
+	ABILITY_PDP,		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	ABILITY_MDP,		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	ABILITY_AL,			//ï¿½ï¿½ï¿½Ýµï¿½ï¿½
+	ABILITY_DL,			//ï¿½ï¿½ï¿½ï¿½ï¿½
+	ABILITY_MAL,		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½
+	ABILITY_MDL,		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	ABILITY_PCR,		//ï¿½Ù°Å¸ï¿½Ä¡ï¿½ï¿½È®ï¿½ï¿½
+	ABILITY_MCR,		//ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½È®ï¿½ï¿½
+	ABILITY_CMP,		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½
+	ABILITY_SDR,		//ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½È®ï¿½ï¿½
+	ABILITY_SMDR,		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½È®ï¿½ï¿½
+	ABILITY_SDP,		//ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½
+	ABILITY_SMDP,		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½
+	ABILITY_MCS,		//ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½
+	ABILITY_HPR,		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½
+	ABILITY_MPR,		//ï¿½ï¿½ï¿½Å·ï¿½È¸ï¿½ï¿½ï¿½ï¿½
+	ABILITY_AVP,		//È¸ï¿½ï¿½È®ï¿½ï¿½
+	ABILITY_ATKSPEED_S,	//ï¿½Ù°Å¸ï¿½ï¿½ï¿½ï¿½Ý¼Óµï¿½
+	ABILITY_ATKSPEED_L,	//ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½Ý¼Óµï¿½
+	ABILITY_ATKSPEED_SR,//ï¿½Ù°Å¸ï¿½ï¿½ï¿½ï¿½Ý¼Óµï¿½ï¿½ï¿½ï¿½ï¿½
+	ABILITY_ATKSPEED_LR,//ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½Ý¼Óµï¿½ï¿½ï¿½ï¿½ï¿½
+	ABILITY_ATKSPEED_MR,//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼Óµï¿½ï¿½ï¿½ï¿½ï¿½,
+	ABILITY_AFTERMATH	//ï¿½ï¿½È°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 } *LPCHAR_ABILITY;
 
 typedef enum DISCOUNTCONDITION_TYPE 
@@ -1797,7 +1798,7 @@ struct tagTITEM
 	BYTE m_bCanWrap;
 	DWORD m_dwCode;
 	BYTE m_bCanColor;
-	BYTE m_bConsumable;	//	¼Ò¸ðÅ¸ÀÔ
+	BYTE m_bConsumable;	//	ï¿½Ò¸ï¿½Å¸ï¿½ï¿½
 };
 
 
@@ -1920,7 +1921,7 @@ struct tagTDURINGITEM
 
 struct tagTMAGIC
 {
-	WORD m_wValue; // ÃÖÁ¾¿É¼ÇºñÀ²
+	WORD m_wValue; // ï¿½ï¿½ï¿½ï¿½ï¿½É¼Çºï¿½ï¿½ï¿½
 	LPTITEMMAGIC m_pMagic;
 };
 
@@ -2413,27 +2414,27 @@ struct tagLOTTERY
 struct tagEVENTINFO
 {
 	DWORD	m_dwIndex;
-    BYTE	m_bID;			// ÀÌº¥Æ® Á¾·ù
-	CString m_strTitle;		// ÀÌº¥Æ® ÀÌ¸§
-	BYTE	m_bGroupID;		// ¼­¹ö ±×·ì
+    BYTE	m_bID;			// ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+	CString m_strTitle;		// ï¿½Ìºï¿½Æ® ï¿½Ì¸ï¿½
+	BYTE	m_bGroupID;		// ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½
 	BYTE	m_bSvrType;
 	BYTE	m_bSvrID;		// 0 : ALL 
-	__time64_t m_dStartDate;// ½ÃÀÛ³¯Â¥½Ã°£
-	__time64_t m_dEndDate;	// Á¾·á³¯Â¥½Ã°£
-	WORD	m_wValue;		// ÀÌº¥Æ®°ª
-	WORD	m_wMapID;		// 0xFF:ALL ¸Ê¾ÆÀÌµð
+	__time64_t m_dStartDate;// ï¿½ï¿½ï¿½Û³ï¿½Â¥ï¿½Ã°ï¿½
+	__time64_t m_dEndDate;	// ï¿½ï¿½ï¿½á³¯Â¥ï¿½Ã°ï¿½
+	WORD	m_wValue;		// ï¿½Ìºï¿½Æ®ï¿½ï¿½
+	WORD	m_wMapID;		// 0xFF:ALL ï¿½Ê¾ï¿½ï¿½Ìµï¿½
 	DWORD	m_dwStartAlarm; 
 	DWORD	m_dwEndAlarm;
 	BYTE	m_bStartAlarm;
 	BYTE	m_bEndAlarm;
 	CString m_strStartMsg;
 	CString m_strEndMsg;
-	BYTE	m_bState;		// ÀÌº¥Æ® »óÅÂ
+	BYTE	m_bState;		// ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 	BYTE	m_bPartTime;
 	VTCASHITEMSALE m_vCashItem;
 	MONEVENT m_stMONEVENT;	
 	VMONREGEN m_vMONREGEN;
-	VLOTTERY m_vLOTTERY;	// °æÇ°¾ÆÀÌÅÛ
+	VLOTTERY m_vLOTTERY;	// ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	CString m_strLotMsg;
 
 	void Reset()
@@ -2652,7 +2653,7 @@ struct tagTAUCTION
 struct tagTAUCTIONINTEREST
 {	
 	DWORD m_dwAuctionID;
-	BYTE m_bStatus; // 0: °æ¸ÅÁß 1:³«Âû 2:À¯Âû
+	BYTE m_bStatus; // 0: ï¿½ï¿½ï¿½ï¿½ï¿½ 1:ï¿½ï¿½ï¿½ï¿½ 2:ï¿½ï¿½ï¿½ï¿½
 	TAUCTION m_TAuction;
 };
 
