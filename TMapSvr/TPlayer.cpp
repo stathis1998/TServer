@@ -1119,8 +1119,40 @@ void CTPlayer::GainExp( DWORD dwGain, BYTE bIsMon)
 
 	}
 
-	DWORD dwNewExp = m_dwEXP + dwGain+dwBonus;
-	DWORD dwNewSoulExp = m_dwSoulLotEXP + dwGain;
+	const BYTE bLevelCap = min(BYTE(90), _AtlModule.m_bMaxLevel);
+	LPTLEVEL pCapLevel = _AtlModule.FindTLevel(bLevelCap);
+	DWORD dwExpGain = dwGain + dwBonus;
+	BYTE bExpCapped = m_bLevel >= bLevelCap;
+	BYTE bMoneyConverted = FALSE;
+
+	if(bExpCapped)
+	{
+		EarnMoney(dwExpGain);
+		bMoneyConverted = TRUE;
+	}
+
+	DWORD dwNewExp = m_dwEXP;
+	if(!bExpCapped)
+	{
+		dwNewExp += dwExpGain;
+		if(pCapLevel && dwNewExp > pCapLevel->m_dwEXP)
+		{
+			DWORD dwOverflowExp = dwNewExp - pCapLevel->m_dwEXP;
+			dwNewExp = pCapLevel->m_dwEXP;
+			EarnMoney(dwOverflowExp);
+			bMoneyConverted = TRUE;
+		}
+	}
+
+	DWORD dwSoulGain = dwGain;
+	if(bIsMon)
+	{
+		// Level 10 = 10% faster soul fill, level 80 = 80% faster, etc.
+		DWORD dwSoulBonusRate = m_bLevel;
+		dwSoulGain += dwGain * dwSoulBonusRate / 100;
+	}
+
+	DWORD dwNewSoulExp = m_dwSoulLotEXP + dwSoulGain;
 	//DWORD dwNewSoulExp = m_pTLEVEL->m_dwEXP - m_pTPREVLEVEL->m_dwEXP;
 	
 	if((m_pTLEVEL->m_dwEXP - m_pTPREVLEVEL->m_dwEXP) <= dwNewSoulExp)
@@ -1157,10 +1189,17 @@ void CTPlayer::GainExp( DWORD dwGain, BYTE bIsMon)
 	else
 		m_dwSoulLotEXP = dwNewSoulExp;
 
-	if(m_bLevel >= _AtlModule.m_bMaxLevel)
+	if(bExpCapped)
+	{
+		if(bMoneyConverted)
+			SendCS_MONEY_ACK();
+		SendCS_EXP_ACK();
 		return;
+	}
 
 	m_dwEXP = dwNewExp;
+	if(bMoneyConverted)
+		SendCS_MONEY_ACK();
 
 	BYTE bLevelUp = FALSE;
 
@@ -1187,8 +1226,12 @@ void CTPlayer::GainExp( DWORD dwGain, BYTE bIsMon)
 		if(!pNext)
 			return;
 
-		if(pNext->m_bLevel >= _AtlModule.m_bMaxLevel)
-			m_dwEXP = m_pTLEVEL->m_dwEXP;
+		if(pNext->m_bLevel > bLevelCap)
+		{
+			pNext = pCapLevel;
+			if(pCapLevel)
+				m_dwEXP = pCapLevel->m_dwEXP;
+		}
 
 		FLOAT fOldSoulPercent = FLOAT(m_dwSoulLotEXP) / FLOAT(m_pTLEVEL->m_dwEXP - m_pTPREVLEVEL->m_dwEXP);
 		m_bLevel = pNext->m_bLevel;

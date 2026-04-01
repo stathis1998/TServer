@@ -180,7 +180,7 @@ BYTE CTMonster::SetAggro(DWORD dwHostID,
 	}
 
 	if (nAggro < 0 && m_bMode == MT_BATTLE) {
-		// Aggro °¨¼Ò
+		// Aggro ï¿½ï¿½ï¿½ï¿½
 		DWORD dwAggro = 0;
 		TAGGRO aggro;
 
@@ -199,7 +199,7 @@ BYTE CTMonster::SetAggro(DWORD dwHostID,
 
 		return TRUE;
 	} else {
-		// Aggro Áõ°¡
+		// Aggro ï¿½ï¿½ï¿½ï¿½
 		if ((dwNew && m_bMode != MT_BATTLE) ||
 				((m_bTargetType != bAttackType ||
 					m_dwTargetID != dwAttackID) &&
@@ -349,7 +349,7 @@ DWORD CTMonster::OnDamage(DWORD dwHostID,
 		} else
 			m_mapDamage.insert(MAPINT64::value_type(nKey, nValue));
 
-		// ±æµå µ¥¹ÌÁö ÀúÀå
+		// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		DWORD dwGuildID = 0;
 		MAPDWORD::iterator itG;
 		CTPlayer* pPlayer = _AtlModule.FindChar(dwHostID);
@@ -928,11 +928,13 @@ void CTMonster::AddItem(BYTE bCountry, WORD wAddMagicProb, INT nAddItemDrop) {
 	if (pEVENT && (pEVENT->m_wMapID == m_pMAP->m_wMapID || pEVENT->m_wMapID == 0xFF))
 		m_dwMoney += m_dwMoney * _AtlModule.m_wEventValue[EVENT_MONEYDROP] / 100;
 
-	// Moose - money multiplier
-	DWORD dwMultiplier = 69 * 2;
-	m_dwMoney *= dwMultiplier;
+	// Moose - money multiplier with a level-based bonus.
+	DWORD dwBaseMultiplier = 69 * 2;
+	DWORD dwLevelMultiplier = 100 + DWORD(m_bLevel * 2);
+	ULONGLONG ullMoney = ULONGLONG(m_dwMoney) * dwBaseMultiplier * dwLevelMultiplier / 100;
+	m_dwMoney = ullMoney > MAXDWORD ? MAXDWORD : DWORD(ullMoney);
 
-	// 1 in 100 chance of dropping a gold bar
+	// 1 in 100 chance of dropping half a gold bar
 	if (rand() % 100 == 0) {
 		m_dwMoney += 500000;
 		std::cout << "Dropping half a gold bar\n";
@@ -1149,7 +1151,7 @@ void CTMonster::SetMagicOpt(CTItem* pItem, BYTE bOptType) {
 		return;
 	}
 
-	// m_wValue ÃÖÁ¾¿É¼ÇºñÀ²
+	// m_wValue ï¿½ï¿½ï¿½ï¿½ï¿½É¼Çºï¿½ï¿½ï¿½
 	LPTMAGIC pTMAGIC = new TMAGIC();
 	pTMAGIC->m_pMagic = vItemMagic[sel];
 
@@ -1696,7 +1698,7 @@ void CTMonster::Recover(DWORD dwTick) {
 					itDg++;
 			}
 
-			// ±æµåµ¥¹ÌÁö
+			// ï¿½ï¿½åµ¥ï¿½ï¿½ï¿½ï¿½
 			MAPDWORD::iterator itGu;
 			for (itGu = m_mapGuildDamage.begin(); itGu != m_mapGuildDamage.end(); ) {
 				DWORD dwGuildDamage = (*itGu).second;
