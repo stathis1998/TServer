@@ -1279,7 +1279,7 @@ int CTObjBase::CalcAbilityValue(DWORD& dwValue, BYTE bExec, CTSkill* pInstanceSk
 	DWORD dwCalcValue = max(0, int(dwValue) + nIncreaseValue);
 
 	if (nIncreaseValue)
-		nIncreaseValue += ApplyEffectionBuff(dwCalcValue); //¸¶¹ýÈ¿°ú ÁõÆø
+		nIncreaseValue += ApplyEffectionBuff(dwCalcValue); //ï¿½ï¿½ï¿½ï¿½È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 	int nInc = 0;
 	for (size_t i = 0; i < m_vRemainSkill.size(); i++) {
@@ -2242,7 +2242,7 @@ BYTE CTObjBase::UpdateSkill(CTSkillTemp* pTemp, WORD wSkillID, BYTE bLevel) {
 				pTemp->m_wID,
 				bLevel);
 
-			//½ºÅ³ ¹ö¸±¶§ m_vRemainSkill¿¡¼­ ÇØ´ç ½ºÅ³ ²À »¬°Í
+			//ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ m_vRemainSkillï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			RemainSkill(pSkill, 0);
 		}
 
@@ -2394,7 +2394,7 @@ void CTObjBase::EraseMaintainSkill(CTSkill* pSkill, DWORD index) {
 
 	if (m_bType == OT_MON) {
 		if (!bCanAttack && CheckAttack()) {
-			// µµ¸Á ½ºÅ³ ÇØÁ¦
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½
 			CTMonster* pMon = (CTMonster*) this;
 
 			if (pMon->m_dwTargetID)
@@ -2915,7 +2915,7 @@ BYTE CTObjBase::PerformSkill(DWORD dwAttack,
 							vSkill = (*itMon).second->m_vSKILL;
 						else {
 							for (WORD ms = 31; ms <= 34; ms++) {
-								//±âº»½ºÅ³
+								//ï¿½âº»ï¿½ï¿½Å³
 								CTSkill* pMy = FindTSkill(ms);
 								if (pMy && IsEquipSkillItem(pMy))
 									vSkill.push_back(ms);
@@ -3379,13 +3379,13 @@ BYTE CTObjBase::PerformSkill(DWORD dwAttack,
 						TRUE);
 				}
 				break;
-			case SDT_RUNAWAY: // µµ¸Á
+			case SDT_RUNAWAY: // ï¿½ï¿½ï¿½ï¿½
 				if (m_bType == OT_MON) {
 					CTMonster* pMon = (CTMonster*) this;
 					pMon->OnEvent(AT_HELP, 0, 0, 0, 0);
 				}
 				break;
-			case SDT_CHANGETARGET: // Å¸°Ùº¯°æ
+			case SDT_CHANGETARGET: // Å¸ï¿½Ùºï¿½ï¿½ï¿½
 			{
 				if (m_bType != OT_MON)
 					return PERFORM_FAIL;
@@ -3405,7 +3405,7 @@ BYTE CTObjBase::PerformSkill(DWORD dwAttack,
 					pMon->OnEvent(AT_DEFEND, 0, aggro.m_dwHostID, aggro.m_dwObjID, aggro.m_bObjType);
 			}
 			break;
-			case SDT_LEAD: // À¯ÀÎ
+			case SDT_LEAD: // ï¿½ï¿½ï¿½ï¿½
 			{
 				if (m_bType != OT_MON)
 					return PERFORM_FAIL;
@@ -3416,7 +3416,7 @@ BYTE CTObjBase::PerformSkill(DWORD dwAttack,
 					pMon->OnEvent(AT_DEFEND, 0, dwAttack, dwAttack, OT_PC);
 			}
 			break;
-			case SDT_TEMPT: // ¼ÒÈ¯À¯È¤
+			case SDT_TEMPT: // ï¿½ï¿½È¯ï¿½ï¿½È¤
 			{
 				if (m_bType != OT_MON)
 					return PERFORM_FAIL;
@@ -3670,7 +3670,7 @@ BYTE CTObjBase::HaveMask() {
 	return FALSE;
 }
 ///////////////////////////////////////////////////////////////////////
-// º¯Àå
+// ï¿½ï¿½ï¿½ï¿½
 BYTE CTObjBase::HaveDisguiseBuff() {
 	for (DWORD i = 0; i < m_vMaintainSkill.size(); i++) {
 		CTSkill* pSkill = m_vMaintainSkill[i];
@@ -4359,15 +4359,29 @@ WORD CTObjBase::MakeItemMagicValue(INT nBase, WORD wBound) {
 	if (!wBound)
 		return 0;
 
-	BYTE bLevel_Const = 10;
-	BYTE bRate_Const = 3;
-	INT nRand1 = rand();
-	INT nRand2 = rand();
+	const INT kMinOpLevel = 1;
+	const INT kMaxOpLevel = 80;
+	const FLOAT kBaseRateFactor = 97.0f;
+	const FLOAT kMinRateFactor = 3.0f;
+
 	INT nRand3 = rand();
 
+	// Use only the provided base level, clamped to valid bounds.
+	INT nOpLv = min(kMaxOpLevel, max(kMinOpLevel, nBase));
+
 	FLOAT fRateX = GetFormulaRateX(FTYPE_1ST);
-	INT nOpLv = min(80, max(1, nBase - nRand1 % bLevel_Const) + max(0, (nRand2 % 1000) - 989));
-	WORD wValue = 1 + (nRand3 % (WORD) (wBound * ((100 - bRate_Const) * pow(fRateX, nOpLv) / pow(fRateX, 80) + bRate_Const) / 100));
+	FLOAT fRateAtOpLevel = (FLOAT) pow(fRateX, nOpLv);
+	FLOAT fRateAtMaxLevel = (FLOAT) pow(fRateX, kMaxOpLevel);
+	FLOAT fScalePercent = (kBaseRateFactor * fRateAtOpLevel / fRateAtMaxLevel) + kMinRateFactor;
+
+	// Convert bound to the current op-level roll range.
+	WORD wUpperBound = max((WORD) 1, (WORD) (wBound * fScalePercent / 100));
+
+	// Roll uniformly in the top 10% of the range.
+	// Example: if upper bound is 100, this becomes a uniform roll in 90..100.
+	WORD wMinValue = max((WORD) 1, (WORD) ((wUpperBound * 90 + 99) / 100));
+	WORD wRollRange = wUpperBound - wMinValue + 1;
+	WORD wValue = wMinValue + (nRand3 % wRollRange);
 	return wValue;
 }
 
