@@ -94,6 +94,8 @@
 #define DEFAULT_WARPOWER					(1800)
 
 #define	PORTALCONDITION_COUNT				3
+// Moose - 1: solo and party kills auto-loot without a pet. 0: only owners with a Collection pet auto-loot (original behaviour).
+#define AUTOLOOT_WITHOUT_COLLECTION_PET		1
 #define ITEMAGIC_BASELEVEL					(70)
 #define PVP_RECENTRECORDCOUNT				10
 #define PVP_SAVETIME						600

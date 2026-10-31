@@ -737,6 +737,11 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 			}
 
 			if (pOwner && pOwner->m_bMain) {
+				// Moose - auto-loot party kills without a Collection pet, see AUTOLOOT_WITHOUT_COLLECTION_PET
+				if (AUTOLOOT_WITHOUT_COLLECTION_PET && _AtlModule.MonMoneyTake(pOwner, m_dwID)) {
+					_AtlModule.MonItemTake(pOwner, m_dwID, INVALID_SLOT, INVEN_NULL, INVALID_SLOT);
+				}
+
 				BYTE bKinds[PETITEMS_COUNT] = { 0 };
 				WORD wKinds = pOwner->GetPetItemKind();
 				if (wKinds) {
@@ -744,7 +749,7 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 					bKinds[1] = HIBYTE(wKinds);
 
 					for (BYTE i = 0; i < PETITEMS_COUNT; ++i) {
-						if (bKinds[i] == COLLECTION_KIND) {
+						if (!AUTOLOOT_WITHOUT_COLLECTION_PET && bKinds[i] == COLLECTION_KIND) {
 							if (_AtlModule.MonMoneyTake(pOwner, m_dwID)) {
 								_AtlModule.MonItemTake(pOwner, m_dwID, INVALID_SLOT, INVEN_NULL, INVALID_SLOT);
 							}
@@ -762,8 +767,8 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 		{
 			CTPlayer* pOwner = FindHost(m_dwKeeperID);
 			if (pOwner && pOwner->m_bMain) {
-				// Moose - enabling auto-loot for everyone
-				if (_AtlModule.MonMoneyTake(pOwner, m_dwID)) {
+				// Moose - auto-loot solo kills without a Collection pet, see AUTOLOOT_WITHOUT_COLLECTION_PET
+				if (AUTOLOOT_WITHOUT_COLLECTION_PET && _AtlModule.MonMoneyTake(pOwner, m_dwID)) {
 					_AtlModule.MonItemTake(pOwner, m_dwID, INVALID_SLOT, INVEN_NULL, INVALID_SLOT);
 				}
 
@@ -774,7 +779,7 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 					bKinds[1] = HIBYTE(wKinds);
 
 					for (BYTE i = 0; i < PETITEMS_COUNT; ++i) {
-						if (bKinds[i] == COLLECTION_KIND) {
+						if (!AUTOLOOT_WITHOUT_COLLECTION_PET && bKinds[i] == COLLECTION_KIND) {
 							if (_AtlModule.MonMoneyTake(pOwner, m_dwID)) {
 								_AtlModule.MonItemTake(pOwner, m_dwID, INVALID_SLOT, INVEN_NULL, INVALID_SLOT);
 							}
