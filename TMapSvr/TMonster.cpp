@@ -737,6 +737,11 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 			}
 
 			if (pOwner && pOwner->m_bMain) {
+				// Moose - enabling auto-loot for everyone
+				if (_AtlModule.MonMoneyTake(pOwner, m_dwID)) {
+					_AtlModule.MonItemTake(pOwner, m_dwID, INVALID_SLOT, INVEN_NULL, INVALID_SLOT);
+				}
+
 				BYTE bKinds[PETITEMS_COUNT] = { 0 };
 				WORD wKinds = pOwner->GetPetItemKind();
 				if (wKinds) {
