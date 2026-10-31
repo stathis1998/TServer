@@ -715,6 +715,49 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 	if (dwDamage) {
 		switch (m_bKeeperType) {
 		case OWNER_PARTY:
+		{
+			CTPlayer* pOwner = FindHost(m_dwHostID);
+			if (!pOwner || pOwner->GetPartyID() != m_dwKeeperID) {
+				VPLAYER vPlayer;
+				vPlayer.clear();
+
+				m_pMAP->GetNeighbor(
+					&vPlayer,
+					m_fPosX,
+					m_fPosZ);
+
+				for (DWORD i = 0; i < DWORD(vPlayer.size()); i++) {
+					if (vPlayer[i]->m_bMain && vPlayer[i]->GetPartyID() == m_dwKeeperID) {
+						pOwner = vPlayer[i];
+						break;
+					}
+				}
+
+				vPlayer.clear();
+			}
+
+			if (pOwner && pOwner->m_bMain) {
+				BYTE bKinds[PETITEMS_COUNT] = { 0 };
+				WORD wKinds = pOwner->GetPetItemKind();
+				if (wKinds) {
+					bKinds[0] = LOBYTE(wKinds);
+					bKinds[1] = HIBYTE(wKinds);
+
+					for (BYTE i = 0; i < PETITEMS_COUNT; ++i) {
+						if (bKinds[i] == COLLECTION_KIND) {
+							if (_AtlModule.MonMoneyTake(pOwner, m_dwID)) {
+								_AtlModule.MonItemTake(pOwner, m_dwID, INVALID_SLOT, INVEN_NULL, INVALID_SLOT);
+							}
+						}
+
+						if (bKinds[i] == FORTUNE_KIND)
+							nAddItemDrop += 20 * 100;
+					}
+				}
+			}
+		}
+		break;
+
 		case OWNER_PRIVATE:
 		{
 			CTPlayer* pOwner = FindHost(m_dwKeeperID);
