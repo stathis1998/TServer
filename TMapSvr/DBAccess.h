@@ -7144,6 +7144,44 @@ public:
 		END_PARAM()
 };
 
+// Moose - general counters, see TCharStat.cpp
+class CTBLCharCounterTable: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	WORD m_wStatID;
+	__int64 m_nValue;
+
+	DEF_QUERY(CTBLCharCounterTable, _T("SELECT \
+	wStatID, \
+	nValue \
+	FROM TCHARCOUNTERTABLE \
+	WHERE dwCharID = ?"));
+
+	BEGIN_COLUMN(2)
+		COLUMN_ENTRY(m_wStatID)
+		COLUMN_ENTRY(m_nValue)
+		END_COL()
+
+		BEGIN_PARAM(1)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		END_PARAM()
+};
+
+class CSPSaveCharCounter: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	WORD m_wStatID;
+	__int64 m_nValue;
+
+	DEF_QUERY(CSPSaveCharCounter, _T("{CALL TSaveCharCounter(?,?,?)}"))
+
+		BEGIN_PARAM(3)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_wStatID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_nValue)
+		END_PARAM()
+};
+
 class CSPClearBOWPlayers: public CSqlQuery {
 public:
 	DEF_QUERY(CSPClearBOWPlayers, _T("{ CALL TClearBOWPlayers}"))

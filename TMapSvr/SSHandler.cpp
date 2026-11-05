@@ -9765,6 +9765,7 @@ DWORD CTMapSvrModule::OnMW_TAKEMONMONEY_REQ(LPPACKETBUF pBUF)
 		return EC_NOERROR;
 
 	pPlayer->EarnMoney(dwMoney);
+	pPlayer->AddCounter(CHARCOUNTER_MONMONEY, dwMoney);
 	pPlayer->SendCS_MONEY_ACK();
 
 	return EC_NOERROR;
@@ -10942,7 +10943,7 @@ DWORD CTMapSvrModule::OnDM_POSTCANSEND_ACK(LPPACKETBUF pBUF)
 		m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYPOSTSEND, pSender, strTarget, -llMoney, -(int)GetPostMoney(bType) );
 #endif
 
-		pSender->UseMoney(llMoney, TRUE);
+		pSender->UseMoney(llMoney, TRUE, FALSE);
 		pSender->SendCS_MONEY_ACK();
 	}
 

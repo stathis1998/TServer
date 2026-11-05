@@ -7123,6 +7123,7 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 		BYTE bProb = CalcProb(pPlayer, pNpc, PROB_UPGRADE, m_itemgrade[pItem->m_bLevel].m_bProb);
 		SSLogEvent(6, "bRand: %d, bProb: %d", bRand, bProb);
 		if (bRand < bProb) {
+			pPlayer->AddCounter(CHARCOUNTER_UPGRADE_SUCCESS, 1);
 			BYTE bGrade = bItemGrade == 3 ? BYTE(rand() % 3) + 1 : 1;
 			// Moose - fixed the +24
 			pItem->m_bLevel += bGrade;
@@ -7143,6 +7144,7 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 		#ifdef	DEF_UDPLOG			
 			m_pUdpSocket->LogItemUpgrade(LOGMAP_ITEMUPGRADEFAILDEL, pPlayer, pItem);
 		#endif	//	DEF_UDPLOG
+			pPlayer->AddCounter(CHARCOUNTER_UPGRADE_FAIL, 1);
 			BYTE bLevelGuard = 0;
 			BYTE bDownProb = 0;
 			BYTE bDownGrade = 0;
@@ -8510,7 +8512,7 @@ DWORD CTMapSvrModule::OnCS_POSTRETURN_REQ(LPPACKETBUF pBUF) {
 		INT64 dlMoney = CalcMoney(pPlayer->m_pPost->m_dwGold, pPlayer->m_pPost->m_dwSilver, pPlayer->m_pPost->m_dwCooper);
 
 		if (dlMoney) {
-			if (!pPlayer->UseMoney(dlMoney, TRUE)) {
+			if (!pPlayer->UseMoney(dlMoney, TRUE, FALSE)) {
 				pPlayer->SendCS_POSTRETURN_ACK(POST_NEEDMONEY);
 				return EC_NOERROR;
 			}
@@ -10422,12 +10424,12 @@ DWORD CTMapSvrModule::OnCS_DEALITEM_REQ(LPPACKETBUF pBUF) {
 			if (pPlayer->EarnMoney(pPlayer->m_dealItem.m_llRecvMoney))
 				m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYTRADERECV, pPlayer, pPlayer->m_dealItem.m_strTarget, pPlayer->m_dealItem.m_llRecvMoney);
 
-			if (pPlayer->UseMoney(pPlayer->m_dealItem.m_llSendMoney, TRUE))
+			if (pPlayer->UseMoney(pPlayer->m_dealItem.m_llSendMoney, TRUE, FALSE))
 				m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYTRADESEND, pPlayer, pPlayer->m_dealItem.m_strTarget, -pPlayer->m_dealItem.m_llSendMoney);
 		#else 
 			pPlayer->EarnMoney(pPlayer->m_dealItem.m_llRecvMoney);
 
-			pPlayer->UseMoney(pPlayer->m_dealItem.m_llSendMoney, TRUE);
+			pPlayer->UseMoney(pPlayer->m_dealItem.m_llSendMoney, TRUE, FALSE);
 		#endif
 			pPlayer->EraseInvenDealItem();
 			pPlayer->PushTItem(&(pPlayer->m_dealItem.m_vRecvItem));
@@ -10446,12 +10448,12 @@ DWORD CTMapSvrModule::OnCS_DEALITEM_REQ(LPPACKETBUF pBUF) {
 			if (pTarget->EarnMoney(pTarget->m_dealItem.m_llRecvMoney))
 				m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYTRADERECV, pTarget, pTarget->m_dealItem.m_strTarget, pTarget->m_dealItem.m_llRecvMoney);
 
-			if (pTarget->UseMoney(pTarget->m_dealItem.m_llSendMoney, TRUE))
+			if (pTarget->UseMoney(pTarget->m_dealItem.m_llSendMoney, TRUE, FALSE))
 				m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYTRADESEND, pTarget, pTarget->m_dealItem.m_strTarget, -pTarget->m_dealItem.m_llSendMoney);
 		#else 
 			pTarget->EarnMoney(pTarget->m_dealItem.m_llRecvMoney);
 
-			pTarget->UseMoney(pTarget->m_dealItem.m_llSendMoney, TRUE);
+			pTarget->UseMoney(pTarget->m_dealItem.m_llSendMoney, TRUE, FALSE);
 		#endif
 			pTarget->EraseInvenDealItem();
 			pTarget->PushTItem(&(pTarget->m_dealItem.m_vRecvItem));
@@ -10786,7 +10788,7 @@ DWORD CTMapSvrModule::OnCS_STOREITEMBUY_REQ(LPPACKETBUF pBUF) {
 	pPlayer->PushTItem(&vTITEM);
 	vTITEM.clear();
 	if (!pSTORE->m_dwCredits) {
-		pPlayer->UseMoney(llMoney, TRUE);
+		pPlayer->UseMoney(llMoney, TRUE, FALSE);
 		pPlayer->SendCS_MONEY_ACK();
 	} else {
 		pPlayer->UsePvPoint(pSTORE->m_dwCredits * bItemCount, 0, PVP_USEABLE);
@@ -14987,7 +14989,7 @@ DWORD CTMapSvrModule::OnCS_AUCTIONBID_REQ(LPPACKETBUF pBUF) {
 		return EC_NOERROR;
 	}
 
-	if (!pPlayer->UseMoney(ldwBidPrice, TRUE)) {
+	if (!pPlayer->UseMoney(ldwBidPrice, TRUE, FALSE)) {
 		pPlayer->SendCS_AUCTIONBID_ACK(ABR_NEEDMONEY);
 		return EC_NOERROR;
 	}
@@ -15091,7 +15093,7 @@ DWORD CTMapSvrModule::OnCS_AUCTIONBUYDIRECT_REQ(LPPACKETBUF pBUF) {
 	else
 		ldwBidPrice = (*it).second->m_ldwDirectPrice;
 
-	if (!pPlayer->UseMoney(ldwBidPrice * bCount, TRUE)) {
+	if (!pPlayer->UseMoney(ldwBidPrice * bCount, TRUE, FALSE)) {
 		pPlayer->SendCS_AUCTIONBUYDIRECT_ACK(ABR_NEEDMONEY);
 		return EC_NOERROR;
 	}
@@ -15509,7 +15511,7 @@ DWORD CTMapSvrModule::OnCS_TOURNAMENTAPPLY_REQ(LPPACKETBUF pBUF) {
 
 
 	if (bResult == TOURNAMENT_SUCCESS) {
-		pPlayer->UseMoney(pTour->m_dwFee, TRUE);
+		pPlayer->UseMoney(pTour->m_dwFee, TRUE, FALSE);
 		pPlayer->UseItem(pTour->m_wPermitItem, pTour->m_bPermitCount);
 	} else {
 		CPacket* pMSG = new CPacket();

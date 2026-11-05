@@ -2374,6 +2374,17 @@ struct tagRECORDSET
 };
 
 // Moose - combat statistics, see TCharStat.cpp
+// General counters. Each value is the wStatID saved in TCHARCOUNTERTABLE, so never renumber them.
+// Add new ones just before CHARCOUNTER_COUNT, then call CTPlayer::AddCounter where it happens.
+enum CHARCOUNTER
+{
+	CHARCOUNTER_UPGRADE_SUCCESS = 0,	// item upgrade scrolls that succeeded
+	CHARCOUNTER_UPGRADE_FAIL = 1,		// item upgrade scrolls that failed
+	CHARCOUNTER_MONMONEY = 2,			// money received from monsters
+	CHARCOUNTER_MONEYSPENT = 3,			// money spent, excluding transfers to other players
+	CHARCOUNTER_COUNT
+};
+
 struct tagTCHARSTAT
 {
 	DWORD	m_dwTotalKills;
@@ -2381,6 +2392,9 @@ struct tagTCHARSTAT
 	__int64	m_nDamageTaken;
 	__int64	m_nHealDone;
 	BYTE	m_bDirty;
+	__int64	m_aCounter[CHARCOUNTER_COUNT];
+	BYTE	m_aCounterDirty[CHARCOUNTER_COUNT];
+	BYTE	m_bCounterDirty;
 };
 
 struct tagTMONKILLSTAT

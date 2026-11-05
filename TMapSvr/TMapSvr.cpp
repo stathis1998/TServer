@@ -8031,6 +8031,7 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 					if (dwMoney <= dwMonMoney) {
 						if (vParty[i]->m_bMain) {
 							vParty[i]->EarnMoney(dwMoney);
+							vParty[i]->AddCounter(CHARCOUNTER_MONMONEY, dwMoney);
 						#ifdef DEF_UDPLOG
 							m_pUdpSocket->LogMoney(LOGMAP_MONMONEYPARTY, vParty[i], pMon, dwMoney);
 						#endif
@@ -8056,6 +8057,7 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 				if (pMon->m_dwMoney)
 					if (pPlayer->m_bMain) {
 						pPlayer->EarnMoney(pMon->m_dwMoney);
+						pPlayer->AddCounter(CHARCOUNTER_MONMONEY, pMon->m_dwMoney);
 
 					#ifdef DEF_UDPLOG
 						m_pUdpSocket->LogMoney(LOGMAP_MONMONEYPARTY, pPlayer, pMon, pMon->m_dwMoney);
@@ -8100,6 +8102,7 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 			if (pMon->m_dwKeeperID == pPlayer->m_dwID)
 				if (pPlayer->m_bMain) {
 					pPlayer->EarnMoney(pMon->m_dwMoney);
+					pPlayer->AddCounter(CHARCOUNTER_MONMONEY, pMon->m_dwMoney);
 
 				#ifdef DEF_UDPLOG
 					m_pUdpSocket->LogMoney(LOGMAP_MONMONEYSOLOE, pPlayer, pMon, pMon->m_dwMoney);
@@ -10188,7 +10191,7 @@ BYTE CTMapSvrModule::ApplyTournament(LPTOURNAMENT pTour, CTPlayer* pPlayer, BYTE
 	if (pTour->m_wPermitItem && !pPlayer->HaveItem(pTour->m_wPermitItem, pTour->m_bPermitCount))
 		return FALSE;
 
-	if (!pPlayer->UseMoney(pTour->m_dwFee, TRUE))
+	if (!pPlayer->UseMoney(pTour->m_dwFee, TRUE, FALSE))
 		return FALSE;
 
 	if (pTour->m_wPermitItem)

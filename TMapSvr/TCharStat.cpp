@@ -9,7 +9,11 @@
 // The load packet and the channel-change packet share one layout, always their last section.
 // It is written by WriteCharStatFromDB and CTPlayer::WrapCharStat, and read by UnwrapCharStat:
 //   DWORD dwTickPassed, DWORD dwTotalKills, INT64 nDamageDealt, INT64 nDamageTaken, INT64 nHealDone,
-//   WORD wCount, { WORD wMonID, DWORD dwKills, INT64 nDamage } x wCount
+//   WORD wCount, { WORD wMonID, DWORD dwKills, INT64 nDamage } x wCount,
+//   WORD wCounters, { WORD wStatID, INT64 nValue } x wCounters
+//
+// To track something new: add an ID to enum CHARCOUNTER in TMapType.h, then call AddCounter where
+// it happens. No packet, procedure or table change is needed.
 #include "StdAfx.h"
 #include <SvrInc.h>
 #include "TMapSvrModule.h"
@@ -19,6 +23,8 @@
 // Space left free in the channel-change packet. Its WORD size field saturates at MAX_PACKET_SIZE,
 // and the world server then drops the whole packet, so it must never get close to that limit.
 #define CHARSTAT_PACKET_MARGIN	(2048)
+// Most general counter rows accepted when loading. Rows with an unknown ID are ignored.
+#define CHARCOUNTER_MAX_ROWS	(256)
 
 void CTPlayer::ClearCharStat()
 {
@@ -67,6 +73,23 @@ void CTPlayer::AddHealDone(DWORD dwHeal)
 	m_charStat.m_bDirty = TRUE;
 }
 
+// Only the main copy owns statistics. The check lives here because the money functions this is
+// called from have many callers.
+void CTPlayer::AddCounter(BYTE bCounter, __int64 nValue)
+{
+	if(!m_bMain || bCounter >= CHARCOUNTER_COUNT || nValue <= 0)
+		return;
+
+	m_charStat.m_aCounter[bCounter] += nValue;
+	m_charStat.m_aCounterDirty[bCounter] = TRUE;
+	m_charStat.m_bCounterDirty = TRUE;
+}
+
+__int64 CTPlayer::GetCounter(BYTE bCounter)
+{
+	return bCounter < CHARCOUNTER_COUNT ? m_charStat.m_aCounter[bCounter] : 0;
+}
+
 DWORD CTPlayer::GetMonKills(WORD wMonID)
 {
 	MAPTMONKILLSTAT::iterator it = m_mapMonKillStat.find(wMonID);
@@ -110,6 +133,24 @@ void CTPlayer::WrapCharStat(CPacket* pPacket)
 	// Entries left out stay safe in the DB, because the sender flushes before this runs.
 	if(size_t(wCount) < m_mapMonKillStat.size())
 		_AtlModule.LogEvent("CharStat: channel change kept %d of %d monster entries. CharID: %d", wCount, int(m_mapMonKillStat.size()), m_dwID);
+
+	// CHARSTAT_PACKET_MARGIN leaves room for these.
+	wSize = pPacket->GetSize();
+	wCount = 0;
+	(*pPacket) << wCount;
+
+	for(WORD i = 0; i < CHARCOUNTER_COUNT; i++)
+	{
+		if(!m_charStat.m_aCounter[i])
+			continue;
+
+		(*pPacket)
+			<< i
+			<< m_charStat.m_aCounter[i];
+
+		wCount++;
+	}
+	memcpy(pPacket->GetBuffer() + wSize, &wCount, sizeof(wCount));
 }
 
 void CTPlayer::UnwrapCharStat(CPacket* pPacket)
@@ -142,6 +183,24 @@ void CTPlayer::UnwrapCharStat(CPacket* pPacket)
 			>> stat.m_nDamage;
 
 		m_mapMonKillStat.insert(MAPTMONKILLSTAT::value_type(wMonID, stat));
+	}
+
+	(*pPacket) >> wCount;
+
+	if(wCount > CHARCOUNTER_MAX_ROWS)
+		wCount = CHARCOUNTER_MAX_ROWS;
+
+	for(WORD i = 0; i < wCount; i++)
+	{
+		WORD wStatID = 0;
+		__int64 nValue = 0;
+
+		(*pPacket)
+			>> wStatID
+			>> nValue;
+
+		if(wStatID < CHARCOUNTER_COUNT)
+			m_charStat.m_aCounter[wStatID] = nValue;
 	}
 
 	m_dwStatSaveTick = _AtlModule.m_dwTick - dwTickPassed;
@@ -210,6 +269,32 @@ void CTMapSvrModule::WriteCharStatFromDB(DWORD dwCharID, CPacket* pMsg)
 	UNDEFINE_QUERY()
 
 	memcpy(pMsg->GetBuffer() + wSize, &wCount, sizeof(wCount));
+
+	wSize = pMsg->GetSize();
+	wCount = 0;
+	(*pMsg) << wCount;
+
+	DEFINE_QUERY(&m_db, CTBLCharCounterTable)
+	query->m_dwCharID = dwCharID;
+
+	if(query->Open())
+	{
+		while(query->Fetch() && wCount < CHARCOUNTER_MAX_ROWS)
+		{
+			(*pMsg)
+				<< query->m_wStatID
+				<< query->m_nValue;
+
+			wCount++;
+		}
+
+		query->Close();
+	}
+	else
+		LogEvent("CharStat: TCHARCOUNTERTABLE read failed. CharID: %d", dwCharID);
+	UNDEFINE_QUERY()
+
+	memcpy(pMsg->GetBuffer() + wSize, &wCount, sizeof(wCount));
 }
 
 // Batch thread. Queues everything changed since the last flush. Callers make sure this is the
@@ -234,6 +319,25 @@ void CTMapSvrModule::SendDM_SAVECHARSTAT_REQ(CTPlayer* pPlayer)
 
 	WORD wSize = pBUF->m_packet.GetSize();
 	WORD wCount = 0;
+	pBUF->m_packet << wCount;
+
+	for(WORD i = 0; i < CHARCOUNTER_COUNT; i++)
+	{
+		if(!pPlayer->m_charStat.m_aCounterDirty[i])
+			continue;
+
+		pBUF->m_packet
+			<< i
+			<< pPlayer->m_charStat.m_aCounter[i];
+
+		pPlayer->m_charStat.m_aCounterDirty[i] = FALSE;
+		wCount++;
+	}
+	memcpy(pBUF->m_packet.GetBuffer() + wSize, &wCount, sizeof(wCount));
+	pPlayer->m_charStat.m_bCounterDirty = FALSE;
+
+	wSize = pBUF->m_packet.GetSize();
+	wCount = 0;
 	pBUF->m_packet << wCount;
 
 	for(MAPTMONKILLSTAT::iterator it = pPlayer->m_mapMonKillStat.begin();
@@ -283,6 +387,37 @@ DWORD CTMapSvrModule::OnDM_SAVECHARSTAT_REQ(LPPACKETBUF pBUF)
 		>> nDamageTaken
 		>> nHealDone
 		>> wCount;
+
+	// Read these out first, so the packet stays in step whatever happens to the queries below.
+	WORD aStatID[CHARCOUNTER_COUNT];
+	__int64 aValue[CHARCOUNTER_COUNT];
+	WORD wCounters = wCount < CHARCOUNTER_COUNT ? wCount : WORD(CHARCOUNTER_COUNT);
+
+	for(WORD i = 0; i < wCounters; i++)
+	{
+		pBUF->m_packet
+			>> aStatID[i]
+			>> aValue[i];
+	}
+
+	pBUF->m_packet
+		>> wCount;
+
+	if(wCounters)
+	{
+		DEFINE_QUERY(&m_db, CSPSaveCharCounter)
+		query->m_dwCharID = dwCharID;
+
+		for(WORD i = 0; i < wCounters; i++)
+		{
+			query->m_wStatID = aStatID[i];
+			query->m_nValue = aValue[i];
+
+			if(!query->Call())
+				LogEvent("CharStat: TSaveCharCounter failed. CharID: %d StatID: %d", dwCharID, aStatID[i]);
+		}
+		UNDEFINE_QUERY()
+	}
 
 	if(bTotals)
 	{
@@ -351,6 +486,14 @@ BYTE CTMapSvrModule::OnCharStatCmd(CTPlayer* pPlayer, const CString& strTalk)
 		DWORD(pPlayer->m_mapMonKillStat.size()),
 		DWORD(pPlayer->HasDirtyCharStat() ? 1 : 0),
 		bSaved ? _T(" (flush queued)") : _T(""));
+
+	pPlayer->SendCS_CHAT_ACK(CHAT_OPERATOR, 0, GetSvrMsg(NAME_OPERATOR), BuildNetString(NAME_NULL, strMsg));
+
+	strMsg.Format(_T("Upgrades %I64d succeeded, %I64d failed. Money from monsters %I64d, spent %I64d"),
+		pPlayer->GetCounter(CHARCOUNTER_UPGRADE_SUCCESS),
+		pPlayer->GetCounter(CHARCOUNTER_UPGRADE_FAIL),
+		pPlayer->GetCounter(CHARCOUNTER_MONMONEY),
+		pPlayer->GetCounter(CHARCOUNTER_MONEYSPENT));
 
 	pPlayer->SendCS_CHAT_ACK(CHAT_OPERATOR, 0, GetSvrMsg(NAME_OPERATOR), BuildNetString(NAME_NULL, strMsg));
 

@@ -431,7 +431,8 @@ public:
 	BYTE PutinCabinetItem(BYTE bCabinetID, BYTE bInven, BYTE bItemID, BYTE bCount);
 	BYTE TakeoutStorageItem(BYTE bCabinetID, DWORD dwStItemID, BYTE bCount, DWORD dwMoney, BYTE bInvenID, BYTE bItemID);
 	
-	BYTE UseMoney(__int64 llMoney, BYTE bUsed);
+	// Moose - bCountSpent: pass FALSE when the money goes to another player or can be refunded
+	BYTE UseMoney(__int64 llMoney, BYTE bUsed, BYTE bCountSpent = TRUE);
 	BYTE EarnMoney(__int64 llMoney);
 	BYTE IsEnoughSkillPoint(CTSkillTemp * pSkill);
 	BYTE GetTermCount(DWORD dwTermID, BYTE bTermType);
@@ -547,13 +548,15 @@ public:
 	void AddMonDamage(WORD wMonID, DWORD dwDamage);
 	void AddDamageTaken(DWORD dwDamage);
 	void AddHealDone(DWORD dwHeal);
+	void AddCounter(BYTE bCounter, __int64 nValue);
+	__int64 GetCounter(BYTE bCounter);
 	DWORD GetMonKills(WORD wMonID);
 	__int64 GetMonDamage(WORD wMonID);
 	DWORD GetTotalKills() { return m_charStat.m_dwTotalKills; }
 	__int64 GetTotalDamageDealt() { return m_charStat.m_nDamageDealt; }
 	__int64 GetTotalDamageTaken() { return m_charStat.m_nDamageTaken; }
 	__int64 GetTotalHealDone() { return m_charStat.m_nHealDone; }
-	BYTE HasDirtyCharStat() { return (m_charStat.m_bDirty || m_wStatDirtyMon) ? TRUE : FALSE; }
+	BYTE HasDirtyCharStat() { return (m_charStat.m_bDirty || m_charStat.m_bCounterDirty || m_wStatDirtyMon) ? TRUE : FALSE; }
 	void ClearCharStat();
 	void WrapCharStat(CPacket* pPacket);
 	void UnwrapCharStat(CPacket* pPacket);

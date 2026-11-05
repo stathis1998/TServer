@@ -928,7 +928,7 @@ BYTE CTPlayer::IsEmptyHotkey(LPTHOTKEYINVEN pInven)
 	return TRUE;
 }
 
-BYTE CTPlayer::UseMoney(__int64 llMoney, BYTE bUsed)
+BYTE CTPlayer::UseMoney(__int64 llMoney, BYTE bUsed, BYTE bCountSpent)
 {
 	if(!llMoney)
 		return TRUE;
@@ -942,6 +942,9 @@ BYTE CTPlayer::UseMoney(__int64 llMoney, BYTE bUsed)
 	{
 		llMyMoney -= llMoney;
 		CalcMoney(llMyMoney, m_dwGold, m_dwSilver, m_dwCooper);
+
+		if(bCountSpent)
+			AddCounter(CHARCOUNTER_MONEYSPENT, llMoney);
 	}
 
 	GetTitle(GOLD_TITLE, m_dwGold, TRUE);
