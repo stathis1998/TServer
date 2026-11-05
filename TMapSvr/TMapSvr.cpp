@@ -754,8 +754,10 @@ void CTMapSvrModule::OnExit() {
 void CTMapSvrModule::SaveAllCharData() {
 	MAPPLAYERNAME::iterator it;
 	for (it = m_mapPLAYERNAME.begin(); it != m_mapPLAYERNAME.end(); it++) {
-		if ((*it).second->m_bMain)
+		if ((*it).second->m_bMain) {
 			SendDM_SAVECHAR_REQ((*it).second, 0);
+			SendDM_SAVECHARSTAT_REQ((*it).second);
+		}
 
 		SendDM_LOGOUT_REQ((*it).second, 0);
 	}
@@ -1774,8 +1776,10 @@ void CTMapSvrModule::SetEventCloseSession(CTMapSession* pSession, BYTE bSave) {
 						pPlayer->OnDie(pPlayer->m_dwLastAttackCharID, OT_PC, 0);
 				}
 
-				if (m_mapPLAYER.find(pPlayer->m_dwID) != m_mapPLAYER.end())
+				if (m_mapPLAYER.find(pPlayer->m_dwID) != m_mapPLAYER.end()) {
 					SendDM_SAVECHAR_REQ(pPlayer, 0);
+					SendDM_SAVECHARSTAT_REQ(pPlayer);
+				}
 			}
 
 			if (pPlayer->m_bLogout)
@@ -5166,6 +5170,7 @@ DWORD CTMapSvrModule::OnReceive(LPPACKETBUF pBUF) {
 						ON_RECEIVE(DM_LOADCHAR_REQ)
 						ON_RECEIVE(DM_LOADPOSTMESSAGE_REQ)
 						ON_RECEIVE(DM_SAVECHAR_REQ)
+						ON_RECEIVE(DM_SAVECHARSTAT_REQ)
 						ON_RECEIVE(DM_SAVEITEM_REQ)
 						ON_RECEIVE(DM_LOGOUT_REQ)
 						ON_RECEIVE(DM_CLEARTITLE_REQ)

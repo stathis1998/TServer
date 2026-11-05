@@ -103,6 +103,9 @@
     <ClCompile Include="..\TMapSvr\TAICmdFollow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\TMapSvr\TCharStat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\TMapSvr\TCompanionClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

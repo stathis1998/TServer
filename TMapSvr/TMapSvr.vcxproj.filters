@@ -157,6 +157,9 @@
     <ClCompile Include="TChannel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TCharStat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="TCompanionClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

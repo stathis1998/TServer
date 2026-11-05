@@ -205,6 +205,7 @@
     <ClCompile Include="..\TMapSvr\TAICommand.cpp" />
     <ClCompile Include="..\TMapSvr\TCell.cpp" />
     <ClCompile Include="..\TMapSvr\TChannel.cpp" />
+    <ClCompile Include="..\TMapSvr\TCharStat.cpp" />
     <ClCompile Include="..\TMapSvr\TCompanionClass.cpp" />
     <ClCompile Include="..\TMapSvr\TInven.cpp" />
     <ClCompile Include="..\TMapSvr\TItem.cpp" />

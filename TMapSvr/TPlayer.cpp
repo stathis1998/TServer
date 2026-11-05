@@ -199,6 +199,10 @@ CTPlayer::CTPlayer()
 
 	m_dwRankPoint = 0;
 
+	// Moose - combat statistics
+	ClearCharStat();
+	m_dwStatSaveTick = 0;
+
 	m_pSECURE = nullptr;
 }
 
@@ -236,6 +240,7 @@ void CTPlayer::ClearMain()
 	ClearAuctionList();
 	ClearTitle();
 	ClearUsedSkills();
+	ClearCharStat();
 
 	if(m_dwDuelID)
 		_AtlModule.SendSM_DUELEND_REQ(m_dwDuelID, 0);
@@ -620,7 +625,7 @@ DWORD CTPlayer::OnDamage( DWORD dwHostID,
 	if(!m_pMAP)
 		return 0;
 
-	return CTObjBase::OnDamage(
+	DWORD dwRealDamage = CTObjBase::OnDamage(
 		dwHostID,
 		dwAttackID,
 		bAttackType,
@@ -630,6 +635,12 @@ DWORD CTPlayer::OnDamage( DWORD dwHostID,
 		wPartyID,
 		nDamageHP,
 		nDamageMP);
+
+	// Moose - combat statistics: HP actually lost, from any source that reaches OnDamage
+	if(dwRealDamage && m_bMain)
+		AddDamageTaken(dwRealDamage);
+
+	return dwRealDamage;
 }
 
 BYTE CTPlayer::CheckDealItem(BYTE bInven, BYTE bItemID)
@@ -1004,6 +1015,10 @@ void CTPlayer::OnTimer(DWORD dwTick)
 		if(m_bMain && !m_bIsTournamentPlayer)
 			_AtlModule.SendDM_SAVECHAR_REQ(this, 0);
 	}
+
+	// Moose - combat statistics: staggered flush, writes only what changed
+	if(m_bMain && dwTick - m_dwStatSaveTick > CHARSTAT_SAVE_TICK)
+		_AtlModule.SendDM_SAVECHARSTAT_REQ(this);
 
 	if(dwTick - m_dwCompanionTick > 60000)
 	{

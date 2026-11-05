@@ -309,7 +309,7 @@ DWORD CTMonster::OnDamage(DWORD dwHostID,
 													WORD wPartyID,
 													int nDamageHP,
 													int nDamageMP) {
-	CTObjBase::OnDamage(
+	DWORD dwRealDamage = CTObjBase::OnDamage(
 		dwHostID,
 		dwAttackID,
 		bAttackType,
@@ -353,6 +353,11 @@ DWORD CTMonster::OnDamage(DWORD dwHostID,
 		DWORD dwGuildID = 0;
 		MAPDWORD::iterator itG;
 		CTPlayer* pPlayer = _AtlModule.FindChar(dwHostID);
+
+		// Moose - combat statistics: HP actually removed, so overkill is excluded. dwHostID is the owner for pets and summons.
+		if (pPlayer && pPlayer->m_bMain && m_bType == OT_MON && dwRealDamage)
+			pPlayer->AddMonDamage(m_pMON->m_wID, dwRealDamage);
+
 		if (pPlayer &&
 				pPlayer->GetWarCountry() < TCONTRY_B &&
 				(pPlayer->m_bCountry < TCONTRY_B || pPlayer->m_dwTacticsID))
@@ -590,6 +595,10 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 						vParty[i]->CheckSoulEXP(vParty, dwEXP);
 						vParty[i]->GainExp(dwEXP, TRUE);
 					}
+
+					// Moose - combat statistics: every EXP-sharing member gets the kill, even when the level gap makes their EXP 0
+					if (m_bType == OT_MON)
+						vParty[i]->AddMonKill(m_pMON->m_wID);
 				#ifdef DEF_UDPLOG
 					_AtlModule.m_pUdpSocket->LogExpByMonster(LOGMAP_MONEXPPARTY, vParty[i], this, dwEXP);
 				#endif
@@ -618,7 +627,8 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 						m_fPosZ,
 						m_pMON->m_wKind,
 						QTT_HUNT,
-						TT_KILLMON, 1);
+						TT_KILLMON, 1,
+						m_pMON->m_wID);
 				#ifdef DEF_UDPLOG
 					_AtlModule.m_pUdpSocket->LogExpByMonster(LOGMAP_MONEXPPARTY, vParty[i], this, dwEXP, TRUE);
 				#endif
@@ -656,6 +666,10 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 
 					if (dwEXP)
 						pOwner->GainExp(dwEXP, TRUE);
+
+					// Moose - combat statistics: the kill counts even when the level gap makes the EXP 0
+					if (m_bType == OT_MON)
+						pOwner->AddMonKill(m_pMON->m_wID);
 				#ifdef DEF_UDPLOG
 					_AtlModule.m_pUdpSocket->LogExpByMonster(LOGMAP_MONEXPSOLO, pOwner, this, dwEXP);
 				#endif
@@ -680,7 +694,8 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 						m_fPosZ,
 						m_pMON->m_wKind,
 						QTT_HUNT,
-						TT_KILLMON, 1);
+						TT_KILLMON, 1,
+						m_pMON->m_wID);
 				#ifdef DEF_UDPLOG
 					_AtlModule.m_pUdpSocket->LogExpByMonster(LOGMAP_MONEXPSOLO, pOwner, this, dwEXP, TRUE);
 				#endif

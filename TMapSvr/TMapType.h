@@ -24,6 +24,12 @@
 #define INVALID_MAPID						((WORD)0xFFFF)
 #define CHAR_SAVE_TICK						30*60*1000
 
+// Moose - combat statistics, see TCharStat.cpp
+#define CHARSTAT_SAVE_TICK					(5*60*1000)
+#define CHARSTAT_MAX_MONKILL				(1500)
+// Kept here so the whole feature stays on its branch. Lib\ is outside this repository, and DM codes never leave this process.
+#define DM_SAVECHARSTAT_REQ					(DM_BASE + 0x00F2)
+
 #ifdef ADD_KINGDOMBALANCE
 #define COUNTRY_BAL_TICK					60*60*1000
 #endif
@@ -631,6 +637,8 @@ typedef struct tagONTIMEMON					TONTIMEMON, *LPTONTIMEMON;
 typedef struct tagPVPOINT					TPVPOINT, *LPTPVPOINT;
 typedef struct tagENTRYRECORD				TENTRYRECORD, *LPTENTRYRECORD;
 typedef struct tagRECORDSET					TRECORDSET, *LPTRECORDSET;
+typedef struct tagTCHARSTAT					TCHARSTAT, *LPTCHARSTAT;
+typedef struct tagTMONKILLSTAT				TMONKILLSTAT, *LPTMONKILLSTAT;
 typedef struct tagMONSTERSHOP				TMONSTERSHOP, *LPTMONSTERSHOP;
 typedef struct tagPROTECTED					TPROTECTED, *LPTPROTECTED;
 typedef struct tagCASHGAMBLE				TCASHGAMBLE, *LPTCASHGAMBLE;
@@ -2364,6 +2372,25 @@ struct tagRECORDSET
 	DWORD	m_dwPoint;
 	__time64_t	m_dTime;
 };
+
+// Moose - combat statistics, see TCharStat.cpp
+struct tagTCHARSTAT
+{
+	DWORD	m_dwTotalKills;
+	__int64	m_nDamageDealt;
+	__int64	m_nDamageTaken;
+	__int64	m_nHealDone;
+	BYTE	m_bDirty;
+};
+
+struct tagTMONKILLSTAT
+{
+	DWORD	m_dwKills;
+	__int64	m_nDamage;
+	BYTE	m_bDirty;
+};
+
+typedef map<WORD, TMONKILLSTAT>				MAPTMONKILLSTAT, *LPMAPTMONKILLSTAT;	// key: TMONSTER::m_wID, the template ID
 
 struct tagMONSTERSHOP
 {

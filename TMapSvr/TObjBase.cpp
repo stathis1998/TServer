@@ -927,6 +927,18 @@ void CTObjBase::Defend(CTSkillTemp* pTemp,
 	if (dwNewMaxMP < m_dwMP)
 		m_dwMP = dwNewMaxMP;
 
+	// Moose - combat statistics: real HP this skill restored on another player. Potions and regen
+	// never come through Defend. For OT_MON attackers the client sets dwHostID to the victim.
+	if (m_dwHP > dwHP &&
+			m_bType == OT_PC &&
+			bAttackType != OT_MON &&
+			dwHostID != m_dwID &&
+			!pTemp->IsNegative()) {
+		CTPlayer* pHealer = _AtlModule.FindChar(dwHostID);
+		if (pHealer && pHealer->m_bMain)
+			pHealer->AddHealDone(m_dwHP - dwHP);
+	}
+
 	bHPMP = (m_dwHP == dwHP && m_dwMP == dwMP && dwNewMaxHP == dwMaxHP && dwNewMaxMP == dwMaxMP) ? FALSE : TRUE;
 
 	if (m_bType == OT_PC) {

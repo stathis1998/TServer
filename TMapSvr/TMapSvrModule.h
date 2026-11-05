@@ -958,6 +958,7 @@ protected:
 	DWORD OnDM_LOADCHAR_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_LOADPOSTMESSAGE_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_SAVECHAR_REQ( LPPACKETBUF pBUF);
+	DWORD OnDM_SAVECHARSTAT_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_SAVEITEM_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_LOGOUT_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_CLEARTITLE_REQ( LPPACKETBUF pBUF);
@@ -1960,7 +1961,8 @@ public:
         WORD wMonTermID,
         BYTE bTermType,
         BYTE bTriggerType,
-		BYTE bCount);
+		BYTE bCount,
+		WORD wMonTempID);
 	void SendMW_ADDITEM_ACK(
 		DWORD dwCharID,
 		DWORD dwKEY,
@@ -2477,6 +2479,11 @@ public:
 		DWORD dwKEY);
 
 	void SendDM_SAVECHAR_REQ(CTPlayer *pPlayer, WORD wACKMsg);
+
+	// Moose - combat statistics, see TCharStat.cpp
+	void SendDM_SAVECHARSTAT_REQ(CTPlayer *pPlayer);
+	void WriteCharStatFromDB(DWORD dwCharID, CPacket *pMsg);
+	BYTE OnCharStatCmd(CTPlayer *pPlayer, const CString& strTalk);
 
 	void SendDM_SAVECHARPOSITION_REQ(
 		CTPlayer *pPlayer,

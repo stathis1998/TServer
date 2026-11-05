@@ -4884,6 +4884,10 @@ DWORD CTMapSvrModule::OnCS_CHAT_REQ(LPPACKETBUF pBUF) {
 	if (bGroup == CHAT_WORLD || bGroup == CHAT_OPERATOR)
 		return EC_NOERROR;
 
+	// Moose - combat statistics: !cstat shows the sender's own numbers and is never broadcast
+	if (OnCharStatCmd(pPlayer, strTalk))
+		return EC_NOERROR;
+
 	strTalk.Left(1024);
 
 	BYTE bType = bGroup;

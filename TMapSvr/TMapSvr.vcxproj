@@ -205,6 +205,7 @@
     <ClCompile Include="TAICommand.cpp" />
     <ClCompile Include="TCell.cpp" />
     <ClCompile Include="TChannel.cpp" />
+    <ClCompile Include="TCharStat.cpp" />
     <ClCompile Include="TCompanionClass.cpp" />
     <ClCompile Include="TInven.cpp" />
     <ClCompile Include="TItem.cpp" />

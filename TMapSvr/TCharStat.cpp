@@ -1,0 +1,393 @@
+// Per-character combat statistics: monster kills, damage dealt, damage taken and healing done.
+//
+// Counters only ever grow. A future daily quest stores a counter when it is accepted and works
+// out progress as (current - stored), so nothing here needs a daily reset.
+//
+// Threads: the Add* functions, the packet functions and SendDM_SAVECHARSTAT_REQ run on the batch
+// thread and never touch SQL. WriteCharStatFromDB and OnDM_SAVECHARSTAT_REQ run on the DB thread.
+//
+// The load packet and the channel-change packet share one layout, always their last section.
+// It is written by WriteCharStatFromDB and CTPlayer::WrapCharStat, and read by UnwrapCharStat:
+//   DWORD dwTickPassed, DWORD dwTotalKills, INT64 nDamageDealt, INT64 nDamageTaken, INT64 nHealDone,
+//   WORD wCount, { WORD wMonID, DWORD dwKills, INT64 nDamage } x wCount
+#include "StdAfx.h"
+#include <SvrInc.h>
+#include "TMapSvrModule.h"
+
+// Bytes for one { wMonID, dwKills, nDamage } entry in a packet.
+#define CHARSTAT_ENTRY_SIZE		(sizeof(WORD) + sizeof(DWORD) + sizeof(__int64))
+// Space left free in the channel-change packet. Its WORD size field saturates at MAX_PACKET_SIZE,
+// and the world server then drops the whole packet, so it must never get close to that limit.
+#define CHARSTAT_PACKET_MARGIN	(2048)
+
+void CTPlayer::ClearCharStat()
+{
+	memset(&m_charStat, 0, sizeof(m_charStat));
+	m_mapMonKillStat.clear();
+	m_wStatDirtyMon = 0;
+}
+
+void CTPlayer::AddMonKill(WORD wMonID)
+{
+	TMONKILLSTAT& stat = m_mapMonKillStat[wMonID];
+	stat.m_dwKills++;
+	if(!stat.m_bDirty)
+	{
+		stat.m_bDirty = TRUE;
+		m_wStatDirtyMon++;
+	}
+
+	m_charStat.m_dwTotalKills++;
+	m_charStat.m_bDirty = TRUE;
+}
+
+void CTPlayer::AddMonDamage(WORD wMonID, DWORD dwDamage)
+{
+	TMONKILLSTAT& stat = m_mapMonKillStat[wMonID];
+	stat.m_nDamage += dwDamage;
+	if(!stat.m_bDirty)
+	{
+		stat.m_bDirty = TRUE;
+		m_wStatDirtyMon++;
+	}
+
+	m_charStat.m_nDamageDealt += dwDamage;
+	m_charStat.m_bDirty = TRUE;
+}
+
+void CTPlayer::AddDamageTaken(DWORD dwDamage)
+{
+	m_charStat.m_nDamageTaken += dwDamage;
+	m_charStat.m_bDirty = TRUE;
+}
+
+void CTPlayer::AddHealDone(DWORD dwHeal)
+{
+	m_charStat.m_nHealDone += dwHeal;
+	m_charStat.m_bDirty = TRUE;
+}
+
+DWORD CTPlayer::GetMonKills(WORD wMonID)
+{
+	MAPTMONKILLSTAT::iterator it = m_mapMonKillStat.find(wMonID);
+	return it != m_mapMonKillStat.end() ? (*it).second.m_dwKills : 0;
+}
+
+__int64 CTPlayer::GetMonDamage(WORD wMonID)
+{
+	MAPTMONKILLSTAT::iterator it = m_mapMonKillStat.find(wMonID);
+	return it != m_mapMonKillStat.end() ? (*it).second.m_nDamage : 0;
+}
+
+void CTPlayer::WrapCharStat(CPacket* pPacket)
+{
+	(*pPacket)
+		<< DWORD(_AtlModule.m_dwTick - m_dwStatSaveTick)
+		<< m_charStat.m_dwTotalKills
+		<< m_charStat.m_nDamageDealt
+		<< m_charStat.m_nDamageTaken
+		<< m_charStat.m_nHealDone;
+
+	WORD wSize = pPacket->GetSize();
+	WORD wCount = 0;
+	(*pPacket) << wCount;
+
+	int nRoom = (MAX_PACKET_SIZE - CHARSTAT_PACKET_MARGIN - int(pPacket->GetSize())) / int(CHARSTAT_ENTRY_SIZE);
+	if(nRoom > CHARSTAT_MAX_MONKILL)
+		nRoom = CHARSTAT_MAX_MONKILL;
+
+	for(MAPTMONKILLSTAT::iterator it = m_mapMonKillStat.begin(); it != m_mapMonKillStat.end() && int(wCount) < nRoom; it++)
+	{
+		(*pPacket)
+			<< (*it).first
+			<< (*it).second.m_dwKills
+			<< (*it).second.m_nDamage;
+
+		wCount++;
+	}
+	memcpy(pPacket->GetBuffer() + wSize, &wCount, sizeof(wCount));
+
+	// Entries left out stay safe in the DB, because the sender flushes before this runs.
+	if(size_t(wCount) < m_mapMonKillStat.size())
+		_AtlModule.LogEvent("CharStat: channel change kept %d of %d monster entries. CharID: %d", wCount, int(m_mapMonKillStat.size()), m_dwID);
+}
+
+void CTPlayer::UnwrapCharStat(CPacket* pPacket)
+{
+	ClearCharStat();
+
+	DWORD dwTickPassed = 0;
+	WORD wCount = 0;
+
+	(*pPacket)
+		>> dwTickPassed
+		>> m_charStat.m_dwTotalKills
+		>> m_charStat.m_nDamageDealt
+		>> m_charStat.m_nDamageTaken
+		>> m_charStat.m_nHealDone
+		>> wCount;
+
+	if(wCount > CHARSTAT_MAX_MONKILL)
+		wCount = CHARSTAT_MAX_MONKILL;
+
+	for(WORD i = 0; i < wCount; i++)
+	{
+		WORD wMonID = 0;
+		TMONKILLSTAT stat;
+		stat.m_bDirty = FALSE;
+
+		(*pPacket)
+			>> wMonID
+			>> stat.m_dwKills
+			>> stat.m_nDamage;
+
+		m_mapMonKillStat.insert(MAPTMONKILLSTAT::value_type(wMonID, stat));
+	}
+
+	m_dwStatSaveTick = _AtlModule.m_dwTick - dwTickPassed;
+}
+
+// DB thread. Appends the shared layout to a DM_LOADCHAR_ACK packet.
+void CTMapSvrModule::WriteCharStatFromDB(DWORD dwCharID, CPacket* pMsg)
+{
+	// Spreads each character's first flush across the save interval, so a restart does not make
+	// every online character write at the same moment.
+	(*pMsg) << DWORD((dwCharID * 7919u) % CHARSTAT_SAVE_TICK);
+
+	DWORD dwTotalKills = 0;
+	__int64 nDamageDealt = 0;
+	__int64 nDamageTaken = 0;
+	__int64 nHealDone = 0;
+
+	DEFINE_QUERY(&m_db, CSPGetCharStat)
+	query->m_dwCharID = dwCharID;
+	query->m_dwTotalKills = 0;
+	query->m_nDamageDealt = 0;
+	query->m_nDamageTaken = 0;
+	query->m_nHealDone = 0;
+
+	// A statistics failure must never block a login, so it only logs and loads zeros.
+	if(query->Call())
+	{
+		dwTotalKills = query->m_dwTotalKills;
+		nDamageDealt = query->m_nDamageDealt;
+		nDamageTaken = query->m_nDamageTaken;
+		nHealDone = query->m_nHealDone;
+	}
+	else
+		LogEvent("CharStat: TGetCharStat failed. CharID: %d", dwCharID);
+	UNDEFINE_QUERY()
+
+	(*pMsg)
+		<< dwTotalKills
+		<< nDamageDealt
+		<< nDamageTaken
+		<< nHealDone;
+
+	WORD wSize = pMsg->GetSize();
+	WORD wCount = 0;
+	(*pMsg) << wCount;
+
+	DEFINE_QUERY(&m_db, CTBLCharMonKillTable)
+	query->m_dwCharID = dwCharID;
+
+	if(query->Open())
+	{
+		while(query->Fetch() && wCount < CHARSTAT_MAX_MONKILL)
+		{
+			(*pMsg)
+				<< query->m_wMonID
+				<< query->m_dwKills
+				<< query->m_nDamage;
+
+			wCount++;
+		}
+
+		query->Close();
+	}
+	else
+		LogEvent("CharStat: TCHARMONKILLTABLE read failed. CharID: %d", dwCharID);
+	UNDEFINE_QUERY()
+
+	memcpy(pMsg->GetBuffer() + wSize, &wCount, sizeof(wCount));
+}
+
+// Batch thread. Queues everything changed since the last flush. Callers make sure this is the
+// main copy. The channel-change caller runs after m_bMain has already been cleared, so this
+// function cannot check m_bMain itself.
+void CTMapSvrModule::SendDM_SAVECHARSTAT_REQ(CTPlayer* pPlayer)
+{
+#ifndef BOW_COMPILE_MODE
+	pPlayer->m_dwStatSaveTick = m_dwTick;
+
+	if(pPlayer->m_bLoadCharError || !pPlayer->HasDirtyCharStat())
+		return;
+
+	LPPACKETBUF pBUF = new PACKETBUF();
+	pBUF->m_packet.SetID(DM_SAVECHARSTAT_REQ)
+		<< pPlayer->m_dwID
+		<< pPlayer->m_charStat.m_bDirty
+		<< pPlayer->m_charStat.m_dwTotalKills
+		<< pPlayer->m_charStat.m_nDamageDealt
+		<< pPlayer->m_charStat.m_nDamageTaken
+		<< pPlayer->m_charStat.m_nHealDone;
+
+	WORD wSize = pBUF->m_packet.GetSize();
+	WORD wCount = 0;
+	pBUF->m_packet << wCount;
+
+	for(MAPTMONKILLSTAT::iterator it = pPlayer->m_mapMonKillStat.begin();
+		it != pPlayer->m_mapMonKillStat.end() && wCount < CHARSTAT_MAX_MONKILL;
+		it++)
+	{
+		if(!(*it).second.m_bDirty)
+			continue;
+
+		pBUF->m_packet
+			<< (*it).first
+			<< (*it).second.m_dwKills
+			<< (*it).second.m_nDamage;
+
+		(*it).second.m_bDirty = FALSE;
+		wCount++;
+	}
+	memcpy(pBUF->m_packet.GetBuffer() + wSize, &wCount, sizeof(wCount));
+
+	// Anything past the per-packet cap stays dirty and goes out with the next flush.
+	pPlayer->m_charStat.m_bDirty = FALSE;
+	pPlayer->m_wStatDirtyMon -= wCount;
+
+	SayToDB(pBUF);
+#endif
+}
+
+// DB thread. Reads only the packet, never a CTPlayer.
+DWORD CTMapSvrModule::OnDM_SAVECHARSTAT_REQ(LPPACKETBUF pBUF)
+{
+	DWORD dwCharID;
+	BYTE bTotals;
+	WORD wCount;
+
+	pBUF->m_packet
+		>> dwCharID
+		>> bTotals;
+
+	DWORD dwTotalKills;
+	__int64 nDamageDealt;
+	__int64 nDamageTaken;
+	__int64 nHealDone;
+
+	pBUF->m_packet
+		>> dwTotalKills
+		>> nDamageDealt
+		>> nDamageTaken
+		>> nHealDone
+		>> wCount;
+
+	if(bTotals)
+	{
+		DEFINE_QUERY(&m_db, CSPSaveCharStat)
+		query->m_dwCharID = dwCharID;
+		query->m_dwTotalKills = dwTotalKills;
+		query->m_nDamageDealt = nDamageDealt;
+		query->m_nDamageTaken = nDamageTaken;
+		query->m_nHealDone = nHealDone;
+
+		if(!query->Call())
+			LogEvent("CharStat: TSaveCharStat failed. CharID: %d", dwCharID);
+		UNDEFINE_QUERY()
+	}
+
+	DEFINE_QUERY(&m_db, CSPSaveCharMonKill)
+	query->m_dwCharID = dwCharID;
+
+	for(WORD i = 0; i < wCount; i++)
+	{
+		pBUF->m_packet
+			>> query->m_wMonID
+			>> query->m_dwKills
+			>> query->m_nDamage;
+
+		if(!query->Call())
+			LogEvent("CharStat: TSaveCharMonKill failed. CharID: %d MonID: %d", dwCharID, query->m_wMonID);
+	}
+	UNDEFINE_QUERY()
+
+	return EC_NOERROR;
+}
+
+// Batch thread. Chat command for checking a character's own numbers. Returns TRUE when the text
+// was this command, so the caller does not broadcast it.
+//   !cstat        shows your totals and the five monsters you have killed most
+//   !cstat save   also queues a flush straight away
+// It uses "!" because the client handles "/" chat locally and never sends it. It is not limited
+// to operators, because it only shows the sender's own numbers and writes only changed values.
+BYTE CTMapSvrModule::OnCharStatCmd(CTPlayer* pPlayer, const CString& strTalk)
+{
+	// Chat text is "%04X%04X" (header and body lengths), then the header, then the body. Typed
+	// text has an empty header, so the body starts at offset 8.
+	if(strTalk.GetLength() < 8 + 6 || strTalk.Mid(8, 6).CompareNoCase(_T("!cstat")) != 0)
+		return FALSE;
+
+	CString strArg = strTalk.Mid(8 + 6);
+	strArg.Trim();
+
+	if(!strArg.IsEmpty() && strArg.CompareNoCase(_T("save")) != 0)
+		return FALSE;
+
+	BYTE bSaved = FALSE;
+	if(!strArg.IsEmpty())
+	{
+		SendDM_SAVECHARSTAT_REQ(pPlayer);
+		bSaved = TRUE;
+	}
+
+	CString strMsg;
+	strMsg.Format(_T("Kills %u, damage dealt %I64d, taken %I64d, healed %I64d, monster types %u, unsaved %u%s"),
+		pPlayer->GetTotalKills(),
+		pPlayer->GetTotalDamageDealt(),
+		pPlayer->GetTotalDamageTaken(),
+		pPlayer->GetTotalHealDone(),
+		DWORD(pPlayer->m_mapMonKillStat.size()),
+		DWORD(pPlayer->HasDirtyCharStat() ? 1 : 0),
+		bSaved ? _T(" (flush queued)") : _T(""));
+
+	pPlayer->SendCS_CHAT_ACK(CHAT_OPERATOR, 0, GetSvrMsg(NAME_OPERATOR), BuildNetString(NAME_NULL, strMsg));
+
+	// Top five by kills. A partial selection over a small map, so no sorting of the whole map.
+	WORD aTopID[5] = { 0 };
+	DWORD aTopKills[5] = { 0 };
+	for(MAPTMONKILLSTAT::iterator it = pPlayer->m_mapMonKillStat.begin(); it != pPlayer->m_mapMonKillStat.end(); it++)
+	{
+		WORD wID = (*it).first;
+		DWORD dwKills = (*it).second.m_dwKills;
+
+		for(int i = 0; i < 5; i++)
+		{
+			if(dwKills > aTopKills[i])
+			{
+				WORD wSwapID = aTopID[i];
+				DWORD dwSwapKills = aTopKills[i];
+				aTopID[i] = wID;
+				aTopKills[i] = dwKills;
+				wID = wSwapID;
+				dwKills = dwSwapKills;
+			}
+		}
+	}
+
+	if(aTopKills[0])
+	{
+		strMsg = _T("Most killed (monster ID: kills):");
+		for(int i = 0; i < 5 && aTopKills[i]; i++)
+		{
+			CString strEntry;
+			strEntry.Format(_T(" %u: %u"), DWORD(aTopID[i]), aTopKills[i]);
+			strMsg += strEntry;
+		}
+
+		pPlayer->SendCS_CHAT_ACK(CHAT_OPERATOR, 0, GetSvrMsg(NAME_OPERATOR), BuildNetString(NAME_NULL, strMsg));
+	}
+
+	return TRUE;
+}
