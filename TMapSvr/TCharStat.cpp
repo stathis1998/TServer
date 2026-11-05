@@ -318,7 +318,7 @@ DWORD CTMapSvrModule::OnDM_SAVECHARSTAT_REQ(LPPACKETBUF pBUF)
 
 // Batch thread. Chat command for checking a character's own numbers. Returns TRUE when the text
 // was this command, so the caller does not broadcast it.
-//   !cstat        shows your totals and the five monsters you have killed most
+//   !cstat        shows your totals
 //   !cstat save   also queues a flush straight away
 // It uses "!" because the client handles "/" chat locally and never sends it. It is not limited
 // to operators, because it only shows the sender's own numbers and writes only changed values.
@@ -353,41 +353,6 @@ BYTE CTMapSvrModule::OnCharStatCmd(CTPlayer* pPlayer, const CString& strTalk)
 		bSaved ? _T(" (flush queued)") : _T(""));
 
 	pPlayer->SendCS_CHAT_ACK(CHAT_OPERATOR, 0, GetSvrMsg(NAME_OPERATOR), BuildNetString(NAME_NULL, strMsg));
-
-	// Top five by kills. A partial selection over a small map, so no sorting of the whole map.
-	WORD aTopID[5] = { 0 };
-	DWORD aTopKills[5] = { 0 };
-	for(MAPTMONKILLSTAT::iterator it = pPlayer->m_mapMonKillStat.begin(); it != pPlayer->m_mapMonKillStat.end(); it++)
-	{
-		WORD wID = (*it).first;
-		DWORD dwKills = (*it).second.m_dwKills;
-
-		for(int i = 0; i < 5; i++)
-		{
-			if(dwKills > aTopKills[i])
-			{
-				WORD wSwapID = aTopID[i];
-				DWORD dwSwapKills = aTopKills[i];
-				aTopID[i] = wID;
-				aTopKills[i] = dwKills;
-				wID = wSwapID;
-				dwKills = dwSwapKills;
-			}
-		}
-	}
-
-	if(aTopKills[0])
-	{
-		strMsg = _T("Most killed (monster ID: kills):");
-		for(int i = 0; i < 5 && aTopKills[i]; i++)
-		{
-			CString strEntry;
-			strEntry.Format(_T(" %u: %u"), DWORD(aTopID[i]), aTopKills[i]);
-			strMsg += strEntry;
-		}
-
-		pPlayer->SendCS_CHAT_ACK(CHAT_OPERATOR, 0, GetSvrMsg(NAME_OPERATOR), BuildNetString(NAME_NULL, strMsg));
-	}
 
 	return TRUE;
 }
