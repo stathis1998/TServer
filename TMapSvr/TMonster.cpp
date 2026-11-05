@@ -1305,7 +1305,7 @@ DWORD CTMonster::GetExp(DWORD dwDamage) {
 	dwExp += dwExp * _AtlModule.m_wEventValue[EVENT_EXPADD] / 100;
 
 	// Moose - exp multiplier
-	DWORD dwMultiplier = 12 * 3 /* times 3 for 70->80 */;
+	DWORD dwMultiplier = 3;
 
 	return dwExp * dwMultiplier;
 }
