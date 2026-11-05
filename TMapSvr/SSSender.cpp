@@ -2002,6 +2002,9 @@ void CTMapSvrModule::SendMW_RELEASEMAIN_ACK(BYTE bDBLoad,
 	if(pPlayer->m_mapTINVEN.empty())
 		return;
 
+	// Moose - combat statistics: write everything changed before the character leaves this server
+	SendDM_SAVECHARSTAT_REQ(pPlayer);
+
 	DWORD dwTick = m_dwTick;
 
 
@@ -2636,6 +2639,9 @@ void CTMapSvrModule::SendMW_RELEASEMAIN_ACK(BYTE bDBLoad,
 
 
 		<< pPlayer->m_dwPlayTime;
+
+	// Moose - combat statistics: must stay the last section, same layout as WriteCharStatFromDB
+	pPlayer->WrapCharStat(pMSG);
 
 	m_world.Say(pMSG);
 }
@@ -3389,7 +3395,8 @@ void CTMapSvrModule::SendMW_MONSTERDIE_ACK(DWORD dwCharID,
                                            WORD wMonTermID,
                                            BYTE bTermType,
 										   BYTE bTriggerType,
-                                           BYTE bCount)
+                                           BYTE bCount,
+                                           WORD wMonTempID)
 {
 	CPacket * pMsg = new CPacket();
 	pMsg->SetID(MW_MONSTERDIE_ACK)
@@ -3403,7 +3410,8 @@ void CTMapSvrModule::SendMW_MONSTERDIE_ACK(DWORD dwCharID,
 		<< wMonTermID
 		<< bTermType
 		<< bTriggerType
-		<< bCount;
+		<< bCount
+		<< wMonTempID;
 
 	m_world.Say(pMsg);	
 }

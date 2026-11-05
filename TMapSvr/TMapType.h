@@ -24,6 +24,12 @@
 #define INVALID_MAPID						((WORD)0xFFFF)
 #define CHAR_SAVE_TICK						30*60*1000
 
+// Moose - combat statistics, see TCharStat.cpp
+#define CHARSTAT_SAVE_TICK					(5*60*1000)
+#define CHARSTAT_MAX_MONKILL				(1500)
+// Kept here so the whole feature stays on its branch. Lib\ is outside this repository, and DM codes never leave this process.
+#define DM_SAVECHARSTAT_REQ					(DM_BASE + 0x00F2)
+
 #ifdef ADD_KINGDOMBALANCE
 #define COUNTRY_BAL_TICK					60*60*1000
 #endif
@@ -631,6 +637,8 @@ typedef struct tagONTIMEMON					TONTIMEMON, *LPTONTIMEMON;
 typedef struct tagPVPOINT					TPVPOINT, *LPTPVPOINT;
 typedef struct tagENTRYRECORD				TENTRYRECORD, *LPTENTRYRECORD;
 typedef struct tagRECORDSET					TRECORDSET, *LPTRECORDSET;
+typedef struct tagTCHARSTAT					TCHARSTAT, *LPTCHARSTAT;
+typedef struct tagTMONKILLSTAT				TMONKILLSTAT, *LPTMONKILLSTAT;
 typedef struct tagMONSTERSHOP				TMONSTERSHOP, *LPTMONSTERSHOP;
 typedef struct tagPROTECTED					TPROTECTED, *LPTPROTECTED;
 typedef struct tagCASHGAMBLE				TCASHGAMBLE, *LPTCASHGAMBLE;
@@ -2364,6 +2372,39 @@ struct tagRECORDSET
 	DWORD	m_dwPoint;
 	__time64_t	m_dTime;
 };
+
+// Moose - combat statistics, see TCharStat.cpp
+// General counters. Each value is the wStatID saved in TCHARCOUNTERTABLE, so never renumber them.
+// Add new ones just before CHARCOUNTER_COUNT, then call CTPlayer::AddCounter where it happens.
+enum CHARCOUNTER
+{
+	CHARCOUNTER_UPGRADE_SUCCESS = 0,	// item upgrade scrolls that succeeded
+	CHARCOUNTER_UPGRADE_FAIL = 1,		// item upgrade scrolls that failed
+	CHARCOUNTER_MONMONEY = 2,			// money received from monsters
+	CHARCOUNTER_MONEYSPENT = 3,			// money spent, excluding transfers to other players
+	CHARCOUNTER_COUNT
+};
+
+struct tagTCHARSTAT
+{
+	DWORD	m_dwTotalKills;
+	__int64	m_nDamageDealt;
+	__int64	m_nDamageTaken;
+	__int64	m_nHealDone;
+	BYTE	m_bDirty;
+	__int64	m_aCounter[CHARCOUNTER_COUNT];
+	BYTE	m_aCounterDirty[CHARCOUNTER_COUNT];
+	BYTE	m_bCounterDirty;
+};
+
+struct tagTMONKILLSTAT
+{
+	DWORD	m_dwKills;
+	__int64	m_nDamage;
+	BYTE	m_bDirty;
+};
+
+typedef map<WORD, TMONKILLSTAT>				MAPTMONKILLSTAT, *LPMAPTMONKILLSTAT;	// key: TMONSTER::m_wID, the template ID
 
 struct tagMONSTERSHOP
 {

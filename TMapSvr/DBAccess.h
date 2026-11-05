@@ -7063,6 +7063,125 @@ public:
 		END_PARAM()
 };
 
+// Moose - combat statistics, see TCharStat.cpp
+class CSPGetCharStat: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	DWORD m_dwTotalKills;
+	__int64 m_nDamageDealt;
+	__int64 m_nDamageTaken;
+	__int64 m_nHealDone;
+
+	DEF_QUERY(CSPGetCharStat, _T("{CALL TGetCharStat(?,?,?,?,?)}"))
+
+		BEGIN_PARAM(5)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		PARAM_ENTRY(SQL_PARAM_OUTPUT, m_dwTotalKills)
+		PARAM_ENTRY(SQL_PARAM_OUTPUT, m_nDamageDealt)
+		PARAM_ENTRY(SQL_PARAM_OUTPUT, m_nDamageTaken)
+		PARAM_ENTRY(SQL_PARAM_OUTPUT, m_nHealDone)
+		END_PARAM()
+};
+
+class CTBLCharMonKillTable: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	WORD m_wMonID;
+	DWORD m_dwKills;
+	__int64 m_nDamage;
+
+	DEF_QUERY(CTBLCharMonKillTable, _T("SELECT \
+	wMonID, \
+	dwKills, \
+	nDamage \
+	FROM TCHARMONKILLTABLE \
+	WHERE dwCharID = ?"));
+
+	BEGIN_COLUMN(3)
+		COLUMN_ENTRY(m_wMonID)
+		COLUMN_ENTRY(m_dwKills)
+		COLUMN_ENTRY(m_nDamage)
+		END_COL()
+
+		BEGIN_PARAM(1)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		END_PARAM()
+};
+
+class CSPSaveCharStat: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	DWORD m_dwTotalKills;
+	__int64 m_nDamageDealt;
+	__int64 m_nDamageTaken;
+	__int64 m_nHealDone;
+
+	DEF_QUERY(CSPSaveCharStat, _T("{CALL TSaveCharStat(?,?,?,?,?)}"))
+
+		BEGIN_PARAM(5)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwTotalKills)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_nDamageDealt)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_nDamageTaken)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_nHealDone)
+		END_PARAM()
+};
+
+class CSPSaveCharMonKill: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	WORD m_wMonID;
+	DWORD m_dwKills;
+	__int64 m_nDamage;
+
+	DEF_QUERY(CSPSaveCharMonKill, _T("{CALL TSaveCharMonKill(?,?,?,?)}"))
+
+		BEGIN_PARAM(4)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_wMonID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwKills)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_nDamage)
+		END_PARAM()
+};
+
+// Moose - general counters, see TCharStat.cpp
+class CTBLCharCounterTable: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	WORD m_wStatID;
+	__int64 m_nValue;
+
+	DEF_QUERY(CTBLCharCounterTable, _T("SELECT \
+	wStatID, \
+	nValue \
+	FROM TCHARCOUNTERTABLE \
+	WHERE dwCharID = ?"));
+
+	BEGIN_COLUMN(2)
+		COLUMN_ENTRY(m_wStatID)
+		COLUMN_ENTRY(m_nValue)
+		END_COL()
+
+		BEGIN_PARAM(1)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		END_PARAM()
+};
+
+class CSPSaveCharCounter: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	WORD m_wStatID;
+	__int64 m_nValue;
+
+	DEF_QUERY(CSPSaveCharCounter, _T("{CALL TSaveCharCounter(?,?,?)}"))
+
+		BEGIN_PARAM(3)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_wStatID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_nValue)
+		END_PARAM()
+};
+
 class CSPClearBOWPlayers: public CSqlQuery {
 public:
 	DEF_QUERY(CSPClearBOWPlayers, _T("{ CALL TClearBOWPlayers}"))

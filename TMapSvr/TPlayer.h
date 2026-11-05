@@ -39,6 +39,12 @@ MAPTINVEN m_mapTINVEN_bak;
 	VTRECORDSET m_vPvPRecent;
 	DWORD m_aPvPRecord[TCLASS_COUNT][2];
 
+	// Moose - combat statistics, see TCharStat.cpp
+	TCHARSTAT m_charStat;
+	MAPTMONKILLSTAT m_mapMonKillStat;
+	WORD m_wStatDirtyMon;
+	DWORD m_dwStatSaveTick;
+
 	VTRECORDSET m_vDuelRecordSet;
 	DWORD m_aDuelScore[TCLASS_COUNT][2];
 	
@@ -425,7 +431,8 @@ public:
 	BYTE PutinCabinetItem(BYTE bCabinetID, BYTE bInven, BYTE bItemID, BYTE bCount);
 	BYTE TakeoutStorageItem(BYTE bCabinetID, DWORD dwStItemID, BYTE bCount, DWORD dwMoney, BYTE bInvenID, BYTE bItemID);
 	
-	BYTE UseMoney(__int64 llMoney, BYTE bUsed);
+	// Moose - bCountSpent: pass FALSE when the money goes to another player or can be refunded
+	BYTE UseMoney(__int64 llMoney, BYTE bUsed, BYTE bCountSpent = TRUE);
 	BYTE EarnMoney(__int64 llMoney);
 	BYTE IsEnoughSkillPoint(CTSkillTemp * pSkill);
 	BYTE GetTermCount(DWORD dwTermID, BYTE bTermType);
@@ -535,6 +542,24 @@ public:
 	void GainPvPoint(DWORD dwPoint, BYTE bEvent, BYTE bType, LPTRECORDSET pRec = NULL);
 	void UsePvPoint(DWORD dwPoint, BYTE bEvent, BYTE bType, LPTRECORDSET pRec = NULL);
 	void RecordPvP(LPTRECORDSET pRec);
+
+	// Moose - combat statistics, see TCharStat.cpp
+	void AddMonKill(WORD wMonID);
+	void AddMonDamage(WORD wMonID, DWORD dwDamage);
+	void AddDamageTaken(DWORD dwDamage);
+	void AddHealDone(DWORD dwHeal);
+	void AddCounter(BYTE bCounter, __int64 nValue);
+	__int64 GetCounter(BYTE bCounter);
+	DWORD GetMonKills(WORD wMonID);
+	__int64 GetMonDamage(WORD wMonID);
+	DWORD GetTotalKills() { return m_charStat.m_dwTotalKills; }
+	__int64 GetTotalDamageDealt() { return m_charStat.m_nDamageDealt; }
+	__int64 GetTotalDamageTaken() { return m_charStat.m_nDamageTaken; }
+	__int64 GetTotalHealDone() { return m_charStat.m_nHealDone; }
+	BYTE HasDirtyCharStat() { return (m_charStat.m_bDirty || m_charStat.m_bCounterDirty || m_wStatDirtyMon) ? TRUE : FALSE; }
+	void ClearCharStat();
+	void WrapCharStat(CPacket* pPacket);
+	void UnwrapCharStat(CPacket* pPacket);
 	void SetDuelScore(CTPlayer* pChar,BYTE bWin);	
 	void DuelScoreReset();	
 	void RecordDuel(CTPlayer* pChar, BYTE bWin, DWORD dwPoint);

@@ -4398,6 +4398,9 @@ DWORD CTMapSvrModule::OnDM_LOADCHAR_REQ( LPPACKETBUF pBUF)
 	}
 	UNDEFINE_QUERY();
 
+	// Moose - combat statistics: must stay the last section, same layout as CTPlayer::WrapCharStat
+	WriteCharStatFromDB(dwCharID, &pMSG->m_packet);
+
 
 
 
@@ -5667,8 +5670,8 @@ DWORD CTMapSvrModule::OnDM_LOADCHAR_ACK( LPPACKETBUF pBUF)
 
 		>> pPlayer->m_dwPlayTime;
 
-
-
+	// Moose - combat statistics: the last section of both the DB load and the channel-change packet
+	pPlayer->UnwrapCharStat(&pBUF->m_packet);
 
 	pPlayer->m_bEquipSpecial = pPlayer->IsEquipSpecial();
 	pPlayer->SetAftermath( m_dwTick, bAftermath);
@@ -9762,6 +9765,7 @@ DWORD CTMapSvrModule::OnMW_TAKEMONMONEY_REQ(LPPACKETBUF pBUF)
 		return EC_NOERROR;
 
 	pPlayer->EarnMoney(dwMoney);
+	pPlayer->AddCounter(CHARCOUNTER_MONMONEY, dwMoney);
 	pPlayer->SendCS_MONEY_ACK();
 
 	return EC_NOERROR;
@@ -9794,9 +9798,17 @@ DWORD CTMapSvrModule::OnMW_MONSTERDIE_REQ(LPPACKETBUF pBUF)
 		>> bTriggerType
 		>> bCount;
 
+	// Moose - combat statistics: reads as 0 if the sender is an older build
+	WORD wMonTempID = 0;
+	pBUF->m_packet
+		>> wMonTempID;
+
 	CTPlayer * pPlayer = FindPlayer(dwCharID, dwKEY);
 	if(!pPlayer || !pPlayer->m_bMain)
 		return EC_NOERROR;
+
+	if(wMonTempID)
+		pPlayer->AddMonKill(wMonTempID);
 
 
 
@@ -10931,7 +10943,7 @@ DWORD CTMapSvrModule::OnDM_POSTCANSEND_ACK(LPPACKETBUF pBUF)
 		m_pUdpSocket->LogMoneyTrade(LOGMAP_MONEYPOSTSEND, pSender, strTarget, -llMoney, -(int)GetPostMoney(bType) );
 #endif
 
-		pSender->UseMoney(llMoney, TRUE);
+		pSender->UseMoney(llMoney, TRUE, FALSE);
 		pSender->SendCS_MONEY_ACK();
 	}
 

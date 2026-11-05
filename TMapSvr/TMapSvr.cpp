@@ -754,8 +754,10 @@ void CTMapSvrModule::OnExit() {
 void CTMapSvrModule::SaveAllCharData() {
 	MAPPLAYERNAME::iterator it;
 	for (it = m_mapPLAYERNAME.begin(); it != m_mapPLAYERNAME.end(); it++) {
-		if ((*it).second->m_bMain)
+		if ((*it).second->m_bMain) {
 			SendDM_SAVECHAR_REQ((*it).second, 0);
+			SendDM_SAVECHARSTAT_REQ((*it).second);
+		}
 
 		SendDM_LOGOUT_REQ((*it).second, 0);
 	}
@@ -1774,8 +1776,10 @@ void CTMapSvrModule::SetEventCloseSession(CTMapSession* pSession, BYTE bSave) {
 						pPlayer->OnDie(pPlayer->m_dwLastAttackCharID, OT_PC, 0);
 				}
 
-				if (m_mapPLAYER.find(pPlayer->m_dwID) != m_mapPLAYER.end())
+				if (m_mapPLAYER.find(pPlayer->m_dwID) != m_mapPLAYER.end()) {
 					SendDM_SAVECHAR_REQ(pPlayer, 0);
+					SendDM_SAVECHARSTAT_REQ(pPlayer);
+				}
 			}
 
 			if (pPlayer->m_bLogout)
@@ -5166,6 +5170,7 @@ DWORD CTMapSvrModule::OnReceive(LPPACKETBUF pBUF) {
 						ON_RECEIVE(DM_LOADCHAR_REQ)
 						ON_RECEIVE(DM_LOADPOSTMESSAGE_REQ)
 						ON_RECEIVE(DM_SAVECHAR_REQ)
+						ON_RECEIVE(DM_SAVECHARSTAT_REQ)
 						ON_RECEIVE(DM_SAVEITEM_REQ)
 						ON_RECEIVE(DM_LOGOUT_REQ)
 						ON_RECEIVE(DM_CLEARTITLE_REQ)
@@ -8026,6 +8031,7 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 					if (dwMoney <= dwMonMoney) {
 						if (vParty[i]->m_bMain) {
 							vParty[i]->EarnMoney(dwMoney);
+							vParty[i]->AddCounter(CHARCOUNTER_MONMONEY, dwMoney);
 						#ifdef DEF_UDPLOG
 							m_pUdpSocket->LogMoney(LOGMAP_MONMONEYPARTY, vParty[i], pMon, dwMoney);
 						#endif
@@ -8051,6 +8057,7 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 				if (pMon->m_dwMoney)
 					if (pPlayer->m_bMain) {
 						pPlayer->EarnMoney(pMon->m_dwMoney);
+						pPlayer->AddCounter(CHARCOUNTER_MONMONEY, pMon->m_dwMoney);
 
 					#ifdef DEF_UDPLOG
 						m_pUdpSocket->LogMoney(LOGMAP_MONMONEYPARTY, pPlayer, pMon, pMon->m_dwMoney);
@@ -8095,6 +8102,7 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 			if (pMon->m_dwKeeperID == pPlayer->m_dwID)
 				if (pPlayer->m_bMain) {
 					pPlayer->EarnMoney(pMon->m_dwMoney);
+					pPlayer->AddCounter(CHARCOUNTER_MONMONEY, pMon->m_dwMoney);
 
 				#ifdef DEF_UDPLOG
 					m_pUdpSocket->LogMoney(LOGMAP_MONMONEYSOLOE, pPlayer, pMon, pMon->m_dwMoney);
@@ -10183,7 +10191,7 @@ BYTE CTMapSvrModule::ApplyTournament(LPTOURNAMENT pTour, CTPlayer* pPlayer, BYTE
 	if (pTour->m_wPermitItem && !pPlayer->HaveItem(pTour->m_wPermitItem, pTour->m_bPermitCount))
 		return FALSE;
 
-	if (!pPlayer->UseMoney(pTour->m_dwFee, TRUE))
+	if (!pPlayer->UseMoney(pTour->m_dwFee, TRUE, FALSE))
 		return FALSE;
 
 	if (pTour->m_wPermitItem)
