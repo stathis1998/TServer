@@ -567,11 +567,12 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 				wTotalLevel = 100;
 
 			WORD wTotalMember = WORD(vParty.size());
-			DWORD dwTotalExp = DWORD(GetExp(dwDamage) * (1.0f + 0.01f * ((wTotalMember * wTotalMember) / 2.0f + wTotalMember - 1.5f)));
+			// Moose - every party member gets the full solo EXP plus PARTY_EXP_BONUS percent, instead of a share split by level
+			DWORD dwTotalExp = DWORD(min(__int64(0xFFFFFFFF), __int64(GetExp(dwDamage)) * (100 + PARTY_EXP_BONUS) / 100));
 			BYTE bCheckQuest = FALSE;
 
 			for (DWORD i = 0; i < DWORD(wTotalMember); i++) {
-				DWORD dwSharedExp = dwTotalExp * vParty[i]->m_bLevel / wTotalLevel;
+				DWORD dwSharedExp = dwTotalExp;
 				DWORD dwEXP = DWORD(FLOAT(dwSharedExp) * vParty[i]->GetLevelRate(m_bLevel) + 0.99);
 
 				if (vParty[i]->m_bMain) {
@@ -718,6 +719,9 @@ void CTMonster::OnDie(DWORD dwAttackID, BYTE bObjectType, WORD wTempMonID) {
 		wAddMagicProb = wAddMagicProb + _AtlModule.m_wEventValue[EVENT_ITEMMAGICDROP];
 	}
 
+	// Moose - party kills roll item drops with PARTY_ITEMDROP_BONUS percent more chance, like an item drop event
+	if (m_bKeeperType == OWNER_PARTY)
+		nAddItemDrop += m_pMON->m_bItemProb * PARTY_ITEMDROP_BONUS / 100;
 
 	if (nMaxLevel > m_bLevel) {
 		if (nMaxLevel - m_bLevel < 25) {

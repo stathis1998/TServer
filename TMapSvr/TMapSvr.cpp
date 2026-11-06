@@ -8029,11 +8029,12 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 
 					}
 
-				DWORD dwMonMoney = pMon->m_dwMoney;
+				// Moose - every party member near the kill gets the whole drop plus PARTY_MONEY_BONUS percent, instead of a
+				// share split by level. The looter's copy is paid below from pMon->m_dwMoney.
+				DWORD dwMonMoney = DWORD(min(__int64(0xFFFFFFFF), __int64(pMon->m_dwMoney) * (100 + PARTY_MONEY_BONUS) / 100));
 
 				for (size_t i = 0; i < vParty.size(); i++) {
-					if (wTotalLevel == 0) wTotalLevel = 1;
-					DWORD dwMoney = pMon->m_dwMoney * vParty[i]->m_bLevel / wTotalLevel;
+					DWORD dwMoney = dwMonMoney;
 
 					if (dwMoney <= dwMonMoney) {
 						if (vParty[i]->m_bMain) {
@@ -8055,7 +8056,6 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 							m_pUdpSocket->LogMoney(LOGMAP_MONMONEYPARTY, vParty[i], pMon, dwMoney, NULL, TRUE);
 						#endif
 						}
-						dwMonMoney -= dwMoney;
 					}
 				}
 

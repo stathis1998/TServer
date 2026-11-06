@@ -102,6 +102,11 @@
 #define	PORTALCONDITION_COUNT				3
 // Moose - 1: solo and party kills auto-loot without a pet. 0: only owners with a Collection pet auto-loot (original behaviour).
 #define AUTOLOOT_WITHOUT_COLLECTION_PET		1
+// Moose - party kill bonuses, in percent. Every party member near the kill gets the full solo EXP and the whole
+// money drop plus these, instead of a share split by level. Item drops roll with this much more chance.
+#define PARTY_EXP_BONUS						(30)
+#define PARTY_MONEY_BONUS					(30)
+#define PARTY_ITEMDROP_BONUS				(30)
 #define ITEMAGIC_BASELEVEL					(70)
 #define PVP_RECENTRECORDCOUNT				10
 #define PVP_SAVETIME						600
