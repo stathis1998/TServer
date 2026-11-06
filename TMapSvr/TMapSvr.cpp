@@ -6568,6 +6568,9 @@ BYTE CTMapSvrModule::MakeSpecialItem(CTPlayer* pPlayer, CTItem* pItem, BYTE bKin
 			return FALSE;
 
 		BYTE bCnt = min(max(BYTE(pPlayer->m_bLevel * 0.1), 1), 2);
+		// Moose - magic scrolls ignore the character's level: always 1 or 2 options, like level 20 and above
+		if (bMakeType == IMT_SCROLL)
+			bCnt = 2;
 		bCnt = max(BYTE(rand() % bCnt) + 1, 1);
 		for (BYTE i = 0; i < bCnt; i++)
 			SetMagicOpt(pPlayer, pItem, MIP_MAGIC, bMakeType);
@@ -6581,6 +6584,9 @@ BYTE CTMapSvrModule::MakeSpecialItem(CTPlayer* pPlayer, CTItem* pItem, BYTE bKin
 			return FALSE;
 
 		BYTE bCnt = min(max(BYTE(pPlayer->m_bLevel * 0.1), 3), bMaxMagic);
+		// Moose - rare scrolls ignore the character's level: roll the option count as at level 50 and above
+		if (bMakeType == IMT_SCROLL)
+			bCnt = bMaxMagic;
 		bCnt = max(BYTE(rand() % bCnt) + 1, 3);
 		if (wMagicBuff)
 			bCnt = bMaxMagic - bMagicCnt;
@@ -6673,7 +6679,8 @@ BYTE CTMapSvrModule::SetMagicOpt(CTPlayer* pPlayer, CTItem* pItem, BYTE bOptType
 	// m_wValue 최종옵션비율
 	INT nBaseLevel = 0;
 	if (bMakeType == IMT_SCROLL)
-		nBaseLevel = INT(min(ITEMAGIC_BASELEVEL, pPlayer->m_bLevel)) - max(0, 34 - max(pItem->GetEquipLevel(), pItem->GetPowerLevel()));
+		// Moose - scrolls always roll at the scroll maximum, whatever the character's or the item's level
+		nBaseLevel = ITEMAGIC_BASELEVEL;
 	else if (bMakeType == IMT_GAMBLE)
 		nBaseLevel = min(ITEMAGIC_BASELEVEL, pItem->m_bGLevel);
 	else if (bMakeType == IMT_REFINE)
