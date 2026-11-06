@@ -16542,7 +16542,7 @@ DWORD CTMapSvrModule::OnCS_SOULLOTTERY_REQ(LPPACKETBUF pBUF) {
 
 	DWORD dwMultiplier = rand() % 100 + 1;
 	DWORD dwMoneyRange = dwBasisMoney * dwMultiplier;
-	DWORD dwMoney = rand() % dwMoneyRange + dwBasisMoney;
+	DWORD dwMoney = (rand() % dwMoneyRange + dwBasisMoney) * 69 * 2; // Soul multiplied by 69 * 2 - Moose
 
 	pPlayer->SendCS_SOULLOTTERY_ACK(dwNumber1, dwNumber2, dwNumber3, dwNumber4, dwMoney);
 
