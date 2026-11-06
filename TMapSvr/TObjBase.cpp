@@ -4371,15 +4371,29 @@ WORD CTObjBase::MakeItemMagicValue(INT nBase, WORD wBound) {
 	if (!wBound)
 		return 0;
 
-	BYTE bLevel_Const = 10;
-	BYTE bRate_Const = 3;
-	INT nRand1 = rand();
-	INT nRand2 = rand();
+	const INT kMinOpLevel = 1;
+	const INT kMaxOpLevel = 80;
+	const FLOAT kBaseRateFactor = 97.0f;
+	const FLOAT kMinRateFactor = 3.0f;
+
 	INT nRand3 = rand();
 
+	// Use only the provided base level, clamped to valid bounds.
+	INT nOpLv = min(kMaxOpLevel, max(kMinOpLevel, nBase));
+
 	FLOAT fRateX = GetFormulaRateX(FTYPE_1ST);
-	INT nOpLv = min(80, max(1, nBase - nRand1 % bLevel_Const) + max(0, (nRand2 % 1000) - 989));
-	WORD wValue = 1 + (nRand3 % (WORD) (wBound * ((100 - bRate_Const) * pow(fRateX, nOpLv) / pow(fRateX, 80) + bRate_Const) / 100));
+	FLOAT fRateAtOpLevel = (FLOAT) pow(fRateX, nOpLv);
+	FLOAT fRateAtMaxLevel = (FLOAT) pow(fRateX, kMaxOpLevel);
+	FLOAT fScalePercent = (kBaseRateFactor * fRateAtOpLevel / fRateAtMaxLevel) + kMinRateFactor;
+
+	// Convert bound to the current op-level roll range.
+	WORD wUpperBound = max((WORD) 1, (WORD) (wBound * fScalePercent / 100));
+
+	// Roll uniformly in the top 10% of the range.
+	// Example: if upper bound is 100, this becomes a uniform roll in 90..100.
+	WORD wMinValue = max((WORD) 1, (WORD) ((wUpperBound * 90 + 99) / 100));
+	WORD wRollRange = wUpperBound - wMinValue + 1;
+	WORD wValue = wMinValue + (nRand3 % wRollRange);
 	return wValue;
 }
 
