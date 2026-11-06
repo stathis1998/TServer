@@ -12689,7 +12689,8 @@ DWORD CTMapSvrModule::OnCS_GAMBLEOPEN_REQ(LPPACKETBUF pBUF) {
 						if (pNew->m_pTITEM->m_bType == IT_REFINE)
 							pNew->Catalyzer(pPlayer);
 						else
-							MakeSpecialItem(pPlayer, pNew, IK_MAGICGRADE, IMT_GAMBLE);
+							// Moose - IMT_GAMBLE goes in bMakeType, not wMagicBuff, so options roll at the item's level instead of level 1
+							MakeSpecialItem(pPlayer, pNew, IK_MAGICGRADE, 0, IMT_GAMBLE);
 						pNew->SetEndTime();
 						bChanged = TRUE;
 					} else {
@@ -12701,7 +12702,8 @@ DWORD CTMapSvrModule::OnCS_GAMBLEOPEN_REQ(LPPACKETBUF pBUF) {
 
 
 		else {
-			if (!MakeSpecialItem(pPlayer, pNew, IK_MAGICGRADE, IMT_GAMBLE)) {
+			// Moose - IMT_GAMBLE goes in bMakeType, not wMagicBuff, so options roll at the item's level instead of level 1
+			if (!MakeSpecialItem(pPlayer, pNew, IK_MAGICGRADE, 0, IMT_GAMBLE)) {
 				if (pNew->m_pTITEM->m_bDestroyProb > rand() % 100) {
 					bResult = GAMBLE_FAIL;
 				} else
