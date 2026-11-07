@@ -7259,6 +7259,15 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 							pPlayer->SendCS_DELITEM_ACK(bTargetInven, bTargetItemID);
 							pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_FAIL, 0, 0, 0, 0, 0, 0, 0);
 						}
+					} else if (pPlayer->HaveItemProbBuff(SDT_STATUS_MEDIUM_ITEMGUARD) || pPlayer->HaveItemProbBuff(SDT_STATUS_GREATER_ITEMGUARD)) {
+						// Moose - a Medium or Greater tincture below its level keeps the item and the tincture
+						pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_DOWNGRADE, bTargetInven, bTargetItemID, pItem->m_bLevel, pItem->m_bGem, pItem->m_bGradeEffect, 0, pItem->m_wMoggItemID);
+					} else {
+						// Moose - no tincture: a failed upgrade destroys the item
+						delete pItem;
+						pInven->m_mapTITEM.erase(bTargetItemID);
+						pPlayer->SendCS_DELITEM_ACK(bTargetInven, bTargetItemID);
+						pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_FAIL, 0, 0, 0, 0, 0, 0, 0);
 					}
 
 
