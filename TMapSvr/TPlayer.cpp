@@ -1293,32 +1293,8 @@ void CTPlayer::GainExp( DWORD dwGain, BYTE bIsMon)
 
 
 
-				WORD wExpID = 0;
+				// Moose - no free Growth Potion on level-up: it replaced the player's active potion in m_diExp and discarded it
 				BYTE bLevelIndex = BYTE(i / 10);
-				wExpID = bLevelIndex > 6 ? 18184 : bLevelIndex > 3 ? 18183 : 18182;
-
-
-
-				LPTITEM pPREMIUM = _AtlModule.FindTItem(wExpID);
-				if (!pPREMIUM)
-
-
-
-
-
-
-
-
-					continue;
-
-
-
-
-
-
-
-				SetDuringItem(pPREMIUM->m_bKind, pPREMIUM, DURINGTYPE_TIME, HOUR_ONE / 2);
-				HangPremiumItem();
 
 
 
