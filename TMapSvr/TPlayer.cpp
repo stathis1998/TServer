@@ -1257,62 +1257,7 @@ void CTPlayer::GainExp( DWORD dwGain, BYTE bIsMon)
 
 
 
-			if (i != m_pTPREVLEVEL->m_bLevel && i % 10 == 8)
-			{
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				// Moose - no free Growth Potion on level-up: it replaced the player's active potion in m_diExp and discarded it
-				BYTE bLevelIndex = BYTE(i / 10);
-
-
-
-
-
-
-
-
-
-				ForceMaintain(923, m_dwID, OT_PC, m_dwID, OT_PC, (HOUR_ONE / 2) * 1000);
-				if (bLevelIndex >= 7) //79 and above
-
-
-
-					ForceMaintain(918, m_dwID, OT_PC, m_dwID, OT_PC, (HOUR_ONE * 3) * 1000);
-
-
-			}
+			// Moose - no free EXP gifts at levels 29, 39, 49 and so on: players buy their own potions and chocolates
 
 			_AtlModule.CheckQuest(
 				this,
