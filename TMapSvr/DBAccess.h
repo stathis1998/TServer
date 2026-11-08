@@ -7167,6 +7167,26 @@ public:
 		END_PARAM()
 };
 
+// Moose - level freeze chosen on the portal, see TCharStat.cpp
+class CTBLCharLevelFreeze: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	BYTE m_bFreezeLevel;
+
+	DEF_QUERY(CTBLCharLevelFreeze, _T("SELECT \
+	bFreezeLevel \
+	FROM TCHARLEVELFREEZETABLE \
+	WHERE dwCharID = ?"));
+
+	BEGIN_COLUMN(1)
+		COLUMN_ENTRY(m_bFreezeLevel)
+		END_COL()
+
+		BEGIN_PARAM(1)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		END_PARAM()
+};
+
 class CSPSaveCharCounter: public CSqlQuery {
 public:
 	DWORD m_dwCharID;

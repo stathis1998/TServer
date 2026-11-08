@@ -10,7 +10,8 @@
 // It is written by WriteCharStatFromDB and CTPlayer::WrapCharStat, and read by UnwrapCharStat:
 //   DWORD dwTickPassed, DWORD dwTotalKills, INT64 nDamageDealt, INT64 nDamageTaken, INT64 nHealDone,
 //   WORD wCount, { WORD wMonID, DWORD dwKills, INT64 nDamage } x wCount,
-//   WORD wCounters, { WORD wStatID, INT64 nValue } x wCounters
+//   WORD wCounters, { WORD wStatID, INT64 nValue } x wCounters,
+//   BYTE bFreezeLevel (0 means no level freeze)
 //
 // To track something new: add an ID to enum CHARCOUNTER in TMapType.h, then call AddCounter where
 // it happens. No packet, procedure or table change is needed.
@@ -151,6 +152,8 @@ void CTPlayer::WrapCharStat(CPacket* pPacket)
 		wCount++;
 	}
 	memcpy(pPacket->GetBuffer() + wSize, &wCount, sizeof(wCount));
+
+	(*pPacket) << m_bFreezeLevel;
 }
 
 void CTPlayer::UnwrapCharStat(CPacket* pPacket)
@@ -202,6 +205,8 @@ void CTPlayer::UnwrapCharStat(CPacket* pPacket)
 		if(wStatID < CHARCOUNTER_COUNT)
 			m_charStat.m_aCounter[wStatID] = nValue;
 	}
+
+	(*pPacket) >> m_bFreezeLevel;
 
 	m_dwStatSaveTick = _AtlModule.m_dwTick - dwTickPassed;
 }
@@ -295,6 +300,25 @@ void CTMapSvrModule::WriteCharStatFromDB(DWORD dwCharID, CPacket* pMsg)
 	UNDEFINE_QUERY()
 
 	memcpy(pMsg->GetBuffer() + wSize, &wCount, sizeof(wCount));
+
+	// The portal changes this only while the character is logged out, so reading it at load is enough.
+	BYTE bFreezeLevel = 0;
+
+	DEFINE_QUERY(&m_db, CTBLCharLevelFreeze)
+	query->m_dwCharID = dwCharID;
+
+	if(query->Open())
+	{
+		if(query->Fetch())
+			bFreezeLevel = query->m_bFreezeLevel;
+
+		query->Close();
+	}
+	else
+		LogEvent("CharStat: TCHARLEVELFREEZETABLE read failed. CharID: %d", dwCharID);
+	UNDEFINE_QUERY()
+
+	(*pMsg) << bFreezeLevel;
 }
 
 // Batch thread. Queues everything changed since the last flush. Callers make sure this is the

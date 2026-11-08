@@ -202,6 +202,7 @@ CTPlayer::CTPlayer()
 	// Moose - combat statistics
 	ClearCharStat();
 	m_dwStatSaveTick = 0;
+	m_bFreezeLevel = 0;
 
 	m_pSECURE = nullptr;
 }
@@ -1137,7 +1138,9 @@ void CTPlayer::GainExp( DWORD dwGain, BYTE bIsMon)
 
 	}
 
-	const BYTE bLevelCap = min(BYTE(90), _AtlModule.m_bMaxLevel);
+	// Moose - a level freeze chosen on the portal lowers the cap for this character only
+	const BYTE bServerCap = min(BYTE(90), _AtlModule.m_bMaxLevel);
+	const BYTE bLevelCap = (m_bFreezeLevel && m_bFreezeLevel < bServerCap) ? m_bFreezeLevel : bServerCap;
 	LPTLEVEL pCapLevel = _AtlModule.FindTLevel(bLevelCap);
 	DWORD dwExpGain = dwGain + dwBonus;
 	BYTE bExpCapped = m_bLevel >= bLevelCap;

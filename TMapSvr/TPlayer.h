@@ -45,6 +45,9 @@ MAPTINVEN m_mapTINVEN_bak;
 	WORD m_wStatDirtyMon;
 	DWORD m_dwStatSaveTick;
 
+	// Moose - level freeze chosen on the portal, 0 means none, see TCharStat.cpp
+	BYTE m_bFreezeLevel;
+
 	VTRECORDSET m_vDuelRecordSet;
 	DWORD m_aDuelScore[TCLASS_COUNT][2];
 	
