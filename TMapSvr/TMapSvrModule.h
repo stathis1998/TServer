@@ -1934,6 +1934,7 @@ public:
 		DWORD dwCharID,
 		DWORD dwKey);
 
+	void SendMW_SOULLOTTERYMSG_ACK(CString strMsg);
 	void SendMW_CHAT_ACK(
 		BYTE bChannel,
 		DWORD dwSender,

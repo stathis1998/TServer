@@ -5247,6 +5247,22 @@ DWORD CTWorldSvrModule::OnMW_GUILDTACTICSLIST_ACK(LPPACKETBUF pBUF)
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
+DWORD CTWorldSvrModule::OnMW_SOULLOTTERYMSG_ACK(LPPACKETBUF pBUF)
+{
+	CString strMsg;
+
+	pBUF->m_packet
+		>> strMsg;
+
+	// MW_EVENTMSG_REQ reaches every player on every map server with no faction filter.
+	// The map server ignores the two event bytes.
+	MAPTSERVER::iterator it;
+	for(it=m_mapSERVER.begin(); it!=m_mapSERVER.end(); it++)
+		(*it).second->SendMW_EVENTMSG_REQ(0, 0, strMsg);
+
+	return EC_NOERROR;
+}
+
 DWORD CTWorldSvrModule::OnMW_CHAT_ACK(LPPACKETBUF pBUF)
 {
 	CTServer * pServer = (CTServer *)pBUF->m_pSESSION;

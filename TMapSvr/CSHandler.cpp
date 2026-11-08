@@ -16565,6 +16565,33 @@ DWORD CTMapSvrModule::OnCS_SOULLOTTERY_REQ(LPPACKETBUF pBUF) {
 
 	return EC_NOERROR;
 }
+// Formats copper as "12g 340s 56c", leaving out the parts that are zero
+static CString FormatLotteryMoney(DWORD dwMoney) {
+	DWORD dwGold = 0;
+	DWORD dwSilver = 0;
+	DWORD dwCopper = 0;
+	CalcMoney((INT64) dwMoney, dwGold, dwSilver, dwCopper);
+
+	CString strMoney;
+	CString strPart;
+
+	if (dwGold) {
+		strPart.Format("%ug ", dwGold);
+		strMoney += strPart;
+	}
+	if (dwSilver) {
+		strPart.Format("%us ", dwSilver);
+		strMoney += strPart;
+	}
+	if (dwCopper) {
+		strPart.Format("%uc ", dwCopper);
+		strMoney += strPart;
+	}
+
+	strMoney.TrimRight();
+	return strMoney;
+}
+
 DWORD CTMapSvrModule::OnCS_SOULLOTTERY_TRIGGER_REQ(LPPACKETBUF pBUF) {
 	CTPlayer* pPlayer = (CTPlayer*) pBUF->m_pSESSION;
 #ifdef BOW_COMPILE_MODE
@@ -16599,6 +16626,13 @@ DWORD CTMapSvrModule::OnCS_SOULLOTTERY_TRIGGER_REQ(LPPACKETBUF pBUF) {
 	}
 
 	pPlayer->SendCS_SOULLOTTERY_TRIGGER_ACK(dwRand, pPlayer->m_dwLotMoney, bRet);
+
+	CString strLotteryMsg;
+	strLotteryMsg.Format(
+		bRet ? "[Lottery] %s won the Soul Lottery and took home %s!" : "[Lottery] %s lost the Soul Lottery and got only %s as consolation.",
+		(LPCTSTR) pPlayer->m_strNAME,
+		(LPCTSTR) FormatLotteryMoney(pPlayer->m_dwLotMoney));
+	SendMW_SOULLOTTERYMSG_ACK(strLotteryMsg);
 
 	pPlayer->m_dwLotNumber1 = NULL;
 	pPlayer->m_dwLotNumber2 = NULL;

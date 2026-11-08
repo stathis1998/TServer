@@ -3360,6 +3360,15 @@ void CTMapSvrModule::SendMW_CHAT_ACK(BYTE bChannel,
 
 	m_world.Say(pMsg);
 }
+void CTMapSvrModule::SendMW_SOULLOTTERYMSG_ACK(CString strMsg)
+{
+	CPacket * pMsg = new CPacket();
+	pMsg->SetID(MW_SOULLOTTERYMSG_ACK)
+		<< strMsg;
+
+	m_world.Say(pMsg);
+}
+
 void CTMapSvrModule::SendDM_CABINETITEM_REQ(DWORD dwCharID, 
 											DWORD dwKey)
 {
