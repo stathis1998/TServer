@@ -523,3 +523,109 @@ BYTE CTMapSvrModule::OnCharStatCmd(CTPlayer* pPlayer, const CString& strTalk)
 
 	return TRUE;
 }
+
+// DB thread. Replaces the character's freeze; a level of 0 only removes it.
+DWORD CTMapSvrModule::OnDM_SAVELEVELFREEZE_REQ(LPPACKETBUF pBUF)
+{
+	DWORD dwCharID;
+	BYTE bFreezeLevel;
+
+	pBUF->m_packet
+		>> dwCharID
+		>> bFreezeLevel;
+
+	DEFINE_QUERY(&m_db, CTBLDeleteCharLevelFreeze)
+	query->m_dwCharID = dwCharID;
+
+	if(!query->Call())
+		LogEvent("LevelFreeze: delete failed. CharID: %d", dwCharID);
+	UNDEFINE_QUERY()
+
+	if(bFreezeLevel)
+	{
+		DEFINE_QUERY(&m_db, CTBLInsertCharLevelFreeze)
+		query->m_dwCharID = dwCharID;
+		query->m_bFreezeLevel = bFreezeLevel;
+
+		if(!query->Call())
+			LogEvent("LevelFreeze: insert failed. CharID: %d Level: %d", dwCharID, bFreezeLevel);
+		UNDEFINE_QUERY()
+	}
+
+	return EC_NOERROR;
+}
+
+// Batch thread. Chat command for the sender's own level freeze. Returns TRUE when the text was
+// this command, so the caller does not broadcast it.
+//   !freeze        shows the freeze
+//   !freeze 50     freezes at level 50, from the next EXP gain
+//   !freeze off    removes the freeze
+// GainExp reads m_bFreezeLevel, so a change works at once, with no need to log out.
+BYTE CTMapSvrModule::OnLevelFreezeCmd(CTPlayer* pPlayer, const CString& strTalk)
+{
+	// Same chat text layout as OnCharStatCmd: typed text starts at offset 8.
+	if(strTalk.GetLength() < 8 + 7 || strTalk.Mid(8, 7).CompareNoCase(_T("!freeze")) != 0)
+		return FALSE;
+
+	CString strArg = strTalk.Mid(8 + 7);
+	if(!strArg.IsEmpty() && strArg[0] != _T(' '))
+		return FALSE;
+	strArg.Trim();
+
+	CString strMsg;
+
+#ifdef BOW_COMPILE_MODE
+	strMsg = _T("The level freeze can't be used here.");
+#else
+	BYTE bSave = FALSE;
+	BYTE bNewFreeze = 0;
+
+	if(strArg.IsEmpty())
+	{
+		if(pPlayer->m_bFreezeLevel)
+			strMsg.Format(_T("Level freeze: level %u. Any EXP past it turns into money. !freeze off removes it."), pPlayer->m_bFreezeLevel);
+		else
+			strMsg = _T("Level freeze: off. Type !freeze and a level to stop at that level.");
+	}
+	else if(strArg.CompareNoCase(_T("off")) == 0)
+	{
+		bSave = TRUE;
+		strMsg = _T("Level freeze removed.");
+	}
+	else if(pPlayer->m_bLevel > LEVELFREEZE_MAX_LEVEL)
+		strMsg = _T("This character is already at the highest level.");
+	else
+	{
+		int nLevel = (strArg.GetLength() <= 3 && strArg.SpanIncluding(_T("0123456789")) == strArg) ? _ttoi(strArg) : 0;
+
+		if(nLevel < pPlayer->m_bLevel || nLevel > LEVELFREEZE_MAX_LEVEL)
+			strMsg.Format(_T("Choose a level from %u to %u, or off."), pPlayer->m_bLevel, LEVELFREEZE_MAX_LEVEL);
+		else
+		{
+			bSave = TRUE;
+			bNewFreeze = BYTE(nLevel);
+			strMsg.Format(_T("Level freeze set to level %u. Any EXP past it turns into money."), nLevel);
+		}
+	}
+
+	if(bSave)
+	{
+		// Only the main copy of a properly loaded character may write its freeze.
+		if(!pPlayer->m_bMain || pPlayer->m_bLoadCharError)
+			return TRUE;
+
+		pPlayer->m_bFreezeLevel = bNewFreeze;
+
+		LPPACKETBUF pBUF = new PACKETBUF();
+		pBUF->m_packet.SetID(DM_SAVELEVELFREEZE_REQ)
+			<< pPlayer->m_dwID
+			<< bNewFreeze;
+
+		SayToDB(pBUF);
+	}
+#endif
+
+	pPlayer->SendCS_CHAT_ACK(CHAT_OPERATOR, 0, GetSvrMsg(NAME_OPERATOR), BuildNetString(NAME_NULL, strMsg));
+
+	return TRUE;
+}

@@ -29,6 +29,9 @@
 #define CHARSTAT_MAX_MONKILL				(1500)
 // Kept here so the whole feature stays on its branch. Lib\ is outside this repository, and DM codes never leave this process.
 #define DM_SAVECHARSTAT_REQ					(DM_BASE + 0x00F2)
+#define DM_SAVELEVELFREEZE_REQ				(DM_BASE + 0x00F3)
+// Highest level a character can be frozen at. The server cap of 90 already stops everyone there.
+#define LEVELFREEZE_MAX_LEVEL				(89)
 
 #ifdef ADD_KINGDOMBALANCE
 #define COUNTRY_BAL_TICK					60*60*1000

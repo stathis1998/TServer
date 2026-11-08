@@ -7187,6 +7187,37 @@ public:
 		END_PARAM()
 };
 
+// Moose - level freeze set with the !freeze chat command, see TCharStat.cpp
+class CTBLDeleteCharLevelFreeze: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+
+	DEF_QUERY(CTBLDeleteCharLevelFreeze, _T("DELETE FROM TCHARLEVELFREEZETABLE WHERE dwCharID = ?"));
+
+	BEGIN_COLUMN(0)
+		END_COL()
+
+		BEGIN_PARAM(1)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		END_PARAM()
+};
+
+class CTBLInsertCharLevelFreeze: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	BYTE m_bFreezeLevel;
+
+	DEF_QUERY(CTBLInsertCharLevelFreeze, _T("INSERT INTO TCHARLEVELFREEZETABLE (dwCharID, bFreezeLevel) VALUES (?, ?)"));
+
+	BEGIN_COLUMN(0)
+		END_COL()
+
+		BEGIN_PARAM(2)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bFreezeLevel)
+		END_PARAM()
+};
+
 class CSPSaveCharCounter: public CSqlQuery {
 public:
 	DWORD m_dwCharID;
