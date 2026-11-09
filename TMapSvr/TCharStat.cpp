@@ -475,6 +475,41 @@ DWORD CTMapSvrModule::OnDM_SAVECHARSTAT_REQ(LPPACKETBUF pBUF)
 	return EC_NOERROR;
 }
 
+// Formats copper as "12g 340s 56c", leaving out the parts that are zero. A season's total can
+// pass the 4294g a DWORD holds, so this takes an INT64.
+static CString FormatCounterMoney(__int64 nMoney)
+{
+	DWORD dwGold = 0;
+	DWORD dwSilver = 0;
+	DWORD dwCopper = 0;
+	CalcMoney(nMoney, dwGold, dwSilver, dwCopper);
+
+	CString strMoney;
+	CString strPart;
+
+	if(dwGold)
+	{
+		strPart.Format(_T("%ug "), dwGold);
+		strMoney += strPart;
+	}
+	if(dwSilver)
+	{
+		strPart.Format(_T("%us "), dwSilver);
+		strMoney += strPart;
+	}
+	if(dwCopper)
+	{
+		strPart.Format(_T("%uc "), dwCopper);
+		strMoney += strPart;
+	}
+
+	strMoney.TrimRight();
+	if(strMoney.IsEmpty())
+		strMoney = _T("0c");
+
+	return strMoney;
+}
+
 // Batch thread. Chat command for checking a character's own numbers. Returns TRUE when the text
 // was this command, so the caller does not broadcast it.
 //   !cstat        shows your totals
@@ -518,6 +553,14 @@ BYTE CTMapSvrModule::OnCharStatCmd(CTPlayer* pPlayer, const CString& strTalk)
 		pPlayer->GetCounter(CHARCOUNTER_UPGRADE_FAIL),
 		pPlayer->GetCounter(CHARCOUNTER_MONMONEY),
 		pPlayer->GetCounter(CHARCOUNTER_MONEYSPENT));
+
+	pPlayer->SendCS_CHAT_ACK(CHAT_OPERATOR, 0, GetSvrMsg(NAME_OPERATOR), BuildNetString(NAME_NULL, strMsg));
+
+	strMsg.Format(_T("Soul lottery: %I64d won, %I64d lost. Gold from wins %s, consolation %s"),
+		pPlayer->GetCounter(CHARCOUNTER_SOULLOT_WON),
+		pPlayer->GetCounter(CHARCOUNTER_SOULLOT_LOST),
+		(LPCTSTR) FormatCounterMoney(pPlayer->GetCounter(CHARCOUNTER_SOULLOT_MONEY_WON)),
+		(LPCTSTR) FormatCounterMoney(pPlayer->GetCounter(CHARCOUNTER_SOULLOT_MONEY_CONSOLATION)));
 
 	pPlayer->SendCS_CHAT_ACK(CHAT_OPERATOR, 0, GetSvrMsg(NAME_OPERATOR), BuildNetString(NAME_NULL, strMsg));
 

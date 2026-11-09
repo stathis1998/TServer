@@ -16623,10 +16623,14 @@ DWORD CTMapSvrModule::OnCS_SOULLOTTERY_TRIGGER_REQ(LPPACKETBUF pBUF) {
 	if (bRet) {
 		pPlayer->EarnMoney(pPlayer->m_dwLotMoney);
 		pPlayer->SendCS_MONEY_ACK();
+		pPlayer->AddCounter(CHARCOUNTER_SOULLOT_WON, 1);
+		pPlayer->AddCounter(CHARCOUNTER_SOULLOT_MONEY_WON, pPlayer->m_dwLotMoney);
 	} else {
 		pPlayer->m_dwLotMoney = (DWORD) CalcMoney(0, pPlayer->m_bLevel, 0);
 		pPlayer->EarnMoney(pPlayer->m_dwLotMoney);
 		pPlayer->SendCS_MONEY_ACK();
+		pPlayer->AddCounter(CHARCOUNTER_SOULLOT_LOST, 1);
+		pPlayer->AddCounter(CHARCOUNTER_SOULLOT_MONEY_CONSOLATION, pPlayer->m_dwLotMoney);
 	}
 
 	pPlayer->SendCS_SOULLOTTERY_TRIGGER_ACK(dwRand, pPlayer->m_dwLotMoney, bRet);

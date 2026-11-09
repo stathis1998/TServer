@@ -2390,6 +2390,10 @@ enum CHARCOUNTER
 	CHARCOUNTER_UPGRADE_FAIL = 1,		// item upgrade scrolls that failed
 	CHARCOUNTER_MONMONEY = 2,			// money received from monsters
 	CHARCOUNTER_MONEYSPENT = 3,			// money spent, excluding transfers to other players
+	CHARCOUNTER_SOULLOT_WON = 4,		// soul lotteries won
+	CHARCOUNTER_SOULLOT_LOST = 5,		// soul lotteries lost
+	CHARCOUNTER_SOULLOT_MONEY_WON = 6,	// money received from soul lottery wins
+	CHARCOUNTER_SOULLOT_MONEY_CONSOLATION = 7,	// money received from soul lottery consolation prizes
 	CHARCOUNTER_COUNT
 };
 
