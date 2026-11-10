@@ -1110,6 +1110,23 @@ void CTPlayer::CzechPetHP()
 		}
 	}
 }
+// Moose - soul fill rate in percent for mob-kill EXP, by player level. From level 71 the soul bar
+// grows faster than mob EXP (and 4.5x at level 80), so these keep about the same kills per
+// soul lottery as level 60 on level 59 mission mobs (about 920). Levels 79 and 89 have a bigger bar.
+static DWORD GetSoulFillRate(BYTE bLevel)
+{
+	static const WORD wRate[] = {
+		125, 130, 130, 135, 135, 140, 140, 145, 260, 300,	// 71-80
+		310, 350, 360, 360, 370, 370, 380, 380, 470, 395	// 81-90
+	};
+
+	if(bLevel < 71)
+		return 100;
+	if(bLevel > 90)
+		bLevel = 90;
+
+	return wRate[bLevel - 71];
+}
 void CTPlayer::GainExp( DWORD dwGain, BYTE bIsMon)
 {
 #ifndef BOW_COMPILE_MODE
@@ -1165,7 +1182,15 @@ void CTPlayer::GainExp( DWORD dwGain, BYTE bIsMon)
 		}
 	}
 
-	DWORD dwNewSoulExp = m_dwSoulLotEXP + dwGain;
+	// Moose - mob kills fill the soul bar faster from level 71, see GetSoulFillRate
+	DWORD dwSoulGain = dwGain;
+	if(bIsMon)
+	{
+		ULONGLONG ullSoulGain = ULONGLONG(dwGain) * GetSoulFillRate(m_bLevel) / 100;
+		dwSoulGain = ullSoulGain > MAXDWORD ? MAXDWORD : DWORD(ullSoulGain);
+	}
+
+	DWORD dwNewSoulExp = m_dwSoulLotEXP + dwSoulGain;
 	//DWORD dwNewSoulExp = m_pTLEVEL->m_dwEXP - m_pTPREVLEVEL->m_dwEXP;
 	
 	if((m_pTLEVEL->m_dwEXP - m_pTPREVLEVEL->m_dwEXP) <= dwNewSoulExp)
