@@ -30,6 +30,7 @@
 // Kept here so the whole feature stays on its branch. Lib\ is outside this repository, and DM codes never leave this process.
 #define DM_SAVECHARSTAT_REQ					(DM_BASE + 0x00F2)
 #define DM_SAVELEVELFREEZE_REQ				(DM_BASE + 0x00F3)
+#define DM_LOGITEMUPGRADE_REQ				(DM_BASE + 0x00F4)
 // Highest level a character can be frozen at. The server cap of 90 already stops everyone there.
 #define LEVELFREEZE_MAX_LEVEL				(89)
 
@@ -2395,6 +2396,44 @@ enum CHARCOUNTER
 	CHARCOUNTER_SOULLOT_MONEY_WON = 6,	// money received from soul lottery wins
 	CHARCOUNTER_SOULLOT_MONEY_CONSOLATION = 7,	// money received from soul lottery consolation prizes
 	CHARCOUNTER_COUNT
+};
+
+// Moose - upgrade log, see TCharStat.cpp. These values are saved in TITEMUPGRADELOGTABLE, so never renumber them.
+enum UPGRADELOG_KIND
+{
+	UPGRADELOG_KIND_SCROLL = 1,		// item upgrade scroll, the level is the item's +level
+	UPGRADELOG_KIND_GEM = 2			// gemstone, the level is the item's gem level
+};
+
+enum UPGRADELOG_RESULT
+{
+	UPGRADELOG_SUCCESS = 1,
+	UPGRADELOG_FAIL_DESTROYED = 2,	// the item is gone
+	UPGRADELOG_FAIL_DOWNGRADED = 3,	// the item stays but lost levels
+	UPGRADELOG_FAIL_KEPT = 4		// the item stays unchanged: a tincture or gem protection saved it, or there was nothing to lose
+};
+
+enum UPGRADELOG_PROTECT
+{
+	UPGRADELOG_PROTECT_NONE = 0,
+	UPGRADELOG_PROTECT_SURVIVAL = 1,	// SDT_STATUS_ITEMGUARD
+	UPGRADELOG_PROTECT_MEDIUM = 2,		// SDT_STATUS_MEDIUM_ITEMGUARD
+	UPGRADELOG_PROTECT_GREATER = 3		// SDT_STATUS_GREATER_ITEMGUARD
+};
+
+// One upgrade attempt, filled in by OnCS_ITEMUPGRADE_REQ.
+struct TUPGRADELOG
+{
+	BYTE	m_bKind;
+	BYTE	m_bResult;
+	DWORD	m_dwItemID;
+	DWORD	m_dwScrollID;
+	BYTE	m_bLevelBefore;
+	BYTE	m_bLevelAfter;
+	BYTE	m_bChance;
+	BYTE	m_bProtect;
+	DWORD	m_dwNpcID;
+	__int64	m_nFee;
 };
 
 struct tagTCHARSTAT

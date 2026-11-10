@@ -7233,6 +7233,40 @@ public:
 		END_PARAM()
 };
 
+// Moose - upgrade log, see TCharStat.cpp. IDs are DWORD because a WORD binds as a signed smallint.
+class CSPLogItemUpgrade: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	BYTE m_bKind;
+	BYTE m_bResult;
+	DWORD m_dwItemID;
+	DWORD m_dwScrollID;
+	BYTE m_bLevelBefore;
+	BYTE m_bLevelAfter;
+	BYTE m_bChance;
+	BYTE m_bProtect;
+	DWORD m_dwMapID;
+	DWORD m_dwNpcID;
+	__int64 m_nFee;
+
+	DEF_QUERY(CSPLogItemUpgrade, _T("{CALL TLogItemUpgrade(?,?,?,?,?,?,?,?,?,?,?,?)}"))
+
+		BEGIN_PARAM(12)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bKind)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bResult)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwItemID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwScrollID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bLevelBefore)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bLevelAfter)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bChance)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bProtect)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwMapID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwNpcID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_nFee)
+		END_PARAM()
+};
+
 class CSPClearBOWPlayers: public CSqlQuery {
 public:
 	DEF_QUERY(CSPClearBOWPlayers, _T("{ CALL TClearBOWPlayers}"))

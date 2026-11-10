@@ -475,6 +475,83 @@ DWORD CTMapSvrModule::OnDM_SAVECHARSTAT_REQ(LPPACKETBUF pBUF)
 	return EC_NOERROR;
 }
 
+// Upgrade log: one row in TITEMUPGRADELOGTABLE per upgrade scroll or gemstone roll, so the portal
+// can show success rates by level, destroyed items and saves. Unlike the counters above, each row
+// is queued at once, because upgrades are single clicks and a row must not wait for a flush.
+
+// Batch thread. The tincture OnCS_ITEMUPGRADE_REQ applies to a failure at this level, checked in
+// the same order as its branches. Call it before the roll, because a failure can use the tincture up.
+BYTE CTMapSvrModule::GetUpgradeProtect(CTPlayer* pPlayer, BYTE bLevel)
+{
+	BYTE bGreater = pPlayer->HaveItemProbBuff(SDT_STATUS_GREATER_ITEMGUARD) ? TRUE : FALSE;
+	BYTE bMedium = pPlayer->HaveItemProbBuff(SDT_STATUS_MEDIUM_ITEMGUARD) ? TRUE : FALSE;
+
+	if(bGreater && bLevel >= 19)
+		return UPGRADELOG_PROTECT_GREATER;
+	if(bMedium && bLevel >= 15)
+		return UPGRADELOG_PROTECT_MEDIUM;
+	if(pPlayer->HaveItemProbBuff(SDT_STATUS_ITEMGUARD))
+		return UPGRADELOG_PROTECT_SURVIVAL;
+	if(bMedium)
+		return UPGRADELOG_PROTECT_MEDIUM;
+	if(bGreater)
+		return UPGRADELOG_PROTECT_GREATER;
+
+	return UPGRADELOG_PROTECT_NONE;
+}
+
+// Batch thread. Only the main copy of a properly loaded character writes.
+void CTMapSvrModule::SendDM_LOGITEMUPGRADE_REQ(CTPlayer* pPlayer, const TUPGRADELOG& log)
+{
+#ifndef BOW_COMPILE_MODE
+	if(!pPlayer->m_bMain || pPlayer->m_bLoadCharError)
+		return;
+
+	LPPACKETBUF pBUF = new PACKETBUF();
+	pBUF->m_packet.SetID(DM_LOGITEMUPGRADE_REQ)
+		<< pPlayer->m_dwID
+		<< log.m_bKind
+		<< log.m_bResult
+		<< log.m_dwItemID
+		<< log.m_dwScrollID
+		<< log.m_bLevelBefore
+		<< log.m_bLevelAfter
+		<< log.m_bChance
+		<< log.m_bProtect
+		<< DWORD(pPlayer->m_wMapID)
+		<< log.m_dwNpcID
+		<< log.m_nFee;
+
+	SayToDB(pBUF);
+#endif
+}
+
+// DB thread. Reads only the packet, never a CTPlayer. A failed write is only logged, so the
+// upgrade itself is never affected.
+DWORD CTMapSvrModule::OnDM_LOGITEMUPGRADE_REQ(LPPACKETBUF pBUF)
+{
+	DEFINE_QUERY(&m_db, CSPLogItemUpgrade)
+	pBUF->m_packet
+		>> query->m_dwCharID
+		>> query->m_bKind
+		>> query->m_bResult
+		>> query->m_dwItemID
+		>> query->m_dwScrollID
+		>> query->m_bLevelBefore
+		>> query->m_bLevelAfter
+		>> query->m_bChance
+		>> query->m_bProtect
+		>> query->m_dwMapID
+		>> query->m_dwNpcID
+		>> query->m_nFee;
+
+	if(!query->Call())
+		LogEvent("UpgradeLog: TLogItemUpgrade failed. CharID: %d ItemID: %d Result: %d", query->m_dwCharID, query->m_dwItemID, query->m_bResult);
+	UNDEFINE_QUERY()
+
+	return EC_NOERROR;
+}
+
 // Formats copper as "12g 340s 56c", leaving out the parts that are zero. A season's total can
 // pass the 4294g a DWORD holds, so this takes an INT64.
 static CString FormatCounterMoney(__int64 nMoney)

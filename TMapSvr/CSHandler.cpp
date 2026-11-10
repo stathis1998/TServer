@@ -7110,6 +7110,15 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 	BYTE bItemKind = pGradeItem->m_pTITEM->m_bKind;
 	BYTE bItemGrade = pGradeItem->m_pTITEM->m_bGrade;
 
+	// Moose - upgrade log, see TCharStat.cpp. Read the IDs now, because the scroll may be deleted
+	// just below. Only the upgrade scroll and gemstone cases fill in the rest and send it.
+	TUPGRADELOG upgradeLog;
+	memset(&upgradeLog, 0, sizeof(upgradeLog));
+	upgradeLog.m_dwItemID = pItem->m_wItemID;
+	upgradeLog.m_dwScrollID = pGradeItem->m_wItemID;
+	upgradeLog.m_dwNpcID = wNpcID;
+	upgradeLog.m_nFee = llMoney;
+
 	// 주문서 처리
 
 	pGradeItem->m_bCount--;
@@ -7126,6 +7135,10 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 		BYTE bRand = BYTE(rand() % 100);
 		BYTE bProb = CalcProb(pPlayer, pNpc, PROB_UPGRADE, m_itemgrade[pItem->m_bLevel].m_bProb);
 		SSLogEvent(6, "bRand: %d, bProb: %d", bRand, bProb);
+		upgradeLog.m_bKind = UPGRADELOG_KIND_SCROLL;
+		upgradeLog.m_bLevelBefore = pItem->m_bLevel;
+		upgradeLog.m_bChance = bProb > 100 ? 100 : bProb;
+		upgradeLog.m_bProtect = GetUpgradeProtect(pPlayer, pItem->m_bLevel);
 		if (bRand < bProb) {
 			pPlayer->AddCounter(CHARCOUNTER_UPGRADE_SUCCESS, 1);
 			BYTE bGrade = bItemGrade == 3 ? BYTE(rand() % 3) + 1 : 1;
@@ -7276,6 +7289,19 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 
 
 		}
+
+		// Moose - upgrade log. A destroyed item has already been erased from the bag and deleted,
+		// so it is only compared, never read.
+		if (bRand < bProb) {
+			upgradeLog.m_bResult = UPGRADELOG_SUCCESS;
+			upgradeLog.m_bLevelAfter = pItem->m_bLevel;
+		} else if (pInven->FindTItem(bTargetItemID) != pItem) {
+			upgradeLog.m_bResult = UPGRADELOG_FAIL_DESTROYED;
+		} else {
+			upgradeLog.m_bLevelAfter = pItem->m_bLevel;
+			upgradeLog.m_bResult = pItem->m_bLevel < upgradeLog.m_bLevelBefore ? UPGRADELOG_FAIL_DOWNGRADED : UPGRADELOG_FAIL_KEPT;
+		}
+		SendDM_LOGITEMUPGRADE_REQ(pPlayer, upgradeLog);
 	}
 	break;
 	case IK_DOWNGRADE: // 정화주문서
@@ -7377,6 +7403,17 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 
 		bRate = (wGem_Prob * 2) / 100;
 
+		// Moose - upgrade log. The chance matches the checks below: bRand is 1 to 100, GEM2 needs
+		// bRate above 1, and a scroll worth 1337 always succeeds.
+		upgradeLog.m_bKind = UPGRADELOG_KIND_GEM;
+		upgradeLog.m_bLevelBefore = pItem->m_bGem;
+		{
+			WORD wChance = wGem_Prob == 1337 ? 100 : WORD(bRealProb) * bRate;
+			if (pItem->m_bGem == GEM2 && bRate == 1 && wGem_Prob != 1337)
+				wChance = 0;
+			upgradeLog.m_bChance = BYTE(wChance > 100 ? 100 : wChance);
+		}
+
 
 		if (pItem->m_bGem == GEM0) {
 			if (bRand <= (bRealProb * bRate) || wGem_Prob == 1337) {
@@ -7455,6 +7492,19 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 				SetItemAttr(pItem, pItem->m_bLevel);
 				pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_GEM_FAIL, bTargetInven, bTargetItemID, pItem->m_bLevel, pItem->m_bGem, pItem->m_bGradeEffect, 0, pItem->m_wMoggItemID);
 			}
+		}
+
+		// Moose - upgrade log. Each gem level from GEM0 to GEM4 has a branch above, and GEM_MAX was
+		// refused earlier, so every roll that reached here is logged.
+		if (upgradeLog.m_bLevelBefore <= GEM4) {
+			upgradeLog.m_bLevelAfter = pItem->m_bGem;
+			if (pItem->m_bGem > upgradeLog.m_bLevelBefore)
+				upgradeLog.m_bResult = UPGRADELOG_SUCCESS;
+			else if (pItem->m_bGem < upgradeLog.m_bLevelBefore)
+				upgradeLog.m_bResult = UPGRADELOG_FAIL_DOWNGRADED;
+			else
+				upgradeLog.m_bResult = UPGRADELOG_FAIL_KEPT;
+			SendDM_LOGITEMUPGRADE_REQ(pPlayer, upgradeLog);
 		}
 	}
 
