@@ -16700,6 +16700,8 @@ DWORD CTMapSvrModule::OnCS_SOULLOTTERY_TRIGGER_REQ(LPPACKETBUF pBUF) {
 	pPlayer->m_bUseLot = FALSE;
 
 	pPlayer->ForceMaintain(820, pPlayer->m_dwID, OT_PC, pPlayer->m_dwID, OT_PC, (HOUR_ONE / 4) * 1000);
+	// Lottery Rush (skill 823), win or lose: 1 minute of 3.25x move speed and +5% attack power
+	pPlayer->ForceMaintain(823, pPlayer->m_dwID, OT_PC, pPlayer->m_dwID, OT_PC, 60 * 1000);
 	return EC_NOERROR;
 }
 
