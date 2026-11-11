@@ -7031,7 +7031,29 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 	break;
 	case IK_COLOR:
 	{
-		if (!pItem->m_pTITEM->m_bCanColor || pItem->m_dwExtValue[IEV_COLOR] == wColor) {
+		// Moose - a random dye (Unknown Dye, wUseValue 0) used the colour the client sent, but the client's
+		// upgrade gauge lasts 1 ms (TITEM_UP_DELAY), so its random picker never ran and it always sent its
+		// default: black, then the item's current colour ("same colour"). Pick it here instead, never the
+		// current colour. The client shows the colour returned in the ACK. Colours are 1-49 (TCOLOR001-049).
+		if (pItem->m_pTITEM->m_bCanColor && !pGradeItem->m_pTITEM->m_wUseValue) {
+			const WORD wDyeColors = 49;
+			DWORD dwCurrent = pItem->m_dwExtValue[IEV_COLOR];
+			if (dwCurrent >= 1 && dwCurrent <= wDyeColors) {
+				wColor = WORD(1 + rand() % (wDyeColors - 1));
+				if (wColor >= dwCurrent)
+					wColor++;
+			} else
+				wColor = WORD(1 + rand() % wDyeColors);
+		}
+
+		// Moose - an item that can't be dyed got the "same colour" reply too, which told players the dye had
+		// landed on the current colour. Say it can't be dyed instead. Nothing is used up either way.
+		if (!pItem->m_pTITEM->m_bCanColor) {
+			pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_CANNOT_COLOR, 0, 0, 0, 0, 0, 0, 0);
+			return EC_NOERROR;
+		}
+
+		if (pItem->m_dwExtValue[IEV_COLOR] == wColor) {
 			pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_SAMECOLOR, 0, 0, 0, 0, 0, 0, 0);
 			return EC_NOERROR;
 		}
