@@ -7046,7 +7046,14 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 				wColor = WORD(1 + rand() % wDyeColors);
 		}
 
-		if (!pItem->m_pTITEM->m_bCanColor || pItem->m_dwExtValue[IEV_COLOR] == wColor) {
+		// Moose - an item that can't be dyed got the "same colour" reply too, which told players the dye had
+		// landed on the current colour. Say it can't be dyed instead. Nothing is used up either way.
+		if (!pItem->m_pTITEM->m_bCanColor) {
+			pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_CANNOT_COLOR, 0, 0, 0, 0, 0, 0, 0);
+			return EC_NOERROR;
+		}
+
+		if (pItem->m_dwExtValue[IEV_COLOR] == wColor) {
 			pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_SAMECOLOR, 0, 0, 0, 0, 0, 0, 0);
 			return EC_NOERROR;
 		}
