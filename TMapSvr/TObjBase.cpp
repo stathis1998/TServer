@@ -3924,7 +3924,8 @@ BYTE CTObjBase::ForceMaintain(WORD wSkillID,
 															BYTE bHostType,
 															DWORD dwAttack,
 															BYTE bAtkType,
-															DWORD dwRemainTick) {
+															DWORD dwRemainTick,
+															BYTE bLevel) {
 	if (!wSkillID || !m_pMAP)
 		return FALSE;
 
@@ -3933,7 +3934,7 @@ BYTE CTObjBase::ForceMaintain(WORD wSkillID,
 		return FALSE;
 	else {
 		CTSkill* pSkill = new CTSkill();
-		pSkill->m_bLevel = 1;
+		pSkill->m_bLevel = bLevel ? bLevel : 1;
 		pSkill->m_pTSKILL = pTemp;
 
 		CTSkill* pMaintain = MaintainSkill(
@@ -3989,7 +3990,7 @@ BYTE CTObjBase::ForceMaintain(WORD wSkillID,
 
 					m_bAidCountry,
 					wSkillID,
-					1,
+					pSkill->m_bLevel,
 					0,
 					TRUE,
 					m_fPosX,
