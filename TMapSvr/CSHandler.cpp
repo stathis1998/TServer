@@ -16700,9 +16700,11 @@ DWORD CTMapSvrModule::OnCS_SOULLOTTERY_TRIGGER_REQ(LPPACKETBUF pBUF) {
 	pPlayer->m_bUseLot = FALSE;
 
 	pPlayer->ForceMaintain(820, pPlayer->m_dwID, OT_PC, pPlayer->m_dwID, OT_PC, (HOUR_ONE / 4) * 1000);
-	// Lottery Rush (skill 823), win or lose: 1 minute of 3.25x move speed, +5% attack power
-	// and 15% shorter skill cooldowns
-	pPlayer->ForceMaintain(823, pPlayer->m_dwID, OT_PC, pPlayer->m_dwID, OT_PC, 60 * 1000);
+	// Lottery Rush, win or lose, for 1 minute. No client files needed:
+	// - Whip (633) at level 3: move speed 3.20x, from the client's own chart (mount + whip is 3.0x)
+	// - skill 821: +5% attack power and 15% shorter skill cooldowns (database only)
+	pPlayer->ForceMaintain(633, pPlayer->m_dwID, OT_PC, pPlayer->m_dwID, OT_PC, 60 * 1000, 3);
+	pPlayer->ForceMaintain(821, pPlayer->m_dwID, OT_PC, pPlayer->m_dwID, OT_PC, 60 * 1000);
 	// ForceMaintain doesn't resend stats, and the client takes its cooldown rate from them.
 	// EraseMaintainSkill resends them when the buff ends.
 	pPlayer->SendCS_CHARSTATINFO_ACK(pPlayer);

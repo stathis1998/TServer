@@ -199,7 +199,8 @@ public:
 		BYTE bHostType,
 		DWORD dwAttack,
 		BYTE bAtkType,
-		DWORD dwRemainTick);
+		DWORD dwRemainTick,
+		BYTE bLevel = 1);
 
 	BYTE IsEquipSpecial();
 	BYTE IsEquipSkillItem(CTSkill * pSkill);
