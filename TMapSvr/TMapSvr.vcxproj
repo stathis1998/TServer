@@ -69,7 +69,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\TNetLib;..\..\Lib\Own\TProtocol\Include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\TNetLib;..\Lib\Own\TProtocol\Include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -115,7 +115,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)\TServerSystem;$(SolutionDir)..\Lib\3rdParty\SimpleIni;..\..\Lib\3rdParty\HShield\Lib\;..\..\Lib\3rdParty\HShield\Include;$(SolutionDir)..\Lib\Own\TNetLib\TNetLib;..\..\Lib\Own\TProtocol\Include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\TServerSystem;$(SolutionDir)Lib\3rdParty\SimpleIni;..\Lib\3rdParty\HShield\Lib\;..\Lib\3rdParty\HShield\Include;$(SolutionDir)Lib\Own\TNetLib\TNetLib;..\Lib\Own\TProtocol\Include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
