@@ -52,7 +52,7 @@
     <_ProjectFileVersion>14.0.24720.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\Lib\</OutDir>
+    <OutDir>$(SolutionDir)\Lib\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)d</TargetName>
     <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>

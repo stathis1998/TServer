@@ -81,11 +81,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\Includes\External\SimpleIni;..\TNetLib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Lib\3rdParty\SimpleIni;$(SolutionDir)Lib\Own\TNetLib\TNetLib</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Lib>
-      <OutputFile>..\Lib\TServerSystemd.lib</OutputFile>
+      <OutputFile>$(SolutionDir)\Lib\TServerSystemd.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
