@@ -384,3 +384,6 @@ Services/TControlSvr
 Services/TLoginSvr
 Services/TMapSvr
 Services/TWorldSvr
+# Build output of the Lib projects (TProtocol uses a "Release NEW_IF" configuration)
+Release NEW_IF/
+*.idb
