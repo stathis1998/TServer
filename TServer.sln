@@ -33,9 +33,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TBRSvr", "TBRSvr\TBRSvr.vcx
 		{C8A6200C-3257-4B16-90F6-6D35B62A6A39} = {C8A6200C-3257-4B16-90F6-6D35B62A6A39}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TNetLib", "..\Lib\Own\TNetLib\TNetLib\TNetLib.vcxproj", "{C8A6200C-3257-4B16-90F6-6D35B62A6A39}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TNetLib", "Lib\Own\TNetLib\TNetLib\TNetLib.vcxproj", "{C8A6200C-3257-4B16-90F6-6D35B62A6A39}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TProtocol", "..\Lib\Own\TProtocol\include\TProtocol.vcxproj", "{BA3F0892-64C5-497B-A10C-DAD0CE92B5FC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TProtocol", "Lib\Own\TProtocol\include\TProtocol.vcxproj", "{BA3F0892-64C5-497B-A10C-DAD0CE92B5FC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TServerSystem", "TServerSystem\TServerSystem.vcxproj", "{9694ED3A-1004-4122-B767-3EB7B27A9990}"
 EndProject
