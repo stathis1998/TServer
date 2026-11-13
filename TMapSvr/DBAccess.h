@@ -7267,6 +7267,26 @@ public:
 		END_PARAM()
 };
 
+// Moose - soul lottery log, see TCharStat.cpp.
+class CSPLogSoulLottery: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	BYTE m_bLevel;
+	BYTE m_bWon;
+	BYTE m_bDrawn;
+	__int64 m_nMoney;
+
+	DEF_QUERY(CSPLogSoulLottery, _T("{CALL TLogSoulLottery(?,?,?,?,?)}"))
+
+		BEGIN_PARAM(5)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bLevel)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bWon)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_bDrawn)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_nMoney)
+		END_PARAM()
+};
+
 class CSPClearBOWPlayers: public CSqlQuery {
 public:
 	DEF_QUERY(CSPClearBOWPlayers, _T("{ CALL TClearBOWPlayers}"))

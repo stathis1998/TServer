@@ -16706,6 +16706,7 @@ DWORD CTMapSvrModule::OnCS_SOULLOTTERY_TRIGGER_REQ(LPPACKETBUF pBUF) {
 	}
 
 	pPlayer->SendCS_SOULLOTTERY_TRIGGER_ACK(dwRand, pPlayer->m_dwLotMoney, bRet);
+	SendDM_LOGSOULLOTTERY_REQ(pPlayer, bRet, BYTE(dwRand), pPlayer->m_dwLotMoney);
 
 	CString strLotteryMsg;
 	strLotteryMsg.Format(
