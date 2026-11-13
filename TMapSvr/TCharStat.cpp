@@ -552,6 +552,47 @@ DWORD CTMapSvrModule::OnDM_LOGITEMUPGRADE_REQ(LPPACKETBUF pBUF)
 	return EC_NOERROR;
 }
 
+// Soul lottery log: one row in TSOULLOTTERYLOGTABLE per draw, in the order they happen, so the
+// portal can show win and lose streaks. The counters above only keep totals and lose the order.
+
+// Batch thread. Only the main copy of a properly loaded character writes.
+void CTMapSvrModule::SendDM_LOGSOULLOTTERY_REQ(CTPlayer* pPlayer, BYTE bWon, BYTE bDrawn, DWORD dwMoney)
+{
+#ifndef BOW_COMPILE_MODE
+	if(!pPlayer->m_bMain || pPlayer->m_bLoadCharError)
+		return;
+
+	LPPACKETBUF pBUF = new PACKETBUF();
+	pBUF->m_packet.SetID(DM_LOGSOULLOTTERY_REQ)
+		<< pPlayer->m_dwID
+		<< pPlayer->m_bLevel
+		<< bWon
+		<< bDrawn
+		<< __int64(dwMoney);
+
+	SayToDB(pBUF);
+#endif
+}
+
+// DB thread. Reads only the packet, never a CTPlayer. A failed write is only logged, so the
+// lottery itself is never affected.
+DWORD CTMapSvrModule::OnDM_LOGSOULLOTTERY_REQ(LPPACKETBUF pBUF)
+{
+	DEFINE_QUERY(&m_db, CSPLogSoulLottery)
+	pBUF->m_packet
+		>> query->m_dwCharID
+		>> query->m_bLevel
+		>> query->m_bWon
+		>> query->m_bDrawn
+		>> query->m_nMoney;
+
+	if(!query->Call())
+		LogEvent("SoulLotteryLog: TLogSoulLottery failed. CharID: %d Won: %d", query->m_dwCharID, query->m_bWon);
+	UNDEFINE_QUERY()
+
+	return EC_NOERROR;
+}
+
 // Formats copper as "12g 340s 56c", leaving out the parts that are zero. A season's total can
 // pass the 4294g a DWORD holds, so this takes an INT64.
 static CString FormatCounterMoney(__int64 nMoney)

@@ -961,6 +961,7 @@ protected:
 	DWORD OnDM_SAVECHARSTAT_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_SAVELEVELFREEZE_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_LOGITEMUPGRADE_REQ( LPPACKETBUF pBUF);
+	DWORD OnDM_LOGSOULLOTTERY_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_SAVEITEM_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_LOGOUT_REQ( LPPACKETBUF pBUF);
 	DWORD OnDM_CLEARTITLE_REQ( LPPACKETBUF pBUF);
@@ -2486,6 +2487,7 @@ public:
 	// Moose - combat statistics, see TCharStat.cpp
 	void SendDM_SAVECHARSTAT_REQ(CTPlayer *pPlayer);
 	void SendDM_LOGITEMUPGRADE_REQ(CTPlayer *pPlayer, const TUPGRADELOG& log);
+	void SendDM_LOGSOULLOTTERY_REQ(CTPlayer *pPlayer, BYTE bWon, BYTE bDrawn, DWORD dwMoney);
 	BYTE GetUpgradeProtect(CTPlayer *pPlayer, BYTE bLevel);
 	void WriteCharStatFromDB(DWORD dwCharID, CPacket *pMsg);
 	BYTE OnCharStatCmd(CTPlayer *pPlayer, const CString& strTalk);

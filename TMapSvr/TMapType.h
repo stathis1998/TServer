@@ -31,6 +31,7 @@
 #define DM_SAVECHARSTAT_REQ					(DM_BASE + 0x00F2)
 #define DM_SAVELEVELFREEZE_REQ				(DM_BASE + 0x00F3)
 #define DM_LOGITEMUPGRADE_REQ				(DM_BASE + 0x00F4)
+#define DM_LOGSOULLOTTERY_REQ				(DM_BASE + 0x00F5)
 // Highest level a character can be frozen at. The server cap of 90 already stops everyone there.
 #define LEVELFREEZE_MAX_LEVEL				(89)
 
