@@ -1,0 +1,98 @@
+portal_id,status,shown_section,shown_label,client_map,server_map,correct_id_in_client,correct_section,correct_label,distance
+2001,hidden_no_client_row,"","",,0,,"","",
+2101,hidden_no_client_row,"","",,0,,"","",
+4506,no_client_name,"Tebekut","Second Sentry Post",0,0,,"","",
+4507,wrong_label,"Tebekut","Mission Zone",0,0,4506,"Tebekut","Second Sentry Post",0
+4603,no_client_name,"Colossus Mountains","Venuka Camp",0,0,,"","",
+5010,no_client_name,"Antique Hiding Place (Past)","Antique Hiding Place (Past)",11,11,,"","",
+5108,no_client_name,"Horusland - Ruins in the Lake","Horusland - Ruins in the Lake",10,10,,"","",
+5110,wrong_label,"Forgotten Kobold Mines","Forgotten Kobold Mines",12,12,5113,"Forgotten Kobold Mines","Forgotten Kobold Mines",0
+7001,hidden_no_client_row,"","",,907,,"","",
+7002,hidden_no_client_row,"","",,908,,"","",
+7003,hidden_no_client_row,"","",,909,,"","",
+7004,hidden_no_client_row,"","",,910,,"","",
+7005,hidden_no_client_row,"","",,911,,"","",
+9501,wrong_label,"Mission 2 - Tarat","Mission 2 - Tarat",702,701,9507,"Mission 8 - Mirhur","Mission 8 - Mirhur",0
+9502,wrong_label,"Mission 3 - Nezak","mIsSiOn 3 - nEzAk",704,702,9501,"Mission 2 - Tarat","Mission 2 - Tarat",0
+9503,wrong_label,"Mission 4 - Hod","Mission 4 - Hod",706,703,9508,"Mission 9 - Colossus Mountains","Mission 9 - Colossus Mountains",4
+9504,wrong_label,"Mission 5 - Tyconteroga","Mission 5 - Tyconteroga",708,704,9502,"Mission 3 - Nezak","mIsSiOn 3 - nEzAk",0
+9506,wrong_label,"Mission 7 - Highlands","Mission 7 - Highlands",712,706,9503,"Mission 4 - Hod","Mission 4 - Hod",0
+9508,wrong_label,"Mission 9 - Colossus Mountains","Mission 9 - Colossus Mountains",703,708,9504,"Mission 5 - Tyconteroga","Mission 5 - Tyconteroga",0
+9510,wrong_label,"Mission 11 - Undred","Mission 11 - Undred",714,710,9505,"Mission 6 - Blonea","Mission 6 - Blonea",0
+9512,hidden_no_client_row,"","",,712,9506,"Mission 7 - Highlands","Mission 7 - Highlands",0
+9900,wrong_label,"Mission 1 - Yesode","1st Valorian Camp",700,700,9902,"Mission 1 - Yesode","Soldier Canyon",2
+9901,wrong_label,"Mission 1 - Yesode","1st Derion Camp",700,700,9900,"Mission 1 - Yesode","1st Valorian Camp",0
+9902,wrong_label,"Mission 1 - Yesode","Soldier Canyon",700,700,9901,"Mission 1 - Yesode","1st Derion Camp",0
+9904,no_client_name,"Mission 2 - Tarat","2nd Valorian Camp",702,700,,"","",
+9905,wrong_label,"Mission 2 - Tarat","2nd Derion Camp",702,702,9904,"Mission 2 - Tarat","2nd Valorian Camp",0
+9906,wrong_label,"Mission 2 - Tarat","Rekman's Destroyed Field",702,702,9905,"Mission 2 - Tarat","2nd Derion Camp",0
+9907,wrong_label,"Mission 2 - Tarat","Last Ekim Fort",702,702,9906,"Mission 2 - Tarat","Rekman's Destroyed Field",0
+9908,wrong_label,"Mission 2 - Tarat","Dangerous Wilderness",702,702,9907,"Mission 2 - Tarat","Last Ekim Fort",0
+9909,wrong_label,"Mission 2 - Tarat","Altar Gate",702,702,9908,"Mission 2 - Tarat","Dangerous Wilderness",0
+9910,wrong_label,"Mission 2 - Tarat","Red Earth Altar",702,702,9909,"Mission 2 - Tarat","Altar Gate",0
+9911,wrong_label,"Mission 3 - Nezak","3rd Valorian Camp",704,702,9910,"Mission 2 - Tarat","Red Earth Altar",0
+9912,no_client_name,"Mission 3 - Nezak","3rd Derion Camp",704,702,,"","",
+9913,no_client_name,"Mission 3 - Nezak","Rose Garden",704,702,,"","",
+9914,wrong_label,"Mission 3 - Nezak","Nibelheim",704,704,9911,"Mission 3 - Nezak","3rd Valorian Camp",0
+9915,wrong_label,"Mission 3 - Nezak","Berhir's Garden",704,704,9912,"Mission 3 - Nezak","3rd Derion Camp",0
+9916,wrong_label,"Mission 4 - Hod","4th Valorian Camp",706,704,9913,"Mission 3 - Nezak","Rose Garden",0
+9917,wrong_label,"Mission 4 - Hod","4th Derion Camp",706,704,9914,"Mission 3 - Nezak","Nibelheim",0
+9918,wrong_label,"Mission 4 - Hod","Totznaro Forest",706,704,9915,"Mission 3 - Nezak","Berhir's Garden",0
+9919,no_client_name,"Mission 4 - Hod","Spirit Twilight",706,704,,"","",
+9920,no_client_name,"Mission 4 - Hod","Alexis",706,704,,"","",
+9921,wrong_label,"Mission 5 - Tyconteroga","5th Valorian Camp",708,706,9916,"Mission 4 - Hod","4th Valorian Camp",0
+9922,wrong_label,"Mission 5 - Tyconteroga","5th Derion Camp",708,706,9917,"Mission 4 - Hod","4th Derion Camp",0
+9923,wrong_label,"Mission 5 - Tyconteroga","Demon Triangle",708,706,9918,"Mission 4 - Hod","Totznaro Forest",0
+9924,wrong_label,"Mission 5 - Tyconteroga","Gilgaros Glade",708,706,9919,"Mission 4 - Hod","Spirit Twilight",0
+9925,no_client_name,"Mission 5 - Tyconteroga","Last Fortress of the Dark Elves",708,706,,"","",
+9926,no_client_name,"Mission 5 - Tyconteroga","Crazy Earth",708,706,,"","",
+9927,wrong_label,"Mission 6 - Blonea","6th Valorian Camp",710,708,9921,"Mission 5 - Tyconteroga","5th Valorian Camp",0
+9928,wrong_label,"Mission 6 - Blonea","6th Derion Camp",710,708,9922,"Mission 5 - Tyconteroga","5th Derion Camp",0
+9929,wrong_label,"Mission 6 - Blonea","Forest of Illusions",710,708,9923,"Mission 5 - Tyconteroga","Demon Triangle",0
+9930,wrong_label,"Mission 6 - Blonea","Abandoned Meadow",710,708,9924,"Mission 5 - Tyconteroga","Gilgaros Glade",0
+9931,wrong_label,"Mission 6 - Blonea","Dark Area",710,708,9925,"Mission 5 - Tyconteroga","Last Fortress of the Dark Elves",0
+9932,wrong_label,"Mission 7 - Highlands","7th Valorian Camp",712,708,9926,"Mission 5 - Tyconteroga","Crazy Earth",0
+9933,no_client_name,"Mission 7 - Highlands","7th Derion Camp",712,708,,"","",
+9934,no_client_name,"Mission 7 - Highlands","Kameria Nest",712,708,,"","",
+9935,wrong_label,"Mission 7 - Highlands","Quiet Forest",712,710,9927,"Mission 6 - Blonea","6th Valorian Camp",0
+9936,wrong_label,"Mission 7 - Highlands","Abatara Mountains",712,710,9928,"Mission 6 - Blonea","6th Derion Camp",0
+9937,wrong_label,"Mission 7 - Highlands","Iruku's Camp",712,710,9929,"Mission 6 - Blonea","Forest of Illusions",0
+9938,wrong_label,"Mission 8 - Mirhur","8th Valorian Camp",701,710,9930,"Mission 6 - Blonea","Abandoned Meadow",0
+9939,wrong_label,"Mission 8 - Mirhur","8th Derion Camp",701,710,9931,"Mission 6 - Blonea","Dark Area",0
+9940,no_client_name,"Mission 8 - Mirhur","Evil Mist Garden",701,710,,"","",
+9941,no_client_name,"Mission 8 - Mirhur","Hill of the Mirthless Echo",701,710,,"","",
+9942,wrong_label,"Mission 8 - Mirhur","Holy Place of Soft Breath",701,712,9932,"Mission 7 - Highlands","7th Valorian Camp",0
+9943,wrong_label,"Mission 8 - Mirhur","Golden Sand Fields",701,712,9933,"Mission 7 - Highlands","7th Derion Camp",0
+9944,wrong_label,"Mission 9 - Colossus Mountains","9th Valorian Camp",703,712,9934,"Mission 7 - Highlands","Kameria Nest",0
+9945,wrong_label,"Mission 9 - Colossus Mountains","9th Derion Camp",703,712,9935,"Mission 7 - Highlands","Quiet Forest",0
+9946,wrong_label,"Mission 9 - Colossus Mountains","Sotia Forest",703,712,9936,"Mission 7 - Highlands","Abatara Mountains",0
+9947,wrong_label,"Mission 9 - Colossus Mountains","The Nightmare",703,712,9937,"Mission 7 - Highlands","Iruku's Camp",0
+9948,no_client_name,"Mission 9 - Colossus Mountains","Devastated Field",703,712,,"","",
+9949,no_client_name,"Mission 9 - Colossus Mountains","Nevain Highlands",703,712,,"","",
+9950,wrong_label,"Mission 10 - Anbari","10th Valorian Camp",713,701,9938,"Mission 8 - Mirhur","8th Valorian Camp",0
+9951,wrong_label,"Mission 10 - Anbari","10th Derion Camp",713,701,9939,"Mission 8 - Mirhur","8th Derion Camp",0
+9952,wrong_label,"Mission 10 - Anbari","Anbari Farm",713,701,9940,"Mission 8 - Mirhur","Evil Mist Garden",0
+9953,wrong_label,"Mission 10 - Anbari","Gorgon Hill",713,701,9941,"Mission 8 - Mirhur","Hill of the Mirthless Echo",0
+9954,wrong_label,"Mission 10 - Anbari","Golden City of Luadlan",713,701,9942,"Mission 8 - Mirhur","Holy Place of Soft Breath",0
+9955,wrong_label,"Mission 10 - Anbari","Dagger Rock Mine",713,701,9943,"Mission 8 - Mirhur","Golden Sand Fields",0
+9956,no_client_name,"Mission 10 - Anbari","Black Field",713,701,,"","",
+9957,no_client_name,"Mission 10 - Anbari","Anbari Barracks",713,701,,"","",
+9958,wrong_label,"Mission 10 - Anbari","Neved Ramparts",713,703,9944,"Mission 9 - Colossus Mountains","9th Valorian Camp",1
+9959,wrong_label,"Mission 11 - Undred","11th Valorian Camp",714,703,9945,"Mission 9 - Colossus Mountains","9th Derion Camp",0
+9960,wrong_label,"Mission 11 - Undred","11th Derion Camp",714,703,9946,"Mission 9 - Colossus Mountains","Sotia Forest",0
+9961,no_client_name,"Mission 11 - Undred","The Abandoned City",714,703,,"","",
+9962,no_client_name,"Mission 11 - Undred","Desolate Graveyard",714,703,,"","",
+9963,wrong_label,"Mission 11 - Undred","Luminescent Mushroom Colony",714,703,9947,"Mission 9 - Colossus Mountains","The Nightmare",0
+9964,wrong_label,"Mission 11 - Undred","Hollow Wind Hill",714,703,9948,"Mission 9 - Colossus Mountains","Devastated Field",0
+9965,no_client_name,"Mission 11 - Undred","Echo Escarpment",714,703,,"","",
+9966,wrong_label,"Mission 11 - Undred","Angelion Sewers",714,703,9949,"Mission 9 - Colossus Mountains","Nevain Highlands",1
+9967,no_client_name,"Mission 11 - Undred","Sunken Temple",714,703,,"","",
+9968,no_client_name,"Unified Mission War Zone","Unified Mission War Zone",100,703,,"","",
+15000,hidden_no_client_row,"","",,2010,,"","",
+16000,wrong_label,"Avalan Sky Garden","Avalan Sky Garden",2100,2100,18001,"Avalan Sky Garden","Avalan's Inner Court Garden",20
+16004,no_client_name,"Marduk's Nest","Marduk's Nest",2201,2201,,"","",
+16005,wrong_label,"Hell Flame Labyrinth (Lv 55)","Hell Flame Labyrinth (Lv 55)",2202,2200,16001,"Hell Flame Labyrinth","Hell Flame Labyrinth",3
+16007,wrong_label,"Hell Flame Labyrinth","Cave of Bewilderment (Exit)",2200,2201,16003,"Marduk's Nest","Marduk's Nest",1
+16009,no_client_name,"Hell Flame Labyrinth","Cave of Bewilderment (Exit)",2200,2204,,"","",
+20164,hidden_no_client_row,"","",,8,,"","",
+20165,hidden_no_client_row,"","",,8,,"","",

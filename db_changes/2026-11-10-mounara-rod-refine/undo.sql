@@ -1,0 +1,5 @@
+-- Undo: restore refinements to 5/5
+USE TGAME_GSP;
+UPDATE TITEMTABLE SET bRefineCur = 5
+WHERE dlID = 281474976771407 AND dwOwnerID = 25 AND wItemID = 23905 AND bRefineCur = 4;
+SELECT dlID, wItemID, bLevel, bRefineCur FROM TITEMTABLE WHERE dlID = 281474976771407;
