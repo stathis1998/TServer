@@ -1,0 +1,87 @@
+old_id,new_id_as_destination,new_id_as_npc_portal,server_map,client_label_after,note
+9501,9507,9507,701,"Mission 8 - Mirhur",
+9502,9501,9501,702,"Mission 2 - Tarat",
+9503,9508,9508,703,"Mission 9 - Colossus Mountains",
+9504,9502,9502,704,"mIsSiOn 3 - nEzAk",
+9506,9503,9503,706,"Mission 4 - Hod",
+9508,9504,9504,708,"Mission 5 - Tyconteroga",
+9510,9505,9505,710,"Mission 6 - Blonea",
+9512,9506,9506,712,"Mission 7 - Highlands",
+9701,9701,9707,702,"Mission 2 - Tarat",
+9702,9702,9701,704,"Mission 3 - Nezak",
+9703,9703,9708,706,"Mission 4 - Hod",
+9704,9704,9702,708,"Mission 5 - Tyconteroga",
+9706,9706,9703,712,"Mission 7 - Highlands",
+9707,9707,9920,701,"Mission 8 - Mirhur",
+9708,9708,9704,703,"Mission 9 - Colossus Mountains",
+9710,9710,9705,,"Mission 11 - Undred",
+9712,9712,9706,,"",
+9900,9902,9902,700,"Soldier Canyon",
+9901,9900,9900,700,"1st Valorian Camp",
+9902,9901,9901,700,"1st Derion Camp",
+9903,9980,9980,700,"",no client name: hidden from menus until added
+9904,9903,9903,700,"Evergreen Forest",
+9905,9904,9904,702,"2nd Valorian Camp",
+9906,9905,9905,702,"2nd Derion Camp",
+9907,9906,9906,702,"Rekman's Destroyed Field",
+9908,9907,9907,702,"Last Ekim Fort",
+9909,9908,9908,702,"Dangerous Wilderness",
+9910,9909,9909,702,"Altar Gate",
+9911,9910,9910,702,"Red Earth Altar",
+9912,9981,9981,702,"",no client name: hidden from menus until added
+9913,9982,9982,702,"",no client name: hidden from menus until added
+9914,9911,9911,704,"3rd Valorian Camp",
+9915,9912,9912,704,"3rd Derion Camp",
+9916,9913,9913,704,"Rose Garden",
+9917,9914,9914,704,"Nibelheim",
+9918,9915,9915,704,"Berhir's Garden",
+9919,9983,9983,704,"",no client name: hidden from menus until added
+9920,9984,9984,704,"",no client name: hidden from menus until added
+9921,9916,9916,706,"4th Valorian Camp",
+9922,9917,9917,706,"4th Derion Camp",
+9923,9918,9918,706,"Totznaro Forest",
+9924,9919,9919,706,"Spirit Twilight",
+9925,9985,9985,706,"",no client name: hidden from menus until added
+9926,9986,9986,706,"",no client name: hidden from menus until added
+9927,9921,9921,708,"5th Valorian Camp",
+9928,9922,9922,708,"5th Derion Camp",
+9929,9923,9923,708,"Demon Triangle",
+9930,9924,9924,708,"Gilgaros Glade",
+9931,9925,9925,708,"Last Fortress of the Dark Elves",
+9932,9926,9926,708,"Crazy Earth",
+9933,9987,9987,708,"",no client name: hidden from menus until added
+9934,9988,9988,708,"",no client name: hidden from menus until added
+9935,9927,9927,710,"6th Valorian Camp",
+9936,9928,9928,710,"6th Derion Camp",
+9937,9929,9929,710,"Forest of Illusions",
+9938,9930,9930,710,"Abandoned Meadow",
+9939,9931,9931,710,"Dark Area",
+9940,9989,9989,710,"",no client name: hidden from menus until added
+9941,9990,9990,710,"",no client name: hidden from menus until added
+9942,9932,9932,712,"7th Valorian Camp",
+9943,9933,9933,712,"7th Derion Camp",
+9944,9934,9934,712,"Kameria Nest",
+9945,9935,9935,712,"Quiet Forest",
+9946,9936,9936,712,"Abatara Mountains",
+9947,9937,9937,712,"Iruku's Camp",
+9948,9991,9991,712,"",no client name: hidden from menus until added
+9949,9992,9992,712,"",no client name: hidden from menus until added
+9950,9938,9938,701,"8th Valorian Camp",
+9951,9939,9939,701,"8th Derion Camp",
+9952,9940,9940,701,"Evil Mist Garden",
+9953,9941,9941,701,"Hill of the Mirthless Echo",
+9954,9942,9942,701,"Holy Place of Soft Breath",
+9955,9943,9943,701,"Golden Sand Fields",
+9956,9993,9993,701,"",no client name: hidden from menus until added
+9957,9994,9994,701,"",no client name: hidden from menus until added
+9958,9944,9944,703,"9th Valorian Camp",
+9959,9945,9945,703,"9th Derion Camp",
+9960,9946,9946,703,"Sotia Forest",
+9961,9995,,703,"",no client name: hidden from menus until added
+9962,9996,,703,"",no client name: hidden from menus until added
+9963,9947,9947,703,"The Nightmare",
+9964,9948,9948,703,"Devastated Field",
+9965,9997,,703,"",no client name: hidden from menus until added
+9966,9949,9949,703,"Nevain Highlands",
+9967,9998,9998,703,"",no client name: hidden from menus until added
+9968,9999,9999,703,"",no client name: hidden from menus until added
