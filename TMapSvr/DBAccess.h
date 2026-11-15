@@ -7187,6 +7187,26 @@ public:
 		END_PARAM()
 };
 
+// Moose - rebirth stat bonus set on the portal, see TCharStat.cpp
+class CTBLCharRebirth: public CSqlQuery {
+public:
+	DWORD m_dwCharID;
+	BYTE m_bStatBonus;
+
+	DEF_QUERY(CTBLCharRebirth, _T("SELECT \
+	bStatBonus \
+	FROM TCHARREBIRTHTABLE \
+	WHERE dwCharID = ?"));
+
+	BEGIN_COLUMN(1)
+		COLUMN_ENTRY(m_bStatBonus)
+		END_COL()
+
+		BEGIN_PARAM(1)
+		PARAM_ENTRY(SQL_PARAM_INPUT, m_dwCharID)
+		END_PARAM()
+};
+
 // Moose - level freeze set with the !freeze chat command, see TCharStat.cpp
 class CTBLDeleteCharLevelFreeze: public CSqlQuery {
 public:

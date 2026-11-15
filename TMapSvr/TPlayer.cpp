@@ -203,6 +203,7 @@ CTPlayer::CTPlayer()
 	ClearCharStat();
 	m_dwStatSaveTick = 0;
 	m_bFreezeLevel = 0;
+	m_bRebirthBonus = 0;
 
 	m_pSECURE = nullptr;
 }
@@ -5724,46 +5725,60 @@ FLOAT CTPlayer::CalcPetBonus(BYTE bType)
 	return FALSE;
 }
 
+// Moose - rebirth: every rebirth bought on the portal adds a percentage to the six stats.
+// Bow of War and Battle Royale put everyone on equal footing, so they ignore it.
+FLOAT CTPlayer::ApplyRebirthBonus(FLOAT fValue)
+{
+#if defined(BOW_COMPILE_MODE) || defined(BR_COMPILE_MODE)
+	return fValue;
+#else
+	if(!m_bRebirthBonus)
+		return fValue;
+
+	return fValue * FLOAT(100 + min(m_bRebirthBonus, BYTE(100))) / 100.0f;
+#endif
+}
+
 FLOAT CTPlayer::GetSTR( BYTE bPure, WORD wBaseMIN)
 {
 	FLOAT fSTR = CTObjBase::GetSTR(bPure, wBaseMIN);
 	fSTR += CalcPetATTR(MTYPE_STR);
-	return fSTR;
+	return ApplyRebirthBonus(fSTR);
 }
 
 FLOAT CTPlayer::GetDEX( BYTE bPure, WORD wBaseMIN)
 {
 	FLOAT fDEX = CTObjBase::GetDEX(bPure, wBaseMIN);
 	fDEX += CalcPetATTR(MTYPE_DEX);
-	return fDEX;
+	return ApplyRebirthBonus(fDEX);
 }
 
 FLOAT CTPlayer::GetCON( BYTE bPure, WORD wBaseMIN)
 {
 	FLOAT fCON = CTObjBase::GetCON(bPure, wBaseMIN);
 	fCON += CalcPetATTR(MTYPE_CON);
-	return fCON;
+	return ApplyRebirthBonus(fCON);
 }
 
 FLOAT CTPlayer::GetINT( BYTE bPure, WORD wBaseMIN)
 {
 	FLOAT fINT = CTObjBase::GetINT(bPure, wBaseMIN);
 	fINT += CalcPetATTR(MTYPE_INT);
-	return fINT;
+	return ApplyRebirthBonus(fINT);
 }
 
 FLOAT CTPlayer::GetWIS( BYTE bPure, WORD wBaseMIN)
 {
 	FLOAT fWIS = CTObjBase::GetWIS(bPure, wBaseMIN);
 	fWIS += CalcPetATTR(MTYPE_WIS);
-	return fWIS;
+	return ApplyRebirthBonus(fWIS);
 }
 
 FLOAT CTPlayer::GetMEN( BYTE bPure, WORD wBaseMIN)
 {
 	FLOAT fMEN = CTObjBase::GetMEN(bPure, wBaseMIN);
 	fMEN += CalcPetATTR(MTYPE_MEN);
-	return fMEN;
+	return ApplyRebirthBonus(fMEN);
 }
 
 BYTE CTPlayer::CanUseAuction()

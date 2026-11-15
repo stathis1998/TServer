@@ -48,6 +48,9 @@ MAPTINVEN m_mapTINVEN_bak;
 	// Moose - level freeze chosen on the portal, 0 means none, see TCharStat.cpp
 	BYTE m_bFreezeLevel;
 
+	// Moose - rebirth stat bonus in percent, set on the portal, 0 means none, see TCharStat.cpp
+	BYTE m_bRebirthBonus;
+
 	VTRECORDSET m_vDuelRecordSet;
 	DWORD m_aDuelScore[TCLASS_COUNT][2];
 	
@@ -522,6 +525,7 @@ public:
 	virtual FLOAT GetINT(BYTE bPure = FALSE, WORD wBaseMIN = 0);
 	virtual FLOAT GetWIS(BYTE bPure = FALSE, WORD wBaseMIN = 0);
 	virtual FLOAT GetMEN(BYTE bPure = FALSE, WORD wBaseMIN = 0);
+	FLOAT ApplyRebirthBonus(FLOAT fValue);
 
 	void ClearSoulmate();
 	CTCompanion * FindRecalledCompanion();

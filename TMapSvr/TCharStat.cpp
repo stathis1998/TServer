@@ -11,7 +11,8 @@
 //   DWORD dwTickPassed, DWORD dwTotalKills, INT64 nDamageDealt, INT64 nDamageTaken, INT64 nHealDone,
 //   WORD wCount, { WORD wMonID, DWORD dwKills, INT64 nDamage } x wCount,
 //   WORD wCounters, { WORD wStatID, INT64 nValue } x wCounters,
-//   BYTE bFreezeLevel (0 means no level freeze)
+//   BYTE bFreezeLevel (0 means no level freeze),
+//   BYTE bRebirthBonus (0 means no rebirth bonus)
 //
 // To track something new: add an ID to enum CHARCOUNTER in TMapType.h, then call AddCounter where
 // it happens. No packet, procedure or table change is needed.
@@ -154,6 +155,7 @@ void CTPlayer::WrapCharStat(CPacket* pPacket)
 	memcpy(pPacket->GetBuffer() + wSize, &wCount, sizeof(wCount));
 
 	(*pPacket) << m_bFreezeLevel;
+	(*pPacket) << m_bRebirthBonus;
 }
 
 void CTPlayer::UnwrapCharStat(CPacket* pPacket)
@@ -207,6 +209,7 @@ void CTPlayer::UnwrapCharStat(CPacket* pPacket)
 	}
 
 	(*pPacket) >> m_bFreezeLevel;
+	(*pPacket) >> m_bRebirthBonus;
 
 	m_dwStatSaveTick = _AtlModule.m_dwTick - dwTickPassed;
 }
@@ -319,6 +322,25 @@ void CTMapSvrModule::WriteCharStatFromDB(DWORD dwCharID, CPacket* pMsg)
 	UNDEFINE_QUERY()
 
 	(*pMsg) << bFreezeLevel;
+
+	// Set on the portal while the character is logged out, like the freeze above.
+	BYTE bRebirthBonus = 0;
+
+	DEFINE_QUERY(&m_db, CTBLCharRebirth)
+	query->m_dwCharID = dwCharID;
+
+	if(query->Open())
+	{
+		if(query->Fetch())
+			bRebirthBonus = query->m_bStatBonus;
+
+		query->Close();
+	}
+	else
+		LogEvent("CharStat: TCHARREBIRTHTABLE read failed. CharID: %d", dwCharID);
+	UNDEFINE_QUERY()
+
+	(*pMsg) << bRebirthBonus;
 }
 
 // Batch thread. Queues everything changed since the last flush. Callers make sure this is the
