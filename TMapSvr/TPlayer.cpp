@@ -204,6 +204,8 @@ CTPlayer::CTPlayer()
 	m_dwStatSaveTick = 0;
 	m_bFreezeLevel = 0;
 	m_bRebirthBonus = 0;
+	m_bRebirthExp = 0;	// Moose - rebirth extras
+	m_bRebirthGold = 0;	// Moose - rebirth extras
 
 	m_pSECURE = nullptr;
 }
@@ -1173,14 +1175,25 @@ void CTPlayer::GainExp( DWORD dwGain, BYTE bIsMon)
 	DWORD dwNewExp = m_dwEXP;
 	if(!bExpCapped)
 	{
-		dwNewExp += dwExpGain;
-		if(pCapLevel && dwNewExp > pCapLevel->m_dwEXP)
+		// Moose - rebirth extras: the rebirth EXP bonus raises the EXP added, up to the cap. EXP past the cap
+		// still turns into gold, but only from the base amount (dwExpGain), never the boosted one.
+		__int64 nNewExp = __int64(m_dwEXP) + RebirthExp(dwExpGain);
+		__int64 nBaseExp = __int64(m_dwEXP) + dwExpGain;
+
+		if(pCapLevel)
 		{
-			DWORD dwOverflowExp = dwNewExp - pCapLevel->m_dwEXP;
-			dwNewExp = pCapLevel->m_dwEXP;
-			EarnMoney(dwOverflowExp);
-			bMoneyConverted = TRUE;
+			if(nNewExp > __int64(pCapLevel->m_dwEXP))
+				nNewExp = pCapLevel->m_dwEXP;
+
+			if(nBaseExp > __int64(pCapLevel->m_dwEXP))
+			{
+				DWORD dwOverflowExp = DWORD(min(__int64(0xFFFFFFFF), nBaseExp - __int64(pCapLevel->m_dwEXP)));
+				EarnMoney(dwOverflowExp);
+				bMoneyConverted = TRUE;
+			}
 		}
+
+		dwNewExp = DWORD(min(__int64(0xFFFFFFFF), nNewExp));
 	}
 
 	// Moose - mob kills fill the soul bar faster from level 71, see GetSoulFillRate
@@ -5736,6 +5749,34 @@ FLOAT CTPlayer::ApplyRebirthBonus(FLOAT fValue)
 		return fValue;
 
 	return fValue * FLOAT(100 + min(m_bRebirthBonus, BYTE(100))) / 100.0f;
+#endif
+}
+
+// Moose - rebirth extras: every rebirth can add a percentage to EXP gained, set on the portal.
+// Bow of War and Battle Royale ignore it, like the stat bonus.
+DWORD CTPlayer::RebirthExp(DWORD dwExp)
+{
+#if defined(BOW_COMPILE_MODE) || defined(BR_COMPILE_MODE)
+	return dwExp;
+#else
+	if(!m_bRebirthExp)
+		return dwExp;
+
+	return DWORD(min(__int64(0xFFFFFFFF), __int64(dwExp) * (100 + m_bRebirthExp) / 100));
+#endif
+}
+
+// Moose - rebirth extras: every rebirth can add a percentage to monster gold, set on the portal.
+// Bow of War and Battle Royale ignore it, like the stat bonus.
+DWORD CTPlayer::RebirthGold(DWORD dwMoney)
+{
+#if defined(BOW_COMPILE_MODE) || defined(BR_COMPILE_MODE)
+	return dwMoney;
+#else
+	if(!m_bRebirthGold)
+		return dwMoney;
+
+	return DWORD(min(__int64(0xFFFFFFFF), __int64(dwMoney) * (100 + m_bRebirthGold) / 100));
 #endif
 }
 

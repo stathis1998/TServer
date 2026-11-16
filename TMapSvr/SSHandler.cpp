@@ -9764,6 +9764,10 @@ DWORD CTMapSvrModule::OnMW_TAKEMONMONEY_REQ(LPPACKETBUF pBUF)
 	if(!pPlayer || !pPlayer->m_bMain)
 		return EC_NOERROR;
 
+	// Moose - rebirth extras: monster gold from a party kill on another server arrives as the base
+	// amount; this player's gold bonus is added here, where the player is loaded.
+	dwMoney = pPlayer->RebirthGold(dwMoney);
+
 	pPlayer->EarnMoney(dwMoney);
 	pPlayer->AddCounter(CHARCOUNTER_MONMONEY, dwMoney);
 	pPlayer->SendCS_MONEY_ACK();

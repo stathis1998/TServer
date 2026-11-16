@@ -7188,18 +7188,25 @@ public:
 };
 
 // Moose - rebirth stat bonus set on the portal, see TCharStat.cpp
+// Moose - rebirth extras: also the EXP and monster gold bonuses
 class CTBLCharRebirth: public CSqlQuery {
 public:
 	DWORD m_dwCharID;
 	BYTE m_bStatBonus;
+	BYTE m_bExpBonus;
+	BYTE m_bGoldBonus;
 
 	DEF_QUERY(CTBLCharRebirth, _T("SELECT \
-	bStatBonus \
+	bStatBonus, \
+	bExpBonus, \
+	bGoldBonus \
 	FROM TCHARREBIRTHTABLE \
 	WHERE dwCharID = ?"));
 
-	BEGIN_COLUMN(1)
+	BEGIN_COLUMN(3)
 		COLUMN_ENTRY(m_bStatBonus)
+		COLUMN_ENTRY(m_bExpBonus)
+		COLUMN_ENTRY(m_bGoldBonus)
 		END_COL()
 
 		BEGIN_PARAM(1)
