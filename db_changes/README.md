@@ -12,3 +12,6 @@ Without it the servers log `TCHARREBIRTHTABLE read failed` at every character lo
 The portal's games need no server rebuild, only their scripts, in this order: `2026-11-14-portal-wheel`, `2026-11-14-portal-roulette`,
 `2026-11-14-portal-slots`, `2026-11-15-portal-slots-jackpot`, `2026-11-15-portal-slots-modern`, `2026-11-15-portal-slots-cascades`.
 Each slots script changes the tables of the ones before it. The portal refuses those games on a database without them.
+
+`2026-11-16-rebirth-extras` (rebirth EXP and gold bonuses and a reward letter per rebirth) is applied after `2026-11-15-rebirth`,
+before the portal's `feat/rebirth-extras` and before a TMapSvr built from `feature/rebirth-extras`.
