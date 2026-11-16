@@ -14,4 +14,4 @@ The portal's games need no server rebuild, only their scripts, in this order: `2
 Each slots script changes the tables of the ones before it. The portal refuses those games on a database without them.
 
 `2026-11-16-rebirth-extras` (rebirth EXP and gold bonuses and a reward letter per rebirth) is applied after `2026-11-15-rebirth`,
-before the portal's `feat/rebirth-extras` and before a TMapSvr built from `feature/rebirth-extras`.
+before the portal's `feat/rebirth-extras` and before a TMapSvr built from `feature/rebirth-extras`. Out of order, that TMapSvr fails its rebirth read on a database without this script, so every reborn character also loses its stat bonus (it reads 0) until the script is applied.
