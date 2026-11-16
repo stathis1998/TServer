@@ -51,6 +51,10 @@ MAPTINVEN m_mapTINVEN_bak;
 	// Moose - rebirth stat bonus in percent, set on the portal, 0 means none, see TCharStat.cpp
 	BYTE m_bRebirthBonus;
 
+	// Moose - rebirth extras: EXP and monster gold bonuses in percent, set on the portal, 0 means none
+	BYTE m_bRebirthExp;
+	BYTE m_bRebirthGold;
+
 	VTRECORDSET m_vDuelRecordSet;
 	DWORD m_aDuelScore[TCLASS_COUNT][2];
 	
@@ -526,6 +530,11 @@ public:
 	virtual FLOAT GetWIS(BYTE bPure = FALSE, WORD wBaseMIN = 0);
 	virtual FLOAT GetMEN(BYTE bPure = FALSE, WORD wBaseMIN = 0);
 	FLOAT ApplyRebirthBonus(FLOAT fValue);
+	// Moose - rebirth extras
+	/** dwExp raised by m_bRebirthExp percent, 64-bit, capped at 0xFFFFFFFF. Unchanged under BOW/BR or at 0. */
+	DWORD RebirthExp(DWORD dwExp);
+	/** dwMoney raised by m_bRebirthGold percent, 64-bit, capped at 0xFFFFFFFF. Unchanged under BOW/BR or at 0. */
+	DWORD RebirthGold(DWORD dwMoney);
 
 	void ClearSoulmate();
 	CTCompanion * FindRecalledCompanion();

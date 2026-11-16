@@ -12,7 +12,9 @@
 //   WORD wCount, { WORD wMonID, DWORD dwKills, INT64 nDamage } x wCount,
 //   WORD wCounters, { WORD wStatID, INT64 nValue } x wCounters,
 //   BYTE bFreezeLevel (0 means no level freeze),
-//   BYTE bRebirthBonus (0 means no rebirth bonus)
+//   BYTE bRebirthBonus (0 means no rebirth bonus),
+//   BYTE bRebirthExp (EXP bonus in percent, 0 means none),
+//   BYTE bRebirthGold (monster gold bonus in percent, 0 means none)
 //
 // To track something new: add an ID to enum CHARCOUNTER in TMapType.h, then call AddCounter where
 // it happens. No packet, procedure or table change is needed.
@@ -156,6 +158,8 @@ void CTPlayer::WrapCharStat(CPacket* pPacket)
 
 	(*pPacket) << m_bFreezeLevel;
 	(*pPacket) << m_bRebirthBonus;
+	(*pPacket) << m_bRebirthExp;	// Moose - rebirth extras
+	(*pPacket) << m_bRebirthGold;	// Moose - rebirth extras
 }
 
 void CTPlayer::UnwrapCharStat(CPacket* pPacket)
@@ -210,6 +214,8 @@ void CTPlayer::UnwrapCharStat(CPacket* pPacket)
 
 	(*pPacket) >> m_bFreezeLevel;
 	(*pPacket) >> m_bRebirthBonus;
+	(*pPacket) >> m_bRebirthExp;	// Moose - rebirth extras
+	(*pPacket) >> m_bRebirthGold;	// Moose - rebirth extras
 
 	m_dwStatSaveTick = _AtlModule.m_dwTick - dwTickPassed;
 }
@@ -325,6 +331,8 @@ void CTMapSvrModule::WriteCharStatFromDB(DWORD dwCharID, CPacket* pMsg)
 
 	// Set on the portal while the character is logged out, like the freeze above.
 	BYTE bRebirthBonus = 0;
+	BYTE bRebirthExp = 0;	// Moose - rebirth extras
+	BYTE bRebirthGold = 0;	// Moose - rebirth extras
 
 	DEFINE_QUERY(&m_db, CTBLCharRebirth)
 	query->m_dwCharID = dwCharID;
@@ -332,7 +340,11 @@ void CTMapSvrModule::WriteCharStatFromDB(DWORD dwCharID, CPacket* pMsg)
 	if(query->Open())
 	{
 		if(query->Fetch())
+		{
 			bRebirthBonus = query->m_bStatBonus;
+			bRebirthExp = query->m_bExpBonus;	// Moose - rebirth extras
+			bRebirthGold = query->m_bGoldBonus;	// Moose - rebirth extras
+		}
 
 		query->Close();
 	}
@@ -341,6 +353,8 @@ void CTMapSvrModule::WriteCharStatFromDB(DWORD dwCharID, CPacket* pMsg)
 	UNDEFINE_QUERY()
 
 	(*pMsg) << bRebirthBonus;
+	(*pMsg) << bRebirthExp;	// Moose - rebirth extras
+	(*pMsg) << bRebirthGold;	// Moose - rebirth extras
 }
 
 // Batch thread. Queues everything changed since the last flush. Callers make sure this is the

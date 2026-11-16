@@ -8041,10 +8041,13 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 
 					if (dwMoney <= dwMonMoney) {
 						if (vParty[i]->m_bMain) {
-							vParty[i]->EarnMoney(dwMoney);
-							vParty[i]->AddCounter(CHARCOUNTER_MONMONEY, dwMoney);
+							// Moose - rebirth extras: each member's own gold bonus. A member on another server gets the
+							// base amount below and that server adds the bonus in OnMW_TAKEMONMONEY_REQ.
+							DWORD dwGot = vParty[i]->RebirthGold(dwMoney);
+							vParty[i]->EarnMoney(dwGot);
+							vParty[i]->AddCounter(CHARCOUNTER_MONMONEY, dwGot);
 						#ifdef DEF_UDPLOG
-							m_pUdpSocket->LogMoney(LOGMAP_MONMONEYPARTY, vParty[i], pMon, dwMoney);
+							m_pUdpSocket->LogMoney(LOGMAP_MONMONEYPARTY, vParty[i], pMon, dwGot);
 						#endif
 
 							vParty[i]->SendCS_MONEY_ACK();
@@ -8066,11 +8069,12 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 
 				if (pMon->m_dwMoney)
 					if (pPlayer->m_bMain) {
-						pPlayer->EarnMoney(pMon->m_dwMoney);
-						pPlayer->AddCounter(CHARCOUNTER_MONMONEY, pMon->m_dwMoney);
+						DWORD dwGot = pPlayer->RebirthGold(pMon->m_dwMoney);	// Moose - rebirth extras
+						pPlayer->EarnMoney(dwGot);
+						pPlayer->AddCounter(CHARCOUNTER_MONMONEY, dwGot);
 
 					#ifdef DEF_UDPLOG
-						m_pUdpSocket->LogMoney(LOGMAP_MONMONEYPARTY, pPlayer, pMon, pMon->m_dwMoney);
+						m_pUdpSocket->LogMoney(LOGMAP_MONMONEYPARTY, pPlayer, pMon, dwGot);
 
 					#endif
 						pPlayer->SendCS_MONEY_ACK();
@@ -8111,11 +8115,12 @@ BYTE CTMapSvrModule::MonMoneyTake(CTPlayer* pPlayer, DWORD dwMonID) {
 		case OWNER_PRIVATE:
 			if (pMon->m_dwKeeperID == pPlayer->m_dwID)
 				if (pPlayer->m_bMain) {
-					pPlayer->EarnMoney(pMon->m_dwMoney);
-					pPlayer->AddCounter(CHARCOUNTER_MONMONEY, pMon->m_dwMoney);
+					DWORD dwGot = pPlayer->RebirthGold(pMon->m_dwMoney);	// Moose - rebirth extras
+					pPlayer->EarnMoney(dwGot);
+					pPlayer->AddCounter(CHARCOUNTER_MONMONEY, dwGot);
 
 				#ifdef DEF_UDPLOG
-					m_pUdpSocket->LogMoney(LOGMAP_MONMONEYSOLOE, pPlayer, pMon, pMon->m_dwMoney);
+					m_pUdpSocket->LogMoney(LOGMAP_MONMONEYSOLOE, pPlayer, pMon, dwGot);
 				#endif 
 
 					pPlayer->SendCS_MONEY_ACK();
