@@ -943,10 +943,12 @@ void CTObjBase::Defend(CTSkillTemp* pTemp,
 
 	if (m_bType == OT_PC) {
 		CTPlayer* pPlayer = (CTPlayer*) this;
+		// Moose - steadfast saddle: monsters never knock its rider off, players still can
+		BYTE bKeepMount = bAttackType == OT_MON && pPlayer->m_dwRiding && pPlayer->HasSteadfastSaddle();
 
 		if (pTemp->m_bIsDismount && bAtkHit != HT_MISS) {
 			pPlayer->StoreClose();
-			if (pPlayer->m_dwRiding) {
+			if (pPlayer->m_dwRiding && !bKeepMount) {
 				CTRecallMon* pRecall = pPlayer->FindRecallPet();
 				if (pRecall && !pRecall->m_wCompanionID)
 					_AtlModule.SendMW_RECALLMONDEL_ACK(pPlayer->m_dwID, pPlayer->m_dwKEY, pRecall->m_dwID);
@@ -965,7 +967,7 @@ void CTObjBase::Defend(CTSkillTemp* pTemp,
 
 		} else if (pTemp->IsNegative()) {
 			pPlayer->StoreClose();
-			if (pPlayer->m_dwRiding && bAtkHit == HT_CRITICAL) {
+			if (pPlayer->m_dwRiding && bAtkHit == HT_CRITICAL && !bKeepMount) {
 				CTRecallMon* pRecall = pPlayer->FindRecallPet();
 				if (pRecall && !pRecall->m_wCompanionID)
 					_AtlModule.SendMW_RECALLMONDEL_ACK(pPlayer->m_dwID, pPlayer->m_dwKEY, pRecall->m_dwID);

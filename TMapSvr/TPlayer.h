@@ -499,6 +499,8 @@ public:
 	DWORD GetRecallLifeTime();
 	void StoreClose();
 	void PetRiding(DWORD dwRiding);
+	// Moose - steadfast saddle, see STEADFAST_SADDLE_ITEMID
+	BYTE HasSteadfastSaddle();
 
 	BYTE CanDuel(CTPlayer * pAttacker);
 	BYTE DuelLose(DWORD dwAttackerID);
