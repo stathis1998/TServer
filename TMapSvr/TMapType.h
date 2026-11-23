@@ -112,6 +112,9 @@
 #define PARTY_EXP_BONUS						(30)
 #define PARTY_MONEY_BONUS					(30)
 #define PARTY_ITEMDROP_BONUS				(30)
+// Moose - steadfast saddle: while this saddle is on the account, monster hits never knock the rider off the mount.
+// Item 31307 was an unused permanent Saddle of Swiftness, so the client already knows it.
+#define STEADFAST_SADDLE_ITEMID				(31307)
 #define ITEMAGIC_BASELEVEL					(70)
 #define PVP_RECENTRECORDCOUNT				10
 #define PVP_SAVETIME						600

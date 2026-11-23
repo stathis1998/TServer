@@ -15,3 +15,5 @@ Each slots script changes the tables of the ones before it. The portal refuses t
 
 `2026-11-16-rebirth-extras` (rebirth EXP and gold bonuses and a reward letter per rebirth) is applied after `2026-11-15-rebirth`,
 before the portal's `feat/rebirth-extras` and before a TMapSvr built from `feature/rebirth-extras`. Out of order, that TMapSvr fails its rebirth read on a database without this script, so every reborn character also loses its stat bonus (it reads 0) until the script is applied.
+
+`2026-11-23-steadfast-saddle` (renames item 31307 to Steadfast Saddle) goes with a TMapSvr built from `feature/steadfast-saddle`. Either order works: the server keys on the item ID, the name is only for people.

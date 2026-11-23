@@ -4276,6 +4276,20 @@ void CTPlayer::PetRiding(DWORD dwRiding)
 	}
 }
 
+// Moose - steadfast saddle: TRUE while the account's saddle is STEADFAST_SADDLE_ITEMID and has not run out.
+BYTE CTPlayer::HasSteadfastSaddle()
+{
+	MAPTSADDLE::iterator itSADDLE = m_mapSADDLE.find(m_dwUserID);
+	if(itSADDLE == m_mapSADDLE.end())
+		return FALSE;
+
+	LPTSADDLE pSADDLE = (*itSADDLE).second;
+	if(pSADDLE->m_wItemID != STEADFAST_SADDLE_ITEMID)
+		return FALSE;
+
+	return pSADDLE->m_bType || pSADDLE->m_dEndTime > CTime::GetCurrentTime().GetTime();
+}
+
 /*void CTPlayer::DelPet(DWORD dwHostID, DWORD dwMonID)
 {
 
