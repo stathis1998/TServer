@@ -115,6 +115,9 @@
 // Moose - steadfast saddle: while this saddle is on the account, monster hits never knock the rider off the mount.
 // Item 31307 was an unused permanent Saddle of Swiftness, so the client already knows it.
 #define STEADFAST_SADDLE_ITEMID				(31307)
+// Moose - Epic Survival Tincture (item 18047, skill 949, SDT_STATUS_EPIC_ITEMGUARD): a failed upgrade at this level
+// or higher keeps the item at its level, and the tincture is used up. Below it the tincture does nothing and is kept.
+#define EPIC_ITEMGUARD_LEVEL				(23)
 #define ITEMAGIC_BASELEVEL					(70)
 #define PVP_RECENTRECORDCOUNT				10
 #define PVP_SAVETIME						600
@@ -2422,7 +2425,8 @@ enum UPGRADELOG_PROTECT
 	UPGRADELOG_PROTECT_NONE = 0,
 	UPGRADELOG_PROTECT_SURVIVAL = 1,	// SDT_STATUS_ITEMGUARD
 	UPGRADELOG_PROTECT_MEDIUM = 2,		// SDT_STATUS_MEDIUM_ITEMGUARD
-	UPGRADELOG_PROTECT_GREATER = 3		// SDT_STATUS_GREATER_ITEMGUARD
+	UPGRADELOG_PROTECT_GREATER = 3,		// SDT_STATUS_GREATER_ITEMGUARD
+	UPGRADELOG_PROTECT_EPIC = 4			// SDT_STATUS_EPIC_ITEMGUARD
 };
 
 // One upgrade attempt, filled in by OnCS_ITEMUPGRADE_REQ.
