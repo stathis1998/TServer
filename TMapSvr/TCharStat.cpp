@@ -522,6 +522,8 @@ BYTE CTMapSvrModule::GetUpgradeProtect(CTPlayer* pPlayer, BYTE bLevel)
 	BYTE bGreater = pPlayer->HaveItemProbBuff(SDT_STATUS_GREATER_ITEMGUARD) ? TRUE : FALSE;
 	BYTE bMedium = pPlayer->HaveItemProbBuff(SDT_STATUS_MEDIUM_ITEMGUARD) ? TRUE : FALSE;
 
+	if(bLevel >= EPIC_ITEMGUARD_LEVEL && pPlayer->HaveItemProbBuff(SDT_STATUS_EPIC_ITEMGUARD))
+		return UPGRADELOG_PROTECT_EPIC;
 	if(bGreater && bLevel >= 19)
 		return UPGRADELOG_PROTECT_GREATER;
 	if(bMedium && bLevel >= 15)

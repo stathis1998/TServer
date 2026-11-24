@@ -19,3 +19,5 @@ before the portal's `feat/rebirth-extras` and before a TMapSvr built from `featu
 `2026-11-23-steadfast-saddle` (renames item 31307 to Steadfast Saddle) goes with a TMapSvr built from `feature/steadfast-saddle`. Either order works: the server keys on the item ID, the name is only for people.
 
 `2026-11-24-growth-potion-500` (item 30309 becomes a 500% Growth Potion (1 hour), +400% kill EXP) needs only a TMapSvr restart, no rebuild. Players also need the client charts from `TClient Saddle and 500 Potion.zip` for the right name and tooltip.
+
+`2026-11-24-upgrade-items` (Hero's Medal gives 10000 medals, item 18045 becomes a Serendipity Potion (400%) with new skill 948, item 18047 an Epic Survival Tincture with new skill 949) goes with a TMapSvr built from `feature/upgrade-items`. The medal and the potion work after a plain TMapSvr restart; the tincture needs the new build, because only it knows exec 82. Players also need `TClient Upgrade Items.zip`.

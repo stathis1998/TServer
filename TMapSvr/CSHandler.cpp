@@ -7188,6 +7188,12 @@ DWORD CTMapSvrModule::OnCS_ITEMUPGRADE_REQ(LPPACKETBUF pBUF) {
 			BYTE bDownProb = 0;
 			BYTE bDownGrade = 0;
 
+			// Moose - Epic Survival Tincture: from +23 a failed upgrade keeps the item and its level and uses the
+			// tincture up. It is checked first, so a Greater held with it is kept for later.
+			if (pPlayer->HaveItemProbBuff(SDT_STATUS_EPIC_ITEMGUARD) && pItem->m_bLevel >= EPIC_ITEMGUARD_LEVEL) {
+				pPlayer->EraseItemProbBuff(SDT_STATUS_EPIC_ITEMGUARD);
+				pPlayer->SendCS_ITEMUPGRADE_ACK(ITEMUPGRADE_DOWNGRADE, bTargetInven, bTargetItemID, pItem->m_bLevel, pItem->m_bGem, pItem->m_bGradeEffect, 0, pItem->m_wMoggItemID);
+			} else
 			if (pPlayer->HaveItemProbBuff(SDT_STATUS_GREATER_ITEMGUARD) && pItem->m_bLevel >= 19) {
 				bLevelGuard = 19;
 				if (pItem->m_bLevel <= bLevelGuard) {
