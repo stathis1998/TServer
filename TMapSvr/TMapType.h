@@ -2255,6 +2255,7 @@ struct tagCASHGAMBLE
 	DWORD m_dwProb;
 	WORD  m_wGroup;
 	WORD m_wUseTime;
+	BYTE m_bFixedCount;	// Moose - 1: always give bCount, 0: a random 1 to bCount
 	CTItem * m_pItem;
 };
 

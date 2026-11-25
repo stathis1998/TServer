@@ -3541,13 +3541,16 @@ public:
 	DWORD m_dwProb;
 	WORD m_wGroup;
 	WORD m_wUseTime;
+	BYTE m_bFixedCount;
 	TITEMQUERY m_item;
 
+	// Moose - bFixedCount: added to TCASHGAMBLECHART and its view by db_changes/2026-11-25-fire-essence-loot
 	DEF_QUERY(CTBLCashGambleChart, _T("SELECT \
 	dwID, \
 	dwProb, \
 	wGroup, \
 	wUseTime, \
+	bFixedCount, \
 	wItemID, \
 	bLevel, \
 	bCount, \
@@ -3583,6 +3586,7 @@ public:
 		COLUMN_ENTRY(m_dwProb)
 		COLUMN_ENTRY(m_wGroup)
 		COLUMN_ENTRY(m_wUseTime)
+		COLUMN_ENTRY(m_bFixedCount)
 		COLUMN_ENTRY(m_item.m_wItemID)
 		COLUMN_ENTRY(m_item.m_bLevel)
 		COLUMN_ENTRY(m_item.m_bCount)

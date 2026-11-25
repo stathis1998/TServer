@@ -14381,7 +14381,8 @@ DWORD CTMapSvrModule::OnCS_ITEMCHANGE_REQ(LPPACKETBUF pBUF) {
 		if (pCG->m_pItem->m_bCount) {
 			pNew = new CTItem();
 			pNew->Copy(pCG->m_pItem, TRUE);
-			pNew->m_bCount = (rand() % pCG->m_pItem->m_bCount) + 1;
+			// Moose - a row with bFixedCount gives exactly bCount, the others a random 1 to bCount as before
+			pNew->m_bCount = pCG->m_bFixedCount ? pCG->m_pItem->m_bCount : (rand() % pCG->m_pItem->m_bCount) + 1;
 
 			if (pCG->m_wUseTime) {
 				CTime time(m_timeCurrent);
