@@ -2251,6 +2251,7 @@ DWORD CTMapSvrModule::LoadData() {
 				pCg->m_pItem = pItem;
 				pCg->m_wGroup = query->m_wGroup;
 				pCg->m_wUseTime = query->m_wUseTime;
+				pCg->m_bFixedCount = query->m_bFixedCount;
 				LPVTCASHGAMBLE pVTCASHGAMBLE = NULL;
 
 				itCG = m_mapCashGameble.find(pCg->m_wGroup);
